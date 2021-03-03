@@ -1,0 +1,28 @@
+.searchForm {
+    border: .1rem solid #ADADAD;
+    border-radius: .15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .1rem;
+    background-color: #ADADAD;
+}
+
+.searchForm__input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #ffffff;
+}
+
+.searchForm__input::placeholder {
+    color: #ffffff;
+}
+
+.searchForm__btn {
+    border: none;
+    background: transparent;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: #ffffff;
+}

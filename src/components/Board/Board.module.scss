@@ -1,0 +1,13 @@
+.board {
+    width: 100vw;
+    height: 95vh;
+    display: flex;
+}
+
+.board > * {
+    margin-right: 1rem;
+}
+
+.board > *:last-child {
+    margin-right: 0;
+}
