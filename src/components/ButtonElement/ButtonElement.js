@@ -2,7 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './ButtonElement.module.scss';
 
-const ButtonElement = ({ children, basicSize, doubleSize, wideSize, transparent, colorBlack, colorWhite }) => {
+const ButtonElement = ({
+    children,
+    handleClick,
+    basicSize,
+    doubleSize,
+    wideSize,
+    transparent,
+    colorBlack,
+    colorWhite,
+}) => {
     const btnStyle = classNames(
         styles.btn,
         {
@@ -15,7 +24,7 @@ const ButtonElement = ({ children, basicSize, doubleSize, wideSize, transparent,
         },
     );
     return (
-        <button type="button" className={btnStyle}>{children}</button>
+        <button type="button" onClick={handleClick} className={btnStyle}>{children}</button>
     )
 }
 

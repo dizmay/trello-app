@@ -1,9 +1,14 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import ButtonElement from '../ButtonElement/ButtonElement';
 import SearchElement from '../SearchElement/SearchElement';
 import styles from './Header.module.scss'
 
 const Header = () => {
+    let history = useHistory();
+    const signUp = (e) => {
+        history.push("/signup");
+    }
     return (
         <div className={styles.header}>
             <nav className={styles.header__nav}>
@@ -25,6 +30,9 @@ const Header = () => {
             <div className={styles.header__logo}>LOGO</div>
             <div className={styles.header__profile}>
                 <ul className={styles.navigation}>
+                    <li>
+                        <ButtonElement wideSize handleClick={signUp} children="Sign up" colorBlack />
+                    </li>
                     <li>
                         <ButtonElement basicSize children="4" />
                     </li>

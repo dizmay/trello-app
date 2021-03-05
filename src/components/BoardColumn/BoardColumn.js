@@ -22,7 +22,8 @@ const BoardColumn = ({ title, cardTitle }) => {
 
 
                 <div className={styles.boardColumn__func}>
-                    <ButtonElement children={<GrAdd />} wideSize transparent colorBlack />
+                    <ButtonElement children={<GrAdd />} basicSize transparent colorBlack />
+                    <span>Add another card</span>
                 </div>
 
             </div>

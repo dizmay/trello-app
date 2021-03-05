@@ -1,14 +1,23 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import Header from './components/Header/Header';
-import styles from './App.module.scss';
 import Board from './components/Board/Board';
+import Signup from './components/Signup/Signup';
+import styles from './App.module.scss';
 
 function App() {
   return (
-    <div className={styles.app}>
-      <Header />
-      <Board />
-    </div>
+      <>
+        <Route exact path="/">
+          <div className={styles.app}>
+            <Header />
+            <Board />
+          </div>
+        </Route>
+        <Route exact path="/signup">
+          <Signup />
+        </Route>
+      </>
   );
 }
 
