@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Board from './components/Board/Board';
-import Signup from './components/Signup/Signup';
+import SignupContainer from './components/Signup/SignupContainer';
 import styles from './App.module.scss';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
           </div>
         </Route>
         <Route exact path="/signup">
-          <Signup />
+          <SignupContainer />
         </Route>
       </>
   );

@@ -1,8 +1,9 @@
 import React from 'react';
 import Signup from './Signup';
 import { fetchUserData } from '../../modules/Signup/SignupActions';
+import { connect } from 'react-redux';
 
-const SignupContainer = () => {
+const SignupContainer = ({ createNewUser }) => {
   return (
     <Signup createNewUser={createNewUser} />
   )
