@@ -2,12 +2,13 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import ButtonElement from '../ButtonElement/ButtonElement';
 import SearchElement from '../SearchElement/SearchElement';
+import ProfileElement from './ProfileElement/ProfileElement';
 import styles from './Header.module.scss'
 
-const Header = () => {
+const Header = ({ isLogged, username }) => {
     let history = useHistory();
     const signUp = (e) => {
-        history.push("/signup");
+        history.push("/auth");
     }
     return (
         <div className={styles.header}>
@@ -31,9 +32,6 @@ const Header = () => {
             <div className={styles.header__profile}>
                 <ul className={styles.navigation}>
                     <li>
-                        <ButtonElement wideSize handleClick={signUp} children="Sign up" colorBlack />
-                    </li>
-                    <li>
                         <ButtonElement basicSize children="4" />
                     </li>
                     <li>
@@ -43,7 +41,11 @@ const Header = () => {
                         <ButtonElement basicSize children="6" />
                     </li>
                     <li>
-                        <div className={styles.navigation__profile}>PS</div>
+                        {
+                            isLogged
+                                ? <ProfileElement username={username} />
+                                : <ButtonElement wideSize handleClick={signUp} children="Sign up" colorBlack />
+                        }
                     </li>
                 </ul>
             </div>
