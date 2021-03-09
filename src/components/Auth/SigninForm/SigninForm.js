@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import NotificationElement from '../../NotificationElement/NotificationElement';
 import styles from './SigninForm.module.scss';
 
-const SigninForm = ({ signedIn, loginUser, setForm }) => {
+const SigninForm = ({ isLogged, message, loginUser, setForm }) => {
 
     const [email, setEmail] = useState('');
     const onEmailChange = (e) => {
@@ -46,7 +46,7 @@ const SigninForm = ({ signedIn, loginUser, setForm }) => {
             <button type="submit">Sign in</button>
             <span onClick={changeForm}>Don't have an account? Sign up!</span>
             {
-                notification && <NotificationElement text={signedIn.message} type={signedIn.isLogged} setNotification={setNotification} />
+                notification && !isLogged && <NotificationElement text={message} setNotification={setNotification} />
             }
         </form>
     )

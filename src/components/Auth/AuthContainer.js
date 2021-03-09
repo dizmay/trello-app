@@ -1,17 +1,17 @@
 import React from 'react';
 import Auth from './Auth';
-import { signinUser, signupUser } from '../../redux/auth/authActions';
+import { signinUser, signupUser } from '../../actions/auth/actions';
 import { connect } from 'react-redux';
 
-const AuthContainer = ({ signedUp, createNewUser, signedIn, loginUser }) => {
+const AuthContainer = ({ message, isRegistered, createNewUser, isLogged, loginUser }) => {
   return (
-    <Auth createNewUser={createNewUser} signedUp={signedUp} signedIn={signedIn} loginUser={loginUser} />
+    <Auth createNewUser={createNewUser} message={message} isRegistered={isRegistered} isLogged={isLogged} loginUser={loginUser} />
   )
 }
 
 const mapStateToProps = (state) => ({
-  signedUp: state.auth.signedUp,
-  signedIn: state.auth.signedIn,
+  message: state.auth.message,
+  isLogged: state.auth.isLogged,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import NotificationElement from '../../NotificationElement/NotificationElement';
 import styles from './SignupForm.module.scss';
 
-const SignupForm = ({ signedUp, createNewUser, setForm }) => {
+const SignupForm = ({ message, isLogged, createNewUser, setForm }) => {
 
     const [username, setUsername] = useState('');
     const onUsernameChange = (e) => {
@@ -57,7 +57,7 @@ const SignupForm = ({ signedUp, createNewUser, setForm }) => {
             <button type="submit">Sign up</button>
             <span onClick={changeForm}>Already have an account? Sign in!</span>
             {
-                notification && <NotificationElement text={signedUp.message} type={signedUp.isRegistred} setNotification={setNotification} />
+                notification && <NotificationElement text={message} setNotification={setNotification} />
             }
         </form>
     )

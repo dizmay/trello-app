@@ -9,12 +9,8 @@ const HeaderContainer = ({ isLogged, username }) => {
 }
 
 const mapStateToProps = (state) => ({
-    isLogged: state.auth.signedIn.isLogged,
-    username: state.auth.currentUser.username,
+    isLogged: state.auth.isLogged,
+    username: state.auth.username,
 })
-  
-// const mapDispatchToProps = (dispatch) => ({
-
-// });
 
 export default connect(mapStateToProps, null)(HeaderContainer);

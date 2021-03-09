@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../../redux/auth/authActions';
+import { logoutUser } from '../../../actions/auth/actions';
 import DropDownMenu from './DropDownMenu';
 
 const DropDownMenuContainer = ({ logoutUser }) => {
