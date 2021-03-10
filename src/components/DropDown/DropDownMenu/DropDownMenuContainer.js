@@ -1,16 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../../actions/auth/actions';
 import DropDownMenu from './DropDownMenu';
 
-const DropDownMenuContainer = ({ logoutUser }) => {
+const DropDownMenuContainer = () => {
+
+    const dispatch = useDispatch();
+    const logout = dispatch(logoutUser());
+
     return (
-        <DropDownMenu logoutUser={logoutUser} />
+        <DropDownMenu logoutUser={logout} />
     )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    logoutUser: () => dispatch(logoutUser())
-})
-
-export default connect(null, mapDispatchToProps)(DropDownMenuContainer);
+export default DropDownMenuContainer;

@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import App from './App';
 import { checkCurrentUser } from './actions/auth/actions';
 import { setAuthToken } from './utils/setAuthToken';
+import { getIsLogged } from './selectors/authSelectors';
 
-const AppContainer = ({ checkCurrentUser, isLogged }) => {
+const AppContainer = () => {
+    const isLogged = useSelector(state => getIsLogged(state))
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if(localStorage.token) {
             const token = localStorage.token;
             setAuthToken(token);
-            checkCurrentUser(token)
+            dispatch(checkCurrentUser(token))
         }
       });
 
@@ -19,12 +22,4 @@ const AppContainer = ({ checkCurrentUser, isLogged }) => {
     )
 }
 
-const mapStateToProps = (state) => ({
-    isLogged: state.auth.isLogged,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    checkCurrentUser: (token) => dispatch(checkCurrentUser(token))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
+export default AppContainer;

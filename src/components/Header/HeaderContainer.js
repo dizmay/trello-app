@@ -1,16 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { getIsLogged, getUsername } from '../../selectors/authSelectors';
 import Header from './Header';
 
-const HeaderContainer = ({ isLogged, username }) => {
+const HeaderContainer = () => {
+
+    const isLogged = useSelector(state => getIsLogged(state));
+    const username = useSelector(state => getUsername(state));
+
     return (
         <Header isLogged={isLogged} username={username} />
     )
 }
 
-const mapStateToProps = (state) => ({
-    isLogged: state.auth.isLogged,
-    username: state.auth.username,
-})
-
-export default connect(mapStateToProps, null)(HeaderContainer);
+export default HeaderContainer;

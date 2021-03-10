@@ -5,21 +5,22 @@ import styles from './SignupForm.module.scss';
 const SignupForm = ({ message, isLogged, createNewUser, setForm }) => {
 
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [notification, setNotification] = useState(false);
+
     const onUsernameChange = (e) => {
         setUsername(e.currentTarget.value);
     };
 
-    const [email, setEmail] = useState('');
     const onEmailChange = (e) => {
         setEmail(e.currentTarget.value);
     };
 
-    const [password, setPassword] = useState('');
+    
     const onPasswordChange = (e) => {
         setPassword(e.currentTarget.value);
     };
-
-    const [notification, setNotification] = useState(false);
 
     const changeForm = () => {
         setForm(false);

@@ -1,22 +1,21 @@
 import React from 'react';
 import Auth from './Auth';
 import { signinUser, signupUser } from '../../actions/auth/actions';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getIsLogged, getMessage } from '../../selectors/authSelectors';
 
-const AuthContainer = ({ message, isRegistered, createNewUser, isLogged, loginUser }) => {
+const AuthContainer = () => {
+
+  const message = useSelector(state => getMessage(state))
+  const isLogged = useSelector(state => getIsLogged(state));
+
+  const dispatch = useDispatch();
+  const createNewUser = (userData) => dispatch(signupUser(userData));
+  const loginUser = (userData) => dispatch(signinUser(userData));
+
   return (
-    <Auth createNewUser={createNewUser} message={message} isRegistered={isRegistered} isLogged={isLogged} loginUser={loginUser} />
+    <Auth createNewUser={createNewUser} message={message} isLogged={isLogged} loginUser={loginUser} />
   )
 }
 
-const mapStateToProps = (state) => ({
-  message: state.auth.message,
-  isLogged: state.auth.isLogged,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  createNewUser: (userData) => dispatch(signupUser(userData)),
-  loginUser: (userData) => dispatch(signinUser(userData)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
+export default AuthContainer;

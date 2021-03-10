@@ -5,16 +5,17 @@ import styles from './SigninForm.module.scss';
 const SigninForm = ({ isLogged, message, loginUser, setForm }) => {
 
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [notification, setNotification] = useState(false);
+
     const onEmailChange = (e) => {
         setEmail(e.currentTarget.value);
     };
 
-    const [password, setPassword] = useState('');
     const onPasswordChange = (e) => {
         setPassword(e.currentTarget.value);
     };
 
-    const [notification, setNotification] = useState(false);
 
     const changeForm = () => {
         setForm(true);
