@@ -1,0 +1,14 @@
+.dropdown__menu {
+    position: absolute;
+    top: 4.9vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: translateX(-45%);
+    background-color: #000000;
+    border: none;
+    border-radius: .5rem;
+    padding: .4rem;
+    overflow: hidden;
+}

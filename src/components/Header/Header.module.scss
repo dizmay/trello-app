@@ -1,11 +1,14 @@
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 5vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 0 .5rem;
+    padding: 0 1rem;
     color: #ffffff;
 }
 
@@ -27,16 +30,4 @@
 
 .navigation > *:last-child {
     margin-right: 0;
-}
-
-.navigation__profile {
-    background-color: orange;
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color: #000000;
-    font-weight: bold;
 }

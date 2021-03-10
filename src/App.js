@@ -1,13 +1,17 @@
 import React from 'react';
-import Header from './components/Header/Header';
-import styles from './App.module.scss';
-import Board from './components/Board/Board';
+import { Switch } from 'react-router-dom';
+import AuthContainer from './components/Auth/AuthContainer';
+import BoardPage from './pages/BoardPage/BoardPage';
+import ProtectedRoute from './utils/ProtectedRoute';
+import styles from './App.module.scss'
 
-function App() {
+const App = ({ isLogged }) => {
   return (
     <div className={styles.app}>
-      <Header />
-      <Board />
+      <Switch>
+          <ProtectedRoute component={AuthContainer} isLogged={!isLogged} path="/auth" redirect="/" />
+          <ProtectedRoute component={BoardPage} isLogged={isLogged} path="/" redirect="/auth" />
+      </Switch>
     </div>
   );
 }
