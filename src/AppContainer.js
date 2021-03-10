@@ -6,7 +6,7 @@ import { setAuthToken } from './utils/setAuthToken';
 import { getIsLogged } from './selectors/authSelectors';
 
 const AppContainer = () => {
-  const isLogged = useSelector(state => getIsLogged(state))
+  const isLogged = useSelector(getIsLogged)
   const dispatch = useDispatch();
   const checkLoggedUser = (token) => dispatch(checkCurrentUser(token));
 

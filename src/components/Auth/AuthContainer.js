@@ -6,8 +6,8 @@ import { getIsLogged, getMessage } from '../../selectors/authSelectors';
 
 const AuthContainer = () => {
 
-  const message = useSelector(state => getMessage(state))
-  const isLogged = useSelector(state => getIsLogged(state));
+  const message = useSelector(getMessage)
+  const isLogged = useSelector(getIsLogged);
 
   const dispatch = useDispatch();
   const createNewUser = (userData) => dispatch(signupUser(userData));
