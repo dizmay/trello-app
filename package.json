@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "classnames": "^2.2.6",
+    "eslint-config-airbnb": "^18.2.1",
     "node-sass": "^5.0.0"
   }
 }

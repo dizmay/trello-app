@@ -1,11 +1,4 @@
-import {
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILED,
-  SIGNIN_SUCCESS,
-  SIGNIN_FAILED,
-  SET_CURRENT_USER,
-  LOGOUT_USER,
-} from '../actions/auth/types';
+import types from '../actions/auth/types';
 
 const initialState = {
   isLogged: false,
@@ -15,24 +8,24 @@ const initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
 
-    case SIGNUP_SUCCESS:
+    case types.SIGNUP_SUCCESS:
       return { ...state, };
 
-    case SIGNUP_FAILED:
+    case types.SIGNUP_FAILED:
       return { ...state, message: action.payload };
 
-    case SIGNIN_SUCCESS:
+    case types.SIGNIN_SUCCESS:
       return { ...state, isLogged: true };
 
-    case SIGNIN_FAILED:
+    case types.SIGNIN_FAILED:
       return { ...state, isLogged: false, message: action.payload };
 
-    case SET_CURRENT_USER:
+    case types.SET_CURRENT_USER:
       return { ...state, isLogged: true, username: action.payload.username, email: action.payload.email };
 
-    case LOGOUT_USER:
+    case types.LOGOUT_USER:
       return { ...state, isLogged: false, username: '', email: '' };
 
     default:

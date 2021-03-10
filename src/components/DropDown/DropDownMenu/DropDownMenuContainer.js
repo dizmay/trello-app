@@ -5,12 +5,12 @@ import DropDownMenu from './DropDownMenu';
 
 const DropDownMenuContainer = () => {
 
-    const dispatch = useDispatch();
-    const logout = dispatch(logoutUser());
+  const dispatch = useDispatch();
+  const logout = () => dispatch(logoutUser());
 
-    return (
-        <DropDownMenu logoutUser={logout} />
-    )
+  return (
+    <DropDownMenu logoutUser={logout} />
+  )
 }
 
 export default DropDownMenuContainer;

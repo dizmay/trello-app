@@ -4,15 +4,14 @@ import DropDownItem from './DropDownItem/DropDownItem';
 import styles from './DropDownMenu.module.scss';
 
 const DropDownMenu = ({ logoutUser }) => {
-    const logout = () => {
-        localStorage.removeItem("token");
-        logoutUser();
-    }
-    return (
-        <div className={styles.dropdown__menu}>
-            <DropDownItem handleClick={logout} icon={<RiLogoutCircleRLine />} text="Logout" />
-        </div>
-    )
+  const logout = () => {
+    logoutUser();
+  }
+  return (
+    <div className={styles.dropdown__menu}>
+      <DropDownItem handleClick={logout} icon={<RiLogoutCircleRLine />} text="Logout" />
+    </div>
+  )
 }
 
 export default DropDownMenu;

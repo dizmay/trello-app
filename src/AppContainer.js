@@ -6,20 +6,21 @@ import { setAuthToken } from './utils/setAuthToken';
 import { getIsLogged } from './selectors/authSelectors';
 
 const AppContainer = () => {
-    const isLogged = useSelector(state => getIsLogged(state))
-    const dispatch = useDispatch();
+  const isLogged = useSelector(state => getIsLogged(state))
+  const dispatch = useDispatch();
+  const checkLoggedUser = (token) => dispatch(checkCurrentUser(token));
 
-    useEffect(() => {
-        if(localStorage.token) {
-            const token = localStorage.token;
-            setAuthToken(token);
-            dispatch(checkCurrentUser(token))
-        }
-      });
+  useEffect(() => {
+    if (localStorage.token) {
+      const token = localStorage.token;
+      setAuthToken(token);
+      checkLoggedUser(token)
+    }
+  });
 
-    return (
-        <App isLogged={isLogged} />
-    )
+  return (
+    <App isLogged={isLogged} />
+  )
 }
 
 export default AppContainer;

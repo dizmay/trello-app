@@ -5,12 +5,12 @@ import Header from './Header';
 
 const HeaderContainer = () => {
 
-    const isLogged = useSelector(state => getIsLogged(state));
-    const username = useSelector(state => getUsername(state));
+  const isLogged = useSelector(state => getIsLogged(state));
+  const username = useSelector(state => getUsername(state));
 
-    return (
-        <Header isLogged={isLogged} username={username} />
-    )
+  return (
+    <Header isLogged={isLogged} username={username} />
+  )
 }
 
 export default HeaderContainer;

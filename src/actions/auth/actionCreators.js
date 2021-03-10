@@ -1,38 +1,28 @@
-import {
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILED,
-  SIGNIN_SUCCESS,
-  SIGNIN_FAILED,
-  SET_CURRENT_USER,
-  LOGOUT_USER,
-} from './types.js';
-import jwt from 'jsonwebtoken';
+import types from './types.js';
 
-export const signupSuccess = (response) => ({
-  type: SIGNUP_SUCCESS,
-  payload: response.data.message,
+export const signupSuccess = () => ({
+  type: types.SIGNUP_SUCCESS,
 })
 
-export const signupFailed = (error) => ({
-  type: SIGNUP_FAILED,
-  payload: error.response.data.message,
+export const signupFailed = (message) => ({
+  type: types.SIGNUP_FAILED,
+  payload: message,
 })
 
-export const signinSuccess = (response) => ({
-  type: SIGNIN_SUCCESS,
-  payload: response.data,
+export const signinSuccess = () => ({
+  type: types.SIGNIN_SUCCESS,
 })
 
-export const signinFailed = (error) => ({
-  type: SIGNIN_FAILED,
-  payload: error.response.data.message,
+export const signinFailed = (message) => ({
+  type: types.SIGNIN_FAILED,
+  payload: message,
 })
 
-export const setCurrentUser = (token) => ({
-  type: SET_CURRENT_USER,
-  payload: jwt.decode(token)
+export const setCurrentUser = (decoded) => ({
+  type: types.SET_CURRENT_USER,
+  payload: decoded
 })
 
 export const logout = () => ({
-  type: LOGOUT_USER
+  type: types.LOGOUT_USER
 })
