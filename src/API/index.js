@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:8080/';
+const baseURL = process.env.REACT_ENV === "dev" ? 'http://localhost:8080/' : "https://trello-app-back.herokuapp.com/";
 
 export const signupAPI = {
   createUser(userData) {
