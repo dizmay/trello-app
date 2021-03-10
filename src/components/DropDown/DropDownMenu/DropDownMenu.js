@@ -6,7 +6,7 @@ import styles from './DropDownMenu.module.scss';
 const DropDownMenu = ({ logoutUser }) => {
   return (
     <div className={styles.dropdown__menu}>
-      <DropDownItem handleClick={() => {logoutUser}} icon={<RiLogoutCircleRLine />} text="Logout" />
+      <DropDownItem handleClick={() => {logoutUser()}} icon={<RiLogoutCircleRLine />} text="Logout" />
     </div>
   )
 }
