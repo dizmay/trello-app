@@ -15,9 +15,10 @@ export const signupUser = (userData) => async (dispatch) => {
     const response = await signupAPI.createUser(userData);
     dispatch(signupSuccess());
     const token = response.data.token;
+    const decoded = jwt.decode(token);
     localStorage.setItem('token', token);
     setAuthToken(token);
-    dispatch(setCurrentUser(token))
+    dispatch(setCurrentUser(decoded))
   } catch(error) {
     const message = error.response.data.message;
     dispatch(signupFailed(message))
@@ -28,9 +29,10 @@ export const signinUser = (userData) => async (dispatch) => {
   try {
     const response = await signinAPI.loginUser(userData);
     const token = response.data.token;
+    const decoded = jwt.decode(token);
     localStorage.setItem('token', token);
     setAuthToken(token);
-    dispatch(setCurrentUser(token))
+    dispatch(setCurrentUser(decoded))
     dispatch(signinSuccess())
   } catch(error) {
     const message = error.response.data.message;

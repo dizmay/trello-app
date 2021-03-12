@@ -1,12 +1,12 @@
 import React from 'react';
 import HeaderContainer from '../../components/Header/HeaderContainer';
-import Board from '../../components/Board/Board';
+import BoardGridContainer from '../../components/BoardGrid/BoardGridContainer';
 
 const BoardPage = () => {
   return (
     <>
       <HeaderContainer />
-      <Board />
+      <BoardGridContainer />
     </>
   )
 }

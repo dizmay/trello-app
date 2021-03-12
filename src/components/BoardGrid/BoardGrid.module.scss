@@ -1,0 +1,9 @@
+.boardGrid {
+  padding: 10vh 5vh 5vh;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}

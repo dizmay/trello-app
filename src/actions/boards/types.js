@@ -1,0 +1,7 @@
+const types = {
+  CREATE_NEW_BOARD: 'CREATE_NEW_BOARD',
+  CREATE_BOARD_FAILED: 'CREATE_BOARD_FAILED',
+  GET_USER_BOARDS: 'GET_USER_BOARDS',
+}
+
+export default types;

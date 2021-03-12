@@ -1,0 +1,19 @@
+.emptyBoard {
+  width: 20vw;
+  height: 20vh;
+  background-color: #cccccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.emptyBoard:hover {
+  // border: .25rem solid #000000;
+  transform: scale(1.1);
+}
+
+.emptyBoard > *:first-child {
+  margin-right: .5rem;
+}

@@ -13,3 +13,15 @@ export const signinAPI = {
     return axios.post(`${baseURL}api/signin`, userData);
   }
 }
+
+export const createBoardAPI = {
+  createBoard(boardData) {
+    return axios.post(`${baseURL}api/boards/create`, boardData);
+  }
+}
+
+export const getUserBoardsAPI = {
+  requestUserBoards() {
+    return axios.get(`${baseURL}api/boards/get`);
+  }
+}

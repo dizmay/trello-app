@@ -3,6 +3,7 @@ import types from '../actions/auth/types';
 const initialState = {
   isLogged: false,
   message: '',
+  id: null,
   username: '',
   email: '',
 }
@@ -23,7 +24,7 @@ const authReducer = (state = initialState, action) => {
       return { ...state, isLogged: false, message: action.payload };
 
     case types.SET_CURRENT_USER:
-      return { ...state, isLogged: true, username: action.payload.username, email: action.payload.email };
+      return { ...state, isLogged: true, id: action.payload.id , username: action.payload.username, email: action.payload.email };
 
     case types.LOGOUT_USER:
       return { ...state, isLogged: false, username: '', email: '' };

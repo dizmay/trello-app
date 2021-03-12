@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './Board.module.scss';
 import BoardColumn from '../BoardColumn/BoardColumn';
+import styles from './Board.module.scss';
 
-const Board = () => {
+const Board = ({ title }) => {
   return (
     <div className={styles.board}>
+      <h2>{title}</h2>
       <BoardColumn title="Theory" cardTitle="html" />
-      <BoardColumn />
     </div>
   )
 }

@@ -1,0 +1,1 @@
+export const selectUserBoards = (state) => state.board.userBoards;
