@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ButtonElement from '../../ButtonElement/ButtonElement';
 import styles from './BoardModal.module.scss';
 
 const BoardModal = ({ setShowModal, createNewBoard, userId }) => {
@@ -7,6 +8,10 @@ const BoardModal = ({ setShowModal, createNewBoard, userId }) => {
 
   const onTitleChange = (e) => {
     setTitle(e.currentTarget.value);
+  }
+
+  const closeModal = () => {
+    setShowModal(false);
   }
 
   const onSubmit = (e) => {
@@ -19,13 +24,15 @@ const BoardModal = ({ setShowModal, createNewBoard, userId }) => {
 
   return (
     <form id="titleForm" className={styles.boardGrid__modal} onSubmit={onSubmit}>
-      <div onClick={() => { setShowModal(false) }}>x</div>
-      <h2>New board creation</h2>
+      <span>New board</span>
       <div className={styles.inputContainer}>
         <label htmlFor="title">Board title:</label>
         <input type="text" name="title" id="title" form="titleForm" placeholder="Title for your board" value={title} onChange={onTitleChange} />
       </div>
-      <button type="submit">Create</button>
+      <div className={styles.btn__container}>
+        <ButtonElement type="submit" basicFont children="Create" />
+        <ButtonElement type="button" basicFont children="Cancel" handleClick={closeModal} />
+      </div>
     </form>
   )
 }

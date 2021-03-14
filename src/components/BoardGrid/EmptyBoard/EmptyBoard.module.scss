@@ -1,16 +1,18 @@
+@import '../../../utils/colors';
+
 .emptyBoard {
   width: 20vw;
   height: 20vh;
-  background-color: #cccccc;
+  background-color: $white;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
   cursor: pointer;
+  transition: .5s transform ease-in-out;
 }
 
 .emptyBoard:hover {
-  // border: .25rem solid #000000;
   transform: scale(1.1);
 }
 

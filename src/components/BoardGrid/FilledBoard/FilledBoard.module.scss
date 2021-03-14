@@ -1,0 +1,35 @@
+@import '../../../utils/colors';
+
+.filledBoard {
+  width: 20vw;
+  height: 20vh;
+  background: $primary_color_aqua;
+}
+
+.filledBoard > a {
+  text-decoration: none;
+  color: $black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-family: 'Lato', sans-serif;
+}
+
+.filledBoard:nth-child(4n + 1) {
+  background: $primary_color_blue;
+}
+
+.filledBoard:nth-child(4n + 2) {
+  background: $primary_color_dark_green;
+}
+
+.filledBoard:nth-child(4n + 3) {
+  background: $primary_color_dark_blue;
+}
+
+.filledBoard:nth-child(4n + 4) {
+  background: $primary_color_green;
+}

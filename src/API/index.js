@@ -25,3 +25,9 @@ export const getUserBoardsAPI = {
     return axios.get(`${baseURL}api/boards/get`);
   }
 }
+
+export const verifyTokenAPI = {
+  verify() {
+    return axios.get(`${baseURL}api/verify`);
+  }
+}

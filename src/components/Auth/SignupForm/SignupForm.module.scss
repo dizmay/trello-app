@@ -1,3 +1,5 @@
+@import '../../../utils/colors';
+
 .signup__form {
     width: 30%;
     height: 60%;
@@ -5,7 +7,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background: black;
+    background: $black;
     border-radius: .5rem;
     padding: 2rem;
 }
@@ -29,17 +31,6 @@
     height: 10%;
     display: flex;
     flex-direction: column;
-}
-
-.signup__form > button {
-    width: 8rem;
-    height: 3rem;
-    font-size: 1.5rem;
-    border: .15rem solid #ffffff;
-    border-radius: .5rem;
-    color: #ffffff;
-    background: blue;
-    cursor: pointer;
 }
 
 .signup__form > span {

@@ -1,5 +1,21 @@
+.boardContainer {
+  padding-top: 5vh;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    font-size: 3rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    margin-bottom: 5rem;
+  }
+}
+
 .boardGrid {
-  padding: 10vh 5vh 5vh;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: repeat(4, 1fr);

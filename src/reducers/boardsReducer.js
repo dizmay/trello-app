@@ -16,7 +16,7 @@ const boardsReducer = (state = initialState, action) => {
       return { ...state, isCreated: false, message: action.payload.message };
 
     case types.GET_USER_BOARDS:
-      return { ...state, userBoards: [...action.payload] }
+      return { ...state, userBoards: action.payload }
 
     default:
       return state;

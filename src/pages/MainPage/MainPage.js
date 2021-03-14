@@ -1,11 +1,12 @@
 import React from 'react';
 import HeaderContainer from '../../components/Header/HeaderContainer';
+import HeroSectionContainer from '../../components/HeroSection/HeroSectionContainer';
 
 const MainPage = () => {
   return (
     <div>
       <HeaderContainer />
-      <h1>MAIN PAGE</h1>
+      <HeroSectionContainer />
     </div>
   )
 }

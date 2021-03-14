@@ -1,27 +1,21 @@
+@import '../../utils/colors';
+
 .btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ADADAD;
+    background: $primary_color_blue;
     border: none;
     border-radius: .15rem;
     cursor: pointer;
-    color: #ffffff;
+    color: $white;
+    padding: .5rem;
+    font-weight: bold;
+    transition: .5s background ease-in-out;
 }
 
-.basicSize {
-    width: 2rem;
-    height: 2rem;
-}
-
-.doubleSize {
-    width: 4rem;
-    height: 2rem;
-}
-
-.wideSize {
-    width: 8rem;
-    height: 2rem;
+.btn:hover {
+    background: #005eff;
 }
 
 .transparent {
@@ -29,9 +23,17 @@
 }
 
 .colorBlack {
-    color: #000000;
+    color: $black;
 }
 
 .colorWhite {
-    color: #ffffff;
+    color: $white;
+}
+
+.basicFont {
+    font-size: 1rem;
+}
+
+.bigFont {
+    font-size: 1.5rem;
 }

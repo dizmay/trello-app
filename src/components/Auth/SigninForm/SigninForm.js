@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ButtonElement from '../../ButtonElement/ButtonElement';
 import NotificationElement from '../../NotificationElement/NotificationElement';
 import styles from './SigninForm.module.scss';
 
@@ -44,7 +45,7 @@ const SigninForm = ({ isLogged, message, loginUser, setForm }) => {
         <label htmlFor="password">Password:</label>
         <input type="password" name="password" id="password" form="signin" value={password} onChange={onPasswordChange} />
       </div>
-      <button type="submit">Sign in</button>
+      <ButtonElement type="submit" children="Sign in" bigFont />
       <span onClick={changeForm}>Don't have an account? Sign up!</span>
       {
         notification && !isLogged && <NotificationElement text={message} setNotification={setNotification} />

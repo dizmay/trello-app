@@ -1,3 +1,23 @@
+@import './utils/colors';
+
+@font-face {
+    font-family: 'Akaya Telivigala';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('./assets/fonts/akaya-telivigala-v9-latin-regular.woff2') format('woff2'),
+         url('./assets/fonts/akaya-telivigala-v9-latin-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('./assets/fonts/lato-v17-latin-regular.woff2') format('woff2'),
+         url('./assets/fonts/lato-v17-latin-regular.woff') format('woff');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,5 +32,5 @@ body {
 .app {
     width: 100vw;
     height: 100vh;
-    background-color: rgb(41, 0, 95);
+    background: linear-gradient(to bottom, $primary_color_blue, $primary_color_aqua, $primary_color_green);
 }
