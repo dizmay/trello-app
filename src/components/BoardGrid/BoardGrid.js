@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Board from '../Board/Board';
 import EmptyBoard from './EmptyBoard/EmptyBoard';
 import BoardModal from './BoardModal/BoardModal';
 import FilledBoard from './FilledBoard/FilledBoard';

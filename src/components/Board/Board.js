@@ -9,10 +9,13 @@ const Board = () => {
   const [id, title] = linkParams.params.split('-');
   return (
     <>
-    <HeaderContainer />
-      <div className={styles.board}>
+      <HeaderContainer />
+      <div className={styles.board__container}>
         <h2>{title}</h2>
-        <BoardColumn title="Theory" cardTitle="html" />
+        <div className={styles.board}>
+          <BoardColumn title="Theory" cardTitle="html" />
+          <BoardColumn title="Theory" cardTitle="html" />
+        </div>
       </div>
     </>
   )
