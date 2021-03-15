@@ -1,39 +1,44 @@
 @import '../../utils/colors';
 
 .btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: $primary_color_blue;
-    border: none;
-    border-radius: .15rem;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $primary_color_blue;
+  border: none;
+  border-radius: .15rem;
+  color: $white;
+  cursor: pointer;
+  padding: .5rem;
+  font-weight: bold;
+  transition: .5s background ease-in-out;
+
+  a {
+    text-decoration: none;
     color: $white;
-    padding: .5rem;
-    font-weight: bold;
-    transition: .5s background ease-in-out;
+  }
 }
 
 .btn:hover {
-    background: #005eff;
+  background: #005eff;
 }
 
 .transparent {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .colorBlack {
-    color: $black;
+  color: $black;
 }
 
 .colorWhite {
-    color: $white;
+  color: $white;
 }
 
 .basicFont {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .bigFont {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }

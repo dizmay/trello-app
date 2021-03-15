@@ -1,7 +1,11 @@
 import types from './types';
 
-export const createBoardSuccess = (message) => ({
+export const createNewBoard = () => ({
   type: types.CREATE_NEW_BOARD,
+})
+
+export const createBoardSuccess = (message) => ({
+  type: types.CREATE_NEW_BOARD_SUCCESS,
   payload: message,
 })
 

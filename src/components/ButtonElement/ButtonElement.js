@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './ButtonElement.module.scss';
 
@@ -11,6 +12,8 @@ const ButtonElement = ({
   colorWhite,
   basicFont,
   bigFont,
+  redirect,
+  redirectPath,
 }) => {
   const btnStyle = classNames(
     styles.btn,
@@ -23,7 +26,13 @@ const ButtonElement = ({
     },
   );
   return (
-    <button type={type} onClick={handleClick} className={btnStyle}>{children}</button>
+    <button type={type} onClick={handleClick} className={btnStyle}>
+      {
+        redirect
+          ? <Link to={redirectPath}>{children}</Link>
+          : <>{children}</>
+      }
+    </button>
   )
 }
 

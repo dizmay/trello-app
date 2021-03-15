@@ -5,7 +5,7 @@ import styles from './FilledBoard.module.scss';
 const FilledBoard = ({ id, title }) => {
   return (
     <div className={styles.filledBoard}>
-      <Link to={`/boards/${id}-${title}`}>
+      <Link to={`/boards/${title}`}>
         <span>{title}</span>
       </Link>
     </div>

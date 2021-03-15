@@ -7,13 +7,13 @@ import {
   setCurrentUser,
   logout
 } from "./actionCreators";
-import { signinAPI, signupAPI } from '../../API';
+import { authAPI } from '../../API';
 import { setAuthToken } from '../../utils/setAuthToken';
 import getMessage from '../../utils/getErrorMessage';
 
 export const signupUser = (userData) => async (dispatch) => {
   try {
-    const response = await signupAPI.createUser(userData);
+    const response = await authAPI.createUser(userData);
     dispatch(signupSuccess());
     const token = response.data.token;
     const decoded = jwt.decode(token);
@@ -28,7 +28,7 @@ export const signupUser = (userData) => async (dispatch) => {
 
 export const signinUser = (userData) => async (dispatch) => {
   try {
-    const response = await signinAPI.loginUser(userData);
+    const response = await authAPI.loginUser(userData);
     const token = response.data.token;
     const decoded = jwt.decode(token);
     localStorage.setItem('token', token);

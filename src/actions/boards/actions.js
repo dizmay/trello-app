@@ -1,5 +1,5 @@
-import { createBoardAPI, getUserBoardsAPI } from "../../API"
-import { createBoardFail, createBoardSuccess, getUserBoardsSuccess } from './actionCreators';
+import { userBoardsAPI } from "../../API"
+import { createNewBoard, createBoardFail, createBoardSuccess, getUserBoardsSuccess } from './actionCreators';
 
 export const createBoard = ({ userId, title }) => async (dispatch) => {
   try {
@@ -7,20 +7,21 @@ export const createBoard = ({ userId, title }) => async (dispatch) => {
       userId,
       title
     }
-    const response = await createBoardAPI.createBoard(boardData);
+    const response = await userBoardsAPI.createBoard(boardData);
+    dispatch(createNewBoard());
     dispatch(createBoardSuccess(response.data));
-    const refreshBoards = await getUserBoardsAPI.requestUserBoards();
+    const refreshBoards = await userBoardsAPI.requestUserBoards();
     dispatch(getUserBoardsSuccess(refreshBoards.data));
   }
   catch(error) {
-    const message = error.response.data.message;
+    const { message } = error.response.data;
     dispatch(createBoardFail(message));
   }
 }
 
 export const getUserBoards = () => async (dispatch) => {
   try {
-    const response = await getUserBoardsAPI.requestUserBoards();
+    const response = await userBoardsAPI.requestUserBoards();
     dispatch(getUserBoardsSuccess(response.data));
   }
   catch(error) {

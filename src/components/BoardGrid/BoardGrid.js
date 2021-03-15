@@ -8,8 +8,8 @@ const BoardGrid = ({ userBoards, userId, createNewBoard }) => {
 
   const [showModal, setShowModal] = useState(false)
 
-  let emptyBoards = new Array(8 - userBoards.length).fill(null);
-  let actualBoards = userBoards.concat(emptyBoards);
+  const emptyBoards = new Array(8 - userBoards.length).fill(null);
+  const actualBoards = userBoards.concat(emptyBoards);
 
   return (
     <div className={styles.boardContainer}>

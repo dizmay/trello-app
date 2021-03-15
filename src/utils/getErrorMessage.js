@@ -1,7 +1,7 @@
 const getMessage = (error) => {
   let message;
   if (error.response.data.message === undefined) {
-    const data = error.response.data;
+    const { data } = error.response;
     const keys = Object.keys(data);
     message = data[keys[0]];
   }

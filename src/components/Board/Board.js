@@ -6,7 +6,7 @@ import styles from './Board.module.scss';
 
 const Board = () => {
   const linkParams = useParams();
-  const [id, title] = linkParams.params.split('-');
+  const title = linkParams.params;
   return (
     <>
       <HeaderContainer />

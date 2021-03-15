@@ -45,7 +45,7 @@ const SigninForm = ({ isLogged, message, loginUser, setForm }) => {
         <label htmlFor="password">Password:</label>
         <input type="password" name="password" id="password" form="signin" value={password} onChange={onPasswordChange} />
       </div>
-      <ButtonElement type="submit" children="Sign in" bigFont />
+      <ButtonElement type="submit" children="Sign in" bigFont colorWhite />
       <span onClick={changeForm}>Don't have an account? Sign up!</span>
       {
         notification && !isLogged && <NotificationElement text={message} setNotification={setNotification} />

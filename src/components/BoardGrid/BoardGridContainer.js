@@ -8,7 +8,7 @@ import BoardGrid from './BoardGrid';
 const BoardGridContainer = () => {
 
   const userBoards = useSelector(selectUserBoards);
-  const [boards, setBoards] = useState(userBoards)
+  const [setBoards] = useState(userBoards)
   const userId = useSelector(getUserId);
   const dispatch = useDispatch();
   const createNewBoard = (boardData) => dispatch(createBoard(boardData));
@@ -16,7 +16,7 @@ const BoardGridContainer = () => {
 
   useEffect(() => {
     dispatch(getUserBoards());
-  }, [boards, setBoards, dispatch]);
+  }, [setBoards, dispatch]);
 
   return (
     <BoardGrid userBoards={userBoards} userId={userId} createNewBoard={createNewBoard} />
