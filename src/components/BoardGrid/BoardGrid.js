@@ -4,7 +4,7 @@ import BoardModal from './BoardModal/BoardModal';
 import FilledBoard from './FilledBoard/FilledBoard';
 import styles from './BoardGrid.module.scss';
 
-const BoardGrid = ({ userBoards, userId, createNewBoard }) => {
+const BoardGrid = ({ userBoards, userId, createNewBoard, removeBoard }) => {
 
   const [showModal, setShowModal] = useState(false)
 
@@ -20,7 +20,7 @@ const BoardGrid = ({ userBoards, userId, createNewBoard }) => {
         }
         {
           actualBoards.map((el, id) => {
-            if (el !== null) return <FilledBoard key={id} id={el.id} title={el.title} />
+            if (el !== null) return <FilledBoard key={id} id={el.id} title={el.title} removeBoard={removeBoard} />
             else return <EmptyBoard setShowModal={setShowModal} key={id} />;
           })
         }

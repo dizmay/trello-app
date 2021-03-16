@@ -1,5 +1,5 @@
 import { userBoardsAPI } from "../../API"
-import { createNewBoard, createBoardFail, createBoardSuccess, getUserBoardsSuccess } from './actionCreators';
+import { createNewBoard, createBoardFail, createBoardSuccess, getUserBoardsSuccess, deleteUserBoard, deleteUserBoardFailed, deleteUserBoardSuccess } from './actionCreators';
 
 export const createBoard = ({ userId, title }) => async (dispatch) => {
   try {
@@ -13,7 +13,7 @@ export const createBoard = ({ userId, title }) => async (dispatch) => {
     const refreshBoards = await userBoardsAPI.requestUserBoards();
     dispatch(getUserBoardsSuccess(refreshBoards.data));
   }
-  catch(error) {
+  catch (error) {
     const { message } = error.response.data;
     dispatch(createBoardFail(message));
   }
@@ -24,7 +24,21 @@ export const getUserBoards = () => async (dispatch) => {
     const response = await userBoardsAPI.requestUserBoards();
     dispatch(getUserBoardsSuccess(response.data));
   }
-  catch(error) {
+  catch (error) {
     console.log(error);
+  }
+}
+
+export const deleteBoard = (id) => async (dispatch) => {
+  try {
+    const response = await userBoardsAPI.deleteBoard(id);
+    dispatch(deleteUserBoard());
+    dispatch(deleteUserBoardSuccess(response.data));
+    const refreshBoards = await userBoardsAPI.requestUserBoards();
+    dispatch(getUserBoardsSuccess(refreshBoards.data));
+  }
+  catch (error) {
+    console.log(error);
+    dispatch(deleteUserBoardFailed(error.response))
   }
 }

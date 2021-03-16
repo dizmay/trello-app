@@ -4,6 +4,7 @@
   width: 20vw;
   height: 20vh;
   background: $primary_color_aqua;
+  position: relative;
 }
 
 .filledBoard > a {
@@ -32,4 +33,16 @@
 
 .filledBoard:nth-child(4n + 4) {
   background: $primary_color_green;
+}
+
+.filledBoard__remove {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  color: red;
+  cursor: pointer;
 }

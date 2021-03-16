@@ -23,5 +23,9 @@ export const userBoardsAPI = {
 
   requestUserBoards() {
     return axios.get(`${baseURL}api/boards/get`);
+  },
+
+  deleteBoard(id) {
+    return axios.delete(`${baseURL}api/boards/delete`, { data: { id } });
   }
 }
