@@ -1,14 +1,23 @@
+@import '../../../utils/colors';
+
 .profile {
-    background-color: orange;
+    background-color: $primary_color_green;
     width: 2.25rem;
     height: 2.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
+    border: 0 solid $primary_color_dark_green;
     border-radius: 50%;
     outline: none;
-    color: #000000;
+    color: $black;
+    font-size: 1.25rem;
+    font-family: 'Lato', sans-serif;
     font-weight: bold;
     cursor: pointer;
+    transition: .2s border ease-in-out;
+}
+
+.profile:hover {
+  border: 1rem solid $primary_color_dark_green;
 }

@@ -1,30 +1,38 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './ButtonElement.module.scss';
 
 const ButtonElement = ({
   children,
+  type,
   handleClick,
-  basicSize,
-  doubleSize,
-  wideSize,
   transparent,
   colorBlack,
   colorWhite,
+  basicFont,
+  bigFont,
+  redirect,
+  redirectPath,
 }) => {
   const btnStyle = classNames(
     styles.btn,
     {
-      [styles.basicSize]: basicSize,
-      [styles.doubleSize]: doubleSize,
       [styles.transparent]: transparent,
       [styles.colorBlack]: colorBlack,
       [styles.colorWhite]: colorWhite,
-      [styles.wideSize]: wideSize,
+      [styles.basicFont]: basicFont,
+      [styles.bigFont]: bigFont,
     },
   );
   return (
-    <button type="button" onClick={handleClick} className={btnStyle}>{children}</button>
+    <button type={type} onClick={handleClick} className={btnStyle}>
+      {
+        redirect
+          ? <Link to={redirectPath}>{children}</Link>
+          : <>{children}</>
+      }
+    </button>
   )
 }
 

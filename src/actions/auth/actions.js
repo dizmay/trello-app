@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import {
   signinFailed,
   signinSuccess,
@@ -6,34 +7,36 @@ import {
   setCurrentUser,
   logout
 } from "./actionCreators";
-import { signinAPI, signupAPI } from '../../API';
+import { authAPI } from '../../API';
 import { setAuthToken } from '../../utils/setAuthToken';
-import jwt from "jsonwebtoken";
+import getMessage from '../../utils/getErrorMessage';
 
 export const signupUser = (userData) => async (dispatch) => {
   try {
-    const response = await signupAPI.createUser(userData);
+    const response = await authAPI.createUser(userData);
     dispatch(signupSuccess());
     const token = response.data.token;
+    const decoded = jwt.decode(token);
     localStorage.setItem('token', token);
     setAuthToken(token);
-    dispatch(setCurrentUser(token))
-  } catch(error) {
-    const message = error.response.data.message;
-    dispatch(signupFailed(message))
+    dispatch(setCurrentUser(decoded))
+  } catch (error) {
+    const message = getMessage(error);
+    dispatch(signupFailed(message));
   }
 }
 
 export const signinUser = (userData) => async (dispatch) => {
   try {
-    const response = await signinAPI.loginUser(userData);
+    const response = await authAPI.loginUser(userData);
     const token = response.data.token;
+    const decoded = jwt.decode(token);
     localStorage.setItem('token', token);
     setAuthToken(token);
-    dispatch(setCurrentUser(token))
+    dispatch(setCurrentUser(decoded))
     dispatch(signinSuccess())
-  } catch(error) {
-    const message = error.response.data.message;
+  } catch (error) {
+    const message = getMessage(error);
     dispatch(signinFailed(message))
   }
 }

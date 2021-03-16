@@ -10,7 +10,7 @@ const BoardColumn = ({ title, cardTitle }) => {
     <div className={styles.boardColumn}>
       <div className={styles.boardColumn__header}>
         <h2>{title}</h2>
-        <ButtonElement children={<FiMoreHorizontal />} basicSize transparent colorBlack />
+        <ButtonElement children={<FiMoreHorizontal />} type="button" basicFont transparent colorBlack />
       </div>
       <div className={styles.boardColumn__card}>
         <div className={styles.card__title}>{cardTitle}</div>
@@ -22,7 +22,7 @@ const BoardColumn = ({ title, cardTitle }) => {
 
 
       <div className={styles.boardColumn__func}>
-        <ButtonElement children={<GrAdd />} basicSize transparent colorBlack />
+        <ButtonElement children={<GrAdd />} type="button" basicFont transparent colorBlack />
         <span>Add another card</span>
       </div>
 

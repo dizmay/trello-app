@@ -10,7 +10,7 @@ const ProfileElement = ({ username }) => {
 
   return (
     <>
-      <button onClick={showMenu} className={styles.profile}>{username[0].toUpperCase()}</button>
+      <button type="button" onClick={showMenu} className={styles.profile}>{username[0].toUpperCase()}</button>
       {
         menu && <DropDown />
       }
