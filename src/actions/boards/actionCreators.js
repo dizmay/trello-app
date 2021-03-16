@@ -32,3 +32,13 @@ export const deleteUserBoardFailed = (isDeleted) => ({
   type: types.DELETE_BOARD_FAILED,
   payload: isDeleted,
 })
+
+export const inviteUserOnBoard = (response) => ({
+  type: types.INVITE_USER_ON_BOARD,
+  payload: response
+})
+
+export const fetchBoardUsers = (response) => ({
+  type: types.GET_BOARD_USERS,
+  payload: response,
+})

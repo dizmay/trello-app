@@ -1,11 +1,13 @@
-import React from 'react';
-import { useParams } from 'react-router';
+import React, { useState } from 'react';
 import HeaderContainer from '../Header/HeaderContainer';
 import BoardColumn from '../BoardColumn/BoardColumn';
+import ButtonElement from '../ButtonElement/ButtonElement';
+import BoardModal from './BoardModal/BoardModal';
+import BoardUsers from './BoardUsers/BoardUsers';
 import styles from './Board.module.scss';
 
-const Board = () => {
-  const { params: title } = useParams();
+const Board = ({ id, title, invite, usernames }) => {
+  const [modal, setModal] = useState(false);
   return (
     <>
       <HeaderContainer />
@@ -15,6 +17,20 @@ const Board = () => {
           <BoardColumn title="Theory" cardTitle="html" />
           <BoardColumn title="Theory" cardTitle="html" />
         </div>
+        <aside className={styles.board__menu}>
+          <h2>Menu</h2>
+          <ul>
+            <li>
+              <ButtonElement type="button" basicFont children="Invite user" handleClick={() => { setModal(true) }} />
+            </li>
+            <li>
+              <BoardUsers usernames={usernames} />
+            </li>
+          </ul>
+        </aside>
+        {
+          modal && <BoardModal id={id} setModal={setModal} invite={invite} />
+        }
       </div>
     </>
   )

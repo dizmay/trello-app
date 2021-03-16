@@ -4,7 +4,8 @@ const initialState = {
   isLoading: false,
   isError: false,
   error: '',
-  boards: []
+  boards: [],
+  boardUsers: [],
 }
 
 const boardsReducer = (state = initialState, action) => {
@@ -21,6 +22,9 @@ const boardsReducer = (state = initialState, action) => {
 
     case types.GET_USER_BOARDS:
       return { ...state, boards: action.payload };
+
+    case types.GET_BOARD_USERS:
+      return { ...state, boardUsers: action.payload };
 
     default:
       return state;

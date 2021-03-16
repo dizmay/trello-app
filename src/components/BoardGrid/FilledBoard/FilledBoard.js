@@ -9,7 +9,7 @@ const FilledBoard = ({ id, title, removeBoard }) => {
       <button className={styles.filledBoard__remove} onClick={() => removeBoard(id)}>
         <IoCloseCircle />
       </button>
-      <Link to={`/boards/${title}`}>
+      <Link to={`/boards/${id}&${title}`}>
         <span>{title}</span>
       </Link>
     </div>
