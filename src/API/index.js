@@ -18,14 +18,14 @@ export const authAPI = {
 
 export const userBoardsAPI = {
   createBoard(boardData) {
-    return axios.post(`${baseURL}api/boards/create`, boardData);
+    return axios.post(`${baseURL}api/boards/`, boardData);
   },
 
   requestUserBoards() {
-    return axios.get(`${baseURL}api/boards/get`);
+    return axios.get(`${baseURL}api/boards/`);
   },
 
   deleteBoard(id) {
-    return axios.delete(`${baseURL}api/boards/delete`, { data: { id } });
+    return axios.delete(`${baseURL}api/boards/`, { data: { id } });
   }
 }

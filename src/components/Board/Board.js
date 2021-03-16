@@ -5,8 +5,7 @@ import BoardColumn from '../BoardColumn/BoardColumn';
 import styles from './Board.module.scss';
 
 const Board = () => {
-  const linkParams = useParams();
-  const title = linkParams.params;
+  const { params: title } = useParams();
   return (
     <>
       <HeaderContainer />
