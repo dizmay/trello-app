@@ -1,16 +1,24 @@
 @import '../../../utils/colors';
 
 .dropdown__menu {
-    position: absolute;
-    top: 4.9vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    transform: translateX(-45%);
-    background-color: $black;
-    border: none;
-    border-radius: .5rem;
-    padding: .4rem;
-    overflow: hidden;
+  position: absolute;
+  top: 4.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  transform: translateX(-60%);
+  background-color: $black;
+  border: none;
+  border-radius: .5rem;
+  padding: .4rem .2rem;
+  overflow: hidden;
+
+  * {
+    margin-bottom: .05rem;
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
 }

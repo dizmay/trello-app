@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useRouteMatch } from 'react-router';
 import HeaderContainer from '../Header/HeaderContainer';
 import SignupForm from './SignupForm/SignupForm';
 import SigninForm from './SigninForm/SigninForm';
 import styles from './Auth.module.scss';
 
-const Auth = ({ message, createNewUser, isLogged, loginUser }) => {
-  const [form, setForm] = useState(true);
+const Auth = ({ message, createNewUser, isLogged, loginUser, isLoading }) => {
+  const match = useRouteMatch();
+  const form = match.params.params;
   return (
     <div className={styles.signup}>
       <HeaderContainer />
       {
-        form
-          ? <SignupForm message={message} isLogged={isLogged} createNewUser={createNewUser} setForm={setForm} />
-          : <SigninForm isLogged={isLogged} message={message} loginUser={loginUser} setForm={setForm} />
+        form === 'signup'
+          ? <SignupForm message={message} isLogged={isLogged} createNewUser={createNewUser} isLoading={isLoading} />
+          : <SigninForm isLogged={isLogged} message={message} loginUser={loginUser} isLoading={isLoading} />
       }
     </div>
   )

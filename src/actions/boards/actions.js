@@ -3,7 +3,9 @@ import {
   createNewBoard,
   createBoardFail,
   createBoardSuccess,
+  getUserBoardsAC,
   getUserBoardsSuccess,
+  getUserBoardsFailed,
   deleteUserBoard,
   deleteUserBoardFailed,
   deleteUserBoardSuccess,
@@ -13,12 +15,12 @@ import {
 
 export const createBoard = ({ userId, title }) => async (dispatch) => {
   try {
+    dispatch(createNewBoard());
     const boardData = {
       userId,
       title
     }
     const response = await userBoardsAPI.createBoard(boardData);
-    dispatch(createNewBoard());
     dispatch(createBoardSuccess(response.data));
     const refreshBoards = await userBoardsAPI.requestUserBoards();
     dispatch(getUserBoardsSuccess(refreshBoards.data));
@@ -31,30 +33,32 @@ export const createBoard = ({ userId, title }) => async (dispatch) => {
 
 export const getUserBoards = () => async (dispatch) => {
   try {
+    dispatch(getUserBoardsAC());
     const response = await userBoardsAPI.requestUserBoards();
     dispatch(getUserBoardsSuccess(response.data));
   }
   catch (error) {
+    dispatch(getUserBoardsFailed())
     console.log(error.response.data.message);
   }
 }
 
 export const deleteBoard = (id) => async (dispatch) => {
   try {
-    const response = await userBoardsAPI.deleteBoard(id);
     dispatch(deleteUserBoard());
-    dispatch(deleteUserBoardSuccess(response.data));
+    const response = await userBoardsAPI.deleteBoard(id);
     const refreshBoards = await userBoardsAPI.requestUserBoards();
     dispatch(getUserBoardsSuccess(refreshBoards.data));
+    dispatch(deleteUserBoardSuccess(response.data));
   }
   catch (error) {
     dispatch(deleteUserBoardFailed(error.response))
   }
 }
 
-export const inviteUser = (username, boardId) => async (dispatch) => {
+export const inviteUser = (username, boardId, userId) => async (dispatch) => {
   try {
-    const response = await userBoardsAPI.inviteUser(username, boardId);
+    const response = await userBoardsAPI.inviteUser(username, boardId, userId);
     dispatch(inviteUserOnBoard(response));
     const refreshBoardUsers = await userBoardsAPI.fetchUsersOfBoard({ boardId });
     dispatch(fetchBoardUsers(refreshBoardUsers.data));

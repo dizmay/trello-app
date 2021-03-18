@@ -1,23 +1,44 @@
+@import '../../../../utils/colors';
+
 .dropdown__item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    margin-bottom: .5rem;
-    padding: .2rem;
-    border-radius: .5rem;
-    transition: background .5s;
+  width: 100%;
+  cursor: pointer;
+  padding: .2rem;
+  border-radius: .5rem;
+  transition: background .5s;
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.dropdown__item > a > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+}
+
+.dropdown__item > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 .dropdown__item:hover {
-    background-color: #383838;
+  background-color: #383838;
 }
 
 .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: .1rem;
-    margin-right: .25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .1rem;
+  margin-right: .25rem;
+}
+
+.icon_active {
+  color: red;
 }

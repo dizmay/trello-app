@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import ButtonElement from '../../ButtonElement/ButtonElement';
 import styles from './BoardModal.module.scss';
 
-const BoardModal = ({ id, setModal, invite }) => {
+const BoardModal = ({ id, setModal, invite, userId }) => {
   const [username, setUsername] = useState('');
   const onUsernameChange = (e) => {
     setUsername(e.currentTarget.value);
   }
   const onSubmit = (e) => {
     e.preventDefault();
-    invite(username, id);
+    invite(username, id, userId);
     setModal(false);
   }
   return (

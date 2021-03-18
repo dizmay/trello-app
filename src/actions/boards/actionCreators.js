@@ -14,9 +14,17 @@ export const createBoardFail = (message) => ({
   payload: message,
 })
 
-export const getUserBoardsSuccess = (userBoards) => ({
+export const getUserBoardsAC = () => ({
   type: types.GET_USER_BOARDS,
+})
+
+export const getUserBoardsSuccess = (userBoards) => ({
+  type: types.GET_USER_BOARDS_SUCCESS,
   payload: userBoards,
+})
+
+export const getUserBoardsFailed = () => ({
+  type: types.GET_USER_BOARDS_FAILED,
 })
 
 export const deleteUserBoard = () => ({

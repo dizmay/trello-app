@@ -29,11 +29,21 @@ export const userBoardsAPI = {
     return axios.delete(`${baseURL}api/boards/`, { data: { id } });
   },
 
-  inviteUser(username, boardId) {
-    return axios.post(`${baseURL}api/users-boards/invite`, { username, boardId });
+  inviteUser(username, boardId, userId) {
+    return axios.post(`${baseURL}api/invite-board`, { username, boardId, userId });
   },
 
   fetchUsersOfBoard(boardId) {
     return axios.post(`${baseURL}api/users-boards/get`, boardId)
+  }
+}
+
+export const usersAPI = {
+  getUserNotifications() {
+    return axios.get(`${baseURL}api/invite-board`);
+  },
+
+  replyToUserNotification(invId, isAccepted) {
+    return axios.post(`${baseURL}api/invite-board/reply`, { invId, isAccepted })
   }
 }

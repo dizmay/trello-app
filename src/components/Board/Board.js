@@ -6,7 +6,7 @@ import BoardModal from './BoardModal/BoardModal';
 import BoardUsers from './BoardUsers/BoardUsers';
 import styles from './Board.module.scss';
 
-const Board = ({ id, title, invite, usernames }) => {
+const Board = ({ id, title, invite, usernames, userId }) => {
   const [modal, setModal] = useState(false);
   return (
     <>
@@ -29,7 +29,7 @@ const Board = ({ id, title, invite, usernames }) => {
           </ul>
         </aside>
         {
-          modal && <BoardModal id={id} setModal={setModal} invite={invite} />
+          modal && <BoardModal id={id} setModal={setModal} invite={invite} userId={userId} />
         }
       </div>
     </>
