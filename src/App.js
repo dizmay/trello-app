@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import HeaderContainer from './components/Header/HeaderContainer';
 import MainPage from './pages/MainPage/MainPage';
 import AuthPage from './pages/AuthPage/AuthPage';
 import BoardPage from './pages/BoardPage/BoardPage';
@@ -11,6 +12,7 @@ import styles from './App.module.scss'
 const App = ({ isLogged }) => {
   return (
     <div className={styles.app}>
+      <HeaderContainer />
       <Switch>
         <ProtectedRoute component={AuthPage} isLogged={!isLogged} exact path="/auth/:params" redirect="/" />
         <Route exact path="/" component={MainPage} />

@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createBoard, deleteBoard, getUserBoards } from '../../actions/boards/actions';
 import { selectError, selectIsError, selectIsLoading, selectUserBoards } from '../../selectors/boardSelectors';
-import { getUserId } from '../../selectors/authSelectors';
+import { selectUserId } from '../../selectors/authSelectors';
 import BoardGrid from './BoardGrid';
 
 const BoardGridContainer = () => {
 
   const userBoards = useSelector(selectUserBoards);
-  const userId = useSelector(getUserId);
+  const userId = useSelector(selectUserId);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectIsError);
   const error = useSelector(selectError);

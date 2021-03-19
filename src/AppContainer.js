@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { checkCurrentUser } from './actions/auth/actions';
 import { getNotifications } from './actions/users/actions';
 import { setAuthToken } from './utils/setAuthToken';
-import { getIsLogged, selectIsLoading } from './selectors/authSelectors';
+import { selectIsLogged, selectIsLoading } from './selectors/authSelectors';
 import Loader from './components/Loader/Loader';
 import App from './App';
 
 const AppContainer = () => {
-  const isLogged = useSelector(getIsLogged);
+  const isLogged = useSelector(selectIsLogged);
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   // const checkLoggedUser = (token) => dispatch(checkCurrentUser(token));

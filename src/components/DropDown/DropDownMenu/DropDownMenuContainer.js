@@ -4,14 +4,14 @@ import { logoutUser } from '../../../actions/auth/actions';
 import { selectNotifications } from '../../../selectors/users';
 import DropDownMenu from './DropDownMenu';
 
-const DropDownMenuContainer = () => {
+const DropDownMenuContainer = ({ setIsComponentVisible }) => {
 
   const notifications = useSelector(selectNotifications)
   const dispatch = useDispatch();
   const logout = () => dispatch(logoutUser());
 
   return (
-    <DropDownMenu logoutUser={logout} notifications={notifications} />
+    <DropDownMenu logoutUser={logout} notifications={notifications} setIsComponentVisible={setIsComponentVisible} />
   )
 }
 

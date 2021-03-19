@@ -14,7 +14,7 @@ const ProfileElement = ({ username }) => {
       <button type="button" onClick={showMenu} className={styles.profile}>{username[0].toUpperCase()}</button>
       <div ref={ref}>
         {
-          (isComponentVisible) && <DropDown />
+          (isComponentVisible) && <DropDown setIsComponentVisible={setIsComponentVisible} />
         }
       </div>
     </>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import useComponentVisible from '../../utils/useComponentVisible';
-import HeaderContainer from '../Header/HeaderContainer';
 import NotificationElement from '../NotificationElement/NotificationElement';
 import BoardColumn from '../BoardColumn/BoardColumn';
 import ButtonElement from '../ButtonElement/ButtonElement';
@@ -17,7 +16,6 @@ const Board = ({ id, title, invite, usernames, userId, isError, error, isLoading
   }
   return (
     <>
-      <HeaderContainer />
       <div className={styles.board__container}>
         <h2>{title}</h2>
         <div className={styles.board}>

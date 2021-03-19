@@ -4,16 +4,12 @@ import styles from './NotificationItem.module.scss';
 
 const NotificationItem = ({ user, board, invId, reply }) => {
 
-  let isAccepted;
-
   const acceptInvite = () => {
-    isAccepted = true;
-    reply(invId, isAccepted)
+    reply(invId, true)
   }
 
   const declineInvite = () => {
-    isAccepted = false;
-    reply(invId, isAccepted);
+    reply(invId, false);
   }
 
   return (

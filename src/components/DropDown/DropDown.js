@@ -2,10 +2,10 @@ import React from 'react';
 import DropDownMenuContainer from './DropDownMenu/DropDownMenuContainer';
 import styles from './DropDown.module.scss';
 
-const DropDown = () => {
+const DropDown = ({ setIsComponentVisible }) => {
   return (
     <div className={styles.menu}>
-      <DropDownMenuContainer />
+      <DropDownMenuContainer setIsComponentVisible={setIsComponentVisible} />
     </div>
   )
 }

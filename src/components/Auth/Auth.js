@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRouteMatch } from 'react-router';
-import HeaderContainer from '../Header/HeaderContainer';
 import SignupForm from './SignupForm/SignupForm';
 import SigninForm from './SigninForm/SigninForm';
 import styles from './Auth.module.scss';
@@ -10,7 +9,6 @@ const Auth = ({ message, createNewUser, isLogged, loginUser, isLoading }) => {
   const form = match.params.params;
   return (
     <div className={styles.signup}>
-      <HeaderContainer />
       {
         form === 'signup'
           ? <SignupForm message={message} isLogged={isLogged} createNewUser={createNewUser} isLoading={isLoading} />
