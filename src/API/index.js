@@ -47,3 +47,21 @@ export const usersAPI = {
     return axios.post(`${baseURL}api/invite-board/reply`, { invId, isAccepted })
   }
 }
+
+export const columnsAPI = {
+  createNewColumnAPI(title, boardId) {
+    return axios.post(`${baseURL}api/board-columns/create`, { title, boardId })
+  },
+  
+  getBoardColumnsAPI(boardId) {
+    return axios.post(`${baseURL}api/board-columns/get`, { boardId })
+  },
+
+  deleteColumnAPI(columnId) {
+    return axios.delete(`${baseURL}api/board-columns/delete`, { data: { columnId } })
+  },
+
+  updateColumnAPI(columnId, title) {
+    return axios.put(`${baseURL}api/board-columns/update`, { columnId, title })
+  }
+}
