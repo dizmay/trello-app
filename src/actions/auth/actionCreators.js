@@ -26,9 +26,17 @@ export const signinFailed = (message) => ({
   payload: message,
 })
 
-export const setCurrentUser = (decoded) => ({
+export const setCurrentUser = () => ({
   type: types.SET_CURRENT_USER,
+})
+
+export const setCurrentUserSuccess = (decoded) => ({
+  type: types.SET_CURRENT_USER_SUCCESS,
   payload: decoded
+})
+
+export const setCurrentUserFailed = () => ({
+  type: types.SET_CURRENT_USER_FAILED,
 })
 
 export const logout = () => ({

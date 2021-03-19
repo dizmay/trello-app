@@ -10,8 +10,11 @@ import {
   deleteUserBoardFailed,
   deleteUserBoardSuccess,
   inviteUserOnBoard,
-  fetchBoardUsers
+  fetchBoardUsers,
+  inviteUserOnBoardFailed,
+  inviteUserOnBoardSuccess
 } from './actionCreators';
+import getErrorMessage from '../../utils/getErrorMessage';
 
 export const createBoard = ({ userId, title }) => async (dispatch) => {
   try {
@@ -26,8 +29,7 @@ export const createBoard = ({ userId, title }) => async (dispatch) => {
     dispatch(getUserBoardsSuccess(refreshBoards.data));
   }
   catch (error) {
-    const { message } = error.response.data;
-    dispatch(createBoardFail(message));
+    dispatch(createBoardFail(getErrorMessage(error)));
   }
 }
 
@@ -58,13 +60,14 @@ export const deleteBoard = (id) => async (dispatch) => {
 
 export const inviteUser = (username, boardId, userId) => async (dispatch) => {
   try {
+    dispatch(inviteUserOnBoard());
     const response = await userBoardsAPI.inviteUser(username, boardId, userId);
-    dispatch(inviteUserOnBoard(response));
     const refreshBoardUsers = await userBoardsAPI.fetchUsersOfBoard({ boardId });
     dispatch(fetchBoardUsers(refreshBoardUsers.data));
+    dispatch(inviteUserOnBoardSuccess(response));
   }
   catch (error) {
-    console.log(error.response.data.message);
+    dispatch(inviteUserOnBoardFailed(getErrorMessage(error)));
   }
 }
 

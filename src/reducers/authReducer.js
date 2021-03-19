@@ -31,7 +31,13 @@ const authReducer = (state = initialState, action) => {
       return { ...state, isLogged: false, message: action.payload, isLoading: false };
 
     case types.SET_CURRENT_USER:
-      return { ...state, isLogged: true, id: action.payload.id, username: action.payload.username, email: action.payload.email };
+      return { ...state, isLoading: true };
+
+    case types.SET_CURRENT_USER_SUCCESS:
+      return { ...state, isLogged: true, id: action.payload.id, username: action.payload.username, email: action.payload.email, isLoading: false };
+
+    case types.SET_CURRENT_USER_FAILED:
+      return { ...state, isLogged: false, isLoading: false };
 
     case types.LOGOUT_USER:
       return { ...state, isLogged: false, username: '', email: '' };

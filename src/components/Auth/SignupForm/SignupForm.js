@@ -58,7 +58,7 @@ const SignupForm = ({ message, isLogged, createNewUser, isLoading }) => {
             <ButtonElement bigFont type="submit" children="Sign up" />
             <Link to="/auth/signin">Already have an account? Sign in!</Link>
             {
-              notification && <NotificationElement text={message} setNotification={setNotification} />
+              notification && <NotificationElement text={message} handleClick={setNotification} />
             }
           </>)
       }

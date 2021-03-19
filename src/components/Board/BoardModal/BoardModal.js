@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ButtonElement from '../../ButtonElement/ButtonElement';
 import styles from './BoardModal.module.scss';
 
-const BoardModal = ({ id, setModal, invite, userId }) => {
+const BoardModal = ({ id, invite, userId, setIsComponentVisible, setNotification }) => {
   const [username, setUsername] = useState('');
   const onUsernameChange = (e) => {
     setUsername(e.currentTarget.value);
@@ -10,7 +10,8 @@ const BoardModal = ({ id, setModal, invite, userId }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     invite(username, id, userId);
-    setModal(false);
+    setNotification(true);
+    setIsComponentVisible(false);
   }
   return (
     <form id="invite" className={styles.inviteForm} onSubmit={onSubmit}>

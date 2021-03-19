@@ -47,7 +47,7 @@ const SigninForm = ({ isLogged, message, loginUser, isLoading }) => {
             <ButtonElement type="submit" children="Sign in" bigFont colorWhite />
             <Link to="/auth/signup">Don't have an account? Sign up!</Link>
             {
-              notification && !isLogged && <NotificationElement text={message} setNotification={setNotification} />
+              notification && !isLogged && <NotificationElement text={message} handleClick={setNotification} />
             }
           </>)
       }

@@ -1,10 +1,7 @@
 import React from 'react';
 import styles from './NotificationElement.module.scss';
 
-const NotificationElement = ({ text, setNotification }) => {
-  const handleClick = () => {
-    setNotification(false);
-  }
+const NotificationElement = ({ text, handleClick }) => {
   return (
     <div className={styles.notification}>
       <p className={styles.notification__text}>{text}</p>

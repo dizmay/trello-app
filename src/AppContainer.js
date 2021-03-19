@@ -3,27 +3,33 @@ import { useSelector, useDispatch } from 'react-redux';
 import { checkCurrentUser } from './actions/auth/actions';
 import { getNotifications } from './actions/users/actions';
 import { setAuthToken } from './utils/setAuthToken';
-import { getIsLogged } from './selectors/authSelectors';
+import { getIsLogged, selectIsLoading } from './selectors/authSelectors';
+import Loader from './components/Loader/Loader';
 import App from './App';
 
 const AppContainer = () => {
   const isLogged = useSelector(getIsLogged);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
-  const checkLoggedUser = (token) => dispatch(checkCurrentUser(token));
-  const getUserNotifications = () => dispatch(getNotifications())
+  // const checkLoggedUser = (token) => dispatch(checkCurrentUser(token));
+  // const getUserNotifications = () => dispatch(getNotifications())
 
   useEffect(() => {
     if (localStorage.token) {
       const token = localStorage.token;
       setAuthToken(token);
-      checkLoggedUser(token);
-      getUserNotifications();
+      dispatch(checkCurrentUser(token))
+      dispatch(getNotifications())
     }
-  });
+  }, [dispatch]);
 
-  return (
-    <App isLogged={isLogged} />
-  )
+  return (<>
+    {
+      isLoading
+        ? <Loader />
+        : <App isLogged={isLogged} />
+    }
+  </>)
 }
 
 export default AppContainer;

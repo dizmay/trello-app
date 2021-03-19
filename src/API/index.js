@@ -34,7 +34,7 @@ export const userBoardsAPI = {
   },
 
   fetchUsersOfBoard(boardId) {
-    return axios.post(`${baseURL}api/users-boards/get`, boardId)
+    return axios.post(`${baseURL}api/users-boards`, boardId)
   }
 }
 

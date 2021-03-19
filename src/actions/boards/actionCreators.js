@@ -41,8 +41,17 @@ export const deleteUserBoardFailed = (isDeleted) => ({
   payload: isDeleted,
 })
 
-export const inviteUserOnBoard = (response) => ({
+export const inviteUserOnBoard = () => ({
   type: types.INVITE_USER_ON_BOARD,
+})
+
+export const inviteUserOnBoardSuccess = (response) => ({
+  type: types.INVITE_USER_ON_BOARD_SUCCESS,
+  payload: response
+})
+
+export const inviteUserOnBoardFailed = (response) => ({
+  type: types.INVITE_USER_ON_BOARD_FAILED,
   payload: response
 })
 

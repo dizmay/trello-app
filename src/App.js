@@ -9,6 +9,7 @@ import NotificationsContainer from './components/Notifications/NotificationsCont
 import styles from './App.module.scss'
 
 const App = ({ isLogged }) => {
+  console.log(isLogged);
   return (
     <div className={styles.app}>
       <Switch>

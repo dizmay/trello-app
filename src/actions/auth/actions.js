@@ -7,7 +7,9 @@ import {
   setCurrentUser,
   logout,
   signup,
-  signin
+  signin,
+  setCurrentUserSuccess,
+  setCurrentUserFailed
 } from "./actionCreators";
 import { authAPI } from '../../API';
 import { setAuthToken } from '../../utils/setAuthToken';
@@ -46,8 +48,14 @@ export const signinUser = (userData) => async (dispatch) => {
 }
 
 export const checkCurrentUser = (token) => (dispatch) => {
-  const decoded = jwt.decode(token);
-  dispatch(setCurrentUser(decoded))
+  try {
+    dispatch(setCurrentUser());
+    const decoded = jwt.decode(token);
+    dispatch(setCurrentUserSuccess(decoded));
+  }
+  catch (error) {
+    dispatch(setCurrentUserFailed())
+  }
 }
 
 export const logoutUser = () => (dispatch) => {
