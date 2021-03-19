@@ -16,7 +16,6 @@ export const getNotifications = () => async (dispatch) => {
   }
   catch (error) {
     dispatch(getUserNotificationsFailed())
-    console.log(error);
   }
 }
 
@@ -30,7 +29,6 @@ export const replyToNotification = (invId, isAccepted) => async (dispatch) => {
     dispatch(replyToUserNotificationSuccess());
   }
   catch (error) {
-    console.log(error);
     dispatch(replyToUserNotificationFailed());
   }
 }

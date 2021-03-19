@@ -41,7 +41,6 @@ export const getUserBoards = () => async (dispatch) => {
   }
   catch (error) {
     dispatch(getUserBoardsFailed())
-    console.log(error.response.data.message);
   }
 }
 
