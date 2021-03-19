@@ -26,7 +26,7 @@ const AppContainer = () => {
   return (<>
     {
       isLoading
-        ? <Loader />
+        ? <Loader posMiddle />
         : <App isLogged={isLogged} />
     }
   </>)
