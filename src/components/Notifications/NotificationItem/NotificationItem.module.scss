@@ -1,0 +1,44 @@
+@import '../../../utils/colors';
+
+.ntf__grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+.ntf__grid > div {
+  background: $primary_color_green;
+  border-top: .15rem solid $black;
+  border-bottom: .15rem solid $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem;
+
+  *:first-child {
+    margin-right: 2rem;
+  }
+}
+
+.ntf__grid > *:first-child {
+  border-left: .15rem solid $black;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  font-size: 1.5rem;
+  font-family: 'Lato', sans-serif;
+}
+
+.ntf__grid > *:last-child {
+  border-right: .15rem solid $black;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+
+  *:first-child {
+    background: green;
+    margin-bottom: 0;
+  }
+
+  *:last-child {
+    background: red;
+    margin-bottom: 0;
+  }
+}

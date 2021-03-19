@@ -1,5 +1,9 @@
 import types from './types.js';
 
+export const signup = () => ({
+  type: types.SIGNUP,
+})
+
 export const signupSuccess = () => ({
   type: types.SIGNUP_SUCCESS,
 })
@@ -7,6 +11,10 @@ export const signupSuccess = () => ({
 export const signupFailed = (message) => ({
   type: types.SIGNUP_FAILED,
   payload: message,
+})
+
+export const signin = () => ({
+  type: types.SIGNIN,
 })
 
 export const signinSuccess = () => ({
@@ -18,9 +26,17 @@ export const signinFailed = (message) => ({
   payload: message,
 })
 
-export const setCurrentUser = (decoded) => ({
+export const setCurrentUser = () => ({
   type: types.SET_CURRENT_USER,
+})
+
+export const setCurrentUserSuccess = (decoded) => ({
+  type: types.SET_CURRENT_USER_SUCCESS,
   payload: decoded
+})
+
+export const setCurrentUserFailed = () => ({
+  type: types.SET_CURRENT_USER_FAILED,
 })
 
 export const logout = () => ({

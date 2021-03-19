@@ -1,28 +1,31 @@
+@import '../../utils/colors';
+
 .notification {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: .5rem;
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: .5rem;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: red;
+  padding: 1.25rem 3rem;
 }
 
 .notification__btn {
-    background: transparent;
-    border: .1rem solid #ffffff;
-    border-radius: .5rem;
-    outline: none;
-    color: #ffffff;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: .5rem;
-    padding: .15rem .5rem;
+  background: transparent;
+  border: .1rem solid $white;
+  border-radius: .5rem;
+  outline: none;
+  color: $white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: .5rem;
+  padding: .15rem .5rem;
 }
 
 .notification__text {
-    font-size: 1.25rem;
-    color: #ffffff;
+  font-size: 1.25rem;
+  color: $white;
 }

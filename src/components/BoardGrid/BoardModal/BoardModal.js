@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ButtonElement from '../../ButtonElement/ButtonElement';
 import styles from './BoardModal.module.scss';
 
-const BoardModal = ({ setShowModal, createNewBoard, userId }) => {
+const BoardModal = ({ createNewBoard, userId, setIsComponentVisible, setNotification }) => {
 
   const [title, setTitle] = useState('');
 
@@ -11,7 +11,7 @@ const BoardModal = ({ setShowModal, createNewBoard, userId }) => {
   }
 
   const closeModal = () => {
-    setShowModal(false);
+    setIsComponentVisible(false);
   }
 
   const onSubmit = (e) => {
@@ -19,7 +19,8 @@ const BoardModal = ({ setShowModal, createNewBoard, userId }) => {
     const boardData = { userId, title };
     createNewBoard(boardData);
     setTitle('');
-    setShowModal(false);
+    setNotification(true);
+    setIsComponentVisible(false);
   }
 
   return (

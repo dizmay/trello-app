@@ -13,7 +13,7 @@ const HeroSection = ({ isLogged }) => {
           {
             isLogged
               ? <ButtonElement type="button" children="Try now" bigFont redirect redirectPath="/boards" />
-              : <ButtonElement type="button" children="Sign up" bigFont redirect redirectPath="/auth" />
+              : <ButtonElement type="button" children="Sign up" bigFont redirect redirectPath="/auth/signup" />
           }
         </div>
         <img src={teamwork} alt="Teamwork" />

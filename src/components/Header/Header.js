@@ -6,9 +6,6 @@ import styles from './Header.module.scss'
 
 const Header = ({ isLogged, username }) => {
   let history = useHistory();
-  const signUp = (e) => {
-    history.push('/auth');
-  }
   const mainPage = () => {
     history.push('/');
   }
@@ -19,7 +16,10 @@ const Header = ({ isLogged, username }) => {
         {
           isLogged
             ? <ProfileElement username={username} />
-            : <ButtonElement handleClick={signUp} children="Sign up" type="button" basicFont colorWhite />
+            : (<div className={styles.auth}>
+              <ButtonElement children="Sign in" type="button" basicFont colorWhite redirect redirectPath="/auth/signin" />
+              <ButtonElement children="Sign up" type="button" basicFont colorWhite redirect redirectPath="/auth/signup" />
+            </div>)
         }
       </div>
     </div>

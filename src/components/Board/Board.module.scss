@@ -1,13 +1,21 @@
+@import '../../utils/colors';
+
 .board__container {
+  position: relative;
   width: 100vw;
   height: 95vh;
   display: flex;
   flex-direction: column;
-  padding-top: 5vh;
-
-  h2 {
-    align-self: center;
-  }
+  top: 5vh;
+  padding: 0 .5rem;
+  z-index: 1;
+}
+  
+.board__container > h2 {
+  align-self: center;
+  color: $white;
+  font-size: 3rem;
+  margin-bottom: 2rem;
 }
 
 .board {
@@ -20,4 +28,29 @@
 
 .board > *:last-child {
   margin-right: 0;
+}
+
+.board__menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 10vh;
+  right: 1%;
+  padding: 1rem 1rem 0;
+  background: linear-gradient($primary_color_aqua, $primary_color_dark_blue);
+  border-radius: .5rem;
+
+  h2 {
+    color: $white;
+    margin-bottom: 1.5rem;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: 1rem;
+    }
+  }
 }

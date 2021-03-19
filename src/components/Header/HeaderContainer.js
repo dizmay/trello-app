@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getIsLogged, getUsername } from '../../selectors/authSelectors';
+import { selectIsLogged, selectUsername } from '../../selectors/authSelectors';
 import Header from './Header';
 
 const HeaderContainer = () => {
 
-  const isLogged = useSelector(getIsLogged);
-  const username = useSelector(getUsername);
+  const isLogged = useSelector(selectIsLogged);
+  const username = useSelector(selectUsername);
 
   return (
     <Header isLogged={isLogged} username={username} />

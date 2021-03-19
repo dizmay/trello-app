@@ -1,0 +1,1 @@
+export const getFirstLetter = (text) => text[0].toUpperCase();
