@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
 import ButtonElement from '../ButtonElement/ButtonElement';
 import { MdDeleteForever } from 'react-icons/md';
-import { GrAdd } from 'react-icons/gr';
-import { GiConfirmed } from 'react-icons/gi';
 import { TiPencil } from 'react-icons/ti'
+import BoardColumnForm from './BoardColumnForm/BoardColumnForm';
+import EmptyCard from './EmptyCard/EmptyCard';
+import FilledCard from './FilledCard/FilledCard';
 import styles from './BoardColumn.module.scss';
 
-const BoardColumn = ({ title, cardTitle, removeCol, boardId, columnId }) => {
+const BoardColumn = ({ title, cardTitle, removeCol, boardId, columnId, updateCol }) => {
   const [updateTitle, setUpdateTitle] = useState(false);
+  const [changeTitle, setChangeTitle] = useState('');
+
+  const onTitleChange = (e) => {
+    setChangeTitle(e.currentTarget.value);
+  }
+
+  const onTitleSubmit = (e) => {
+    e.preventDefault();
+    updateCol(columnId, changeTitle, boardId);
+    setUpdateTitle(false);
+  }
   return (
     <div className={styles.boardColumn}>
       <div className={styles.boardColumn__header}>
         {
           updateTitle
-            ? <></>
+            ? <BoardColumnForm changeTitle={changeTitle} onTitleChange={onTitleChange} handleClick={onTitleSubmit} />
             : (<>
               <h2>{title}</h2>
               <div>
@@ -24,18 +36,8 @@ const BoardColumn = ({ title, cardTitle, removeCol, boardId, columnId }) => {
         }
 
       </div>
-      <div className={styles.boardColumn__card}>
-        <div className={styles.card__title}>{cardTitle}</div>
-        <div className={styles.card__badge}>
-          <GiConfirmed />
-          <span>8/23</span>
-        </div>
-      </div>
-      <div className={styles.boardColumn__func}>
-        <ButtonElement children={<GrAdd />} type="button" basicFont transparent colorBlack />
-        <span>Add another card</span>
-      </div>
-
+      <FilledCard cardTitle={cardTitle} />
+      <EmptyCard />
     </div>
   )
 }

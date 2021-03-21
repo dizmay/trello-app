@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { selectBoardUsers, selectIsError, selectError, selectIsLoading } from '../../selectors/boardSelectors';
 import { inviteUser, getBoardUsers } from '../../actions/boards/actions';
-import { createColumn, getColumns, removeColumn } from '../../actions/boardColumns/actions';
+import { createColumn, getColumns, removeColumn, updateColumnTitle } from '../../actions/boardColumns/actions';
 import { selectUserId } from '../../selectors/authSelectors';
 import { selectColumns } from '../../selectors/boardColumnsSelectors';
 import Board from './Board';
@@ -31,7 +31,7 @@ const BoardContainer = () => {
     [dispatch]
   )
   const updateCol = useCallback(
-    (columnId, title, boardId) => dispatch(removeColumn(columnId, title, boardId)),
+    (columnId, title, boardId) => dispatch(updateColumnTitle(columnId, title, boardId)),
     [dispatch]
   )
 

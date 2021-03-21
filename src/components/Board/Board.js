@@ -30,7 +30,7 @@ const Board = ({ id, title, invite, usernames, userId, isError, error, isLoading
         <h2>{title}</h2>
         <div className={styles.board}>
           {
-            boardColumns.map(el => <BoardColumn key={el.id} title={el.title} removeCol={removeCol} columnId={el.id} boardId={id} />)
+            boardColumns.map(el => <BoardColumn key={el.id} title={el.title} removeCol={removeCol} columnId={el.id} boardId={id} updateCol={updateCol} cardTitle="test" />)
           }
           <EmptyColumn
             columnTitle={columnTitle}
