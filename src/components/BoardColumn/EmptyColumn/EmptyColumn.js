@@ -3,7 +3,16 @@ import { GrAdd } from 'react-icons/gr';
 import ButtonElement from '../../ButtonElement/ButtonElement';
 import styles from './EmptyColumn.module.scss';
 
-const EmptyColumn = ({ handleClick, columnTitle, showColumnTitle, onColumnTitleChange, createColumn, boardId, setColumnTitle }) => {
+const EmptyColumn = ({
+  handleClick,
+  columnTitle,
+  showColumnTitle,
+  onColumnTitleChange,
+  createColumn,
+  boardId,
+  setColumnTitle
+}) => {
+  
   const onTitleSubmit = (e) => {
     e.preventDefault();
     createColumn(columnTitle, boardId);

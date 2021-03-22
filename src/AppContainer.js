@@ -11,8 +11,6 @@ const AppContainer = () => {
   const isLogged = useSelector(selectIsLogged);
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
-  // const checkLoggedUser = (token) => dispatch(checkCurrentUser(token));
-  // const getUserNotifications = () => dispatch(getNotifications())
 
   useEffect(() => {
     if (localStorage.token) {

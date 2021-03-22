@@ -7,7 +7,15 @@ import FilledBoard from './FilledBoard/FilledBoard';
 import NotificationElement from '../NotificationElement/NotificationElement';
 import styles from './BoardGrid.module.scss';
 
-const BoardGrid = ({ userBoards, userId, createNewBoard, removeBoard, isLoading, isError, error }) => {
+const BoardGrid = ({
+  userBoards,
+  userId,
+  createNewBoard,
+  removeBoard,
+  isLoading,
+  isError,
+  error
+}) => {
 
   const [notification, setNotification] = useState(false);
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);

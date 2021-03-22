@@ -4,7 +4,13 @@ import SignupForm from './SignupForm/SignupForm';
 import SigninForm from './SigninForm/SigninForm';
 import styles from './Auth.module.scss';
 
-const Auth = ({ message, createNewUser, isLogged, loginUser, isLoading }) => {
+const Auth = ({
+  message,
+  createNewUser,
+  isLogged,
+  loginUser,
+  isLoading
+}) => {
   const match = useRouteMatch();
   const form = match.params.params;
   return (
