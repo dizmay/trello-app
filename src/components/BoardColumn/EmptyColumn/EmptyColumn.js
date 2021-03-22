@@ -10,7 +10,7 @@ const EmptyColumn = ({ handleClick, columnTitle, showColumnTitle, onColumnTitleC
     setColumnTitle('')
   }
   return (
-    <div className={styles.emptyColumn} onMouseEnter={handleClick} onMouseLeave={handleClick}>
+    <div className={styles.emptyColumn}>
       {
         showColumnTitle
           ? (
@@ -23,10 +23,10 @@ const EmptyColumn = ({ handleClick, columnTitle, showColumnTitle, onColumnTitleC
             </form>
           )
           : (
-            <>
+            <div onClick={handleClick} className={styles.addColumn}>
               <GrAdd />
               <span>Add another column</span>
-            </>
+            </div>
           )
       }
     </div>

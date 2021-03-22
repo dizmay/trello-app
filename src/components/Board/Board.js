@@ -22,15 +22,24 @@ const Board = ({ id, title, invite, usernames, userId, isError, error, isLoading
   }
   const createColumn = (title, boardId) => {
     createNewColumn(title, boardId);
-    setShowColumnTitle(!showColumnTitle);
+    setShowColumnTitle(false);
   }
+  console.log(showColumnTitle);
   return (
     <>
       <div className={styles.board__container}>
         <h2>{title}</h2>
         <div className={styles.board}>
           {
-            boardColumns.map(el => <BoardColumn key={el.id} title={el.title} removeCol={removeCol} columnId={el.id} boardId={id} updateCol={updateCol} cardTitle="test" />)
+            boardColumns.map(el => <BoardColumn
+              key={el.id}
+              title={el.title}
+              removeCol={removeCol}
+              columnId={el.id}
+              boardId={id}
+              updateCol={updateCol}
+              cardTitle="Title"
+            />)
           }
           <EmptyColumn
             columnTitle={columnTitle}
