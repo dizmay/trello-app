@@ -1,0 +1,29 @@
+@import '../../../../utils/colors';
+
+.card__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  * {
+    margin-bottom: .5rem;
+  }
+
+  *:last-child {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: $primary_color_green;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+
+  input {
+    border: none;
+    border-bottom: .1rem solid $primary_color_aqua;
+    outline: none;
+    background: transparent;
+    padding: .1rem;
+  }
+}

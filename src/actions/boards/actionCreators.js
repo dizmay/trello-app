@@ -45,17 +45,17 @@ export const inviteUserOnBoard = () => ({
   type: types.INVITE_USER_ON_BOARD,
 })
 
-export const inviteUserOnBoardSuccess = (response) => ({
+export const inviteUserOnBoardSuccess = (message) => ({
   type: types.INVITE_USER_ON_BOARD_SUCCESS,
-  payload: response
+  payload: message
 })
 
-export const inviteUserOnBoardFailed = (response) => ({
+export const inviteUserOnBoardFailed = (error) => ({
   type: types.INVITE_USER_ON_BOARD_FAILED,
-  payload: response
+  payload: error
 })
 
-export const fetchBoardUsers = (response) => ({
+export const fetchBoardUsers = (boardUsers) => ({
   type: types.GET_BOARD_USERS,
-  payload: response,
+  payload: boardUsers,
 })

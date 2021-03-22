@@ -4,7 +4,8 @@ import { selectIsLogged } from '../../selectors/authSelectors';
 import HeroSection from './HeroSection';
 
 const HeroSectionContainer = () => {
-  const isLogged = useSelector(selectIsLogged)
+  const isLogged = useSelector(selectIsLogged);
+
   return (
     <HeroSection isLogged={isLogged} />
   )

@@ -13,7 +13,9 @@ const Notifications = ({ userNotifications, isLoading, reply }) => {
             ? <Loader />
             : (<>
               {
-                userNotifications.map(el => <NotificationItem key={el.invId} user={el.username} board={el.title} invId={el.invId} reply={reply} />)
+                userNotifications.length === 0
+                  ? <p className={styles.ntf__empty}>You don't have any notifications!</p>
+                  : userNotifications.map(el => <NotificationItem key={el.invId} user={el.username} board={el.title} invId={el.invId} reply={reply} />)
               }
             </>)
         }

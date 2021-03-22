@@ -26,7 +26,7 @@ export const userBoardsAPI = {
   },
 
   deleteBoard(id) {
-    return axios.delete(`${baseURL}api/boards/`, { data: { id } });
+    return axios.delete(`${baseURL}api/boards/`, { params: { id } });
   },
 
   inviteUser(username, boardId, userId) {
@@ -45,5 +45,23 @@ export const usersAPI = {
 
   replyToUserNotification(invId, isAccepted) {
     return axios.post(`${baseURL}api/invite-board/reply`, { invId, isAccepted })
+  }
+}
+
+export const columnsAPI = {
+  createNewColumnAPI(title, boardId) {
+    return axios.post(`${baseURL}api/board-columns`, { title, boardId })
+  },
+  
+  getBoardColumnsAPI(boardId) {
+    return axios.get(`${baseURL}api/board-columns`, { params: { boardId } })
+  },
+
+  deleteColumnAPI(columnId) {
+    return axios.delete(`${baseURL}api/board-columns`, { params: { columnId } })
+  },
+
+  updateColumnAPI(columnId, title) {
+    return axios.put(`${baseURL}api/board-columns`, { columnId, title })
   }
 }

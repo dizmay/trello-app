@@ -3,7 +3,15 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import styles from './DropDownItem.module.scss';
 
-const DropDownItem = ({ icon, text, redirect, redirectPath, handleClick, active }) => {
+const DropDownItem = ({
+  icon,
+  text,
+  redirect,
+  redirectPath,
+  handleClick,
+  active
+}) => {
+  
   const iconClassnames = classNames(
     styles.icon,
     {
