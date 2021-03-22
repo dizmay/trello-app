@@ -19,7 +19,7 @@ const AppContainer = () => {
       dispatch(checkCurrentUser(token))
       dispatch(getNotifications())
     }
-  }, [dispatch]);
+  }, [dispatch, isLogged]);
 
   return (<>
     {
