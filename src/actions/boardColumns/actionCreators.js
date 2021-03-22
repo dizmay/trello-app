@@ -4,9 +4,9 @@ export const createNewColumn = () => ({
   type: types.CREATE_NEW_COLUMN
 })
 
-export const createNewColumnSuccess = (response) => ({
+export const createNewColumnSuccess = (message) => ({
   type: types.CREATE_NEW_COLUMN_SUCCESS,
-  payload: response
+  payload: message
 })
 
 export const createNewColumnFailed = (error) => ({
@@ -18,23 +18,23 @@ export const getBoardColumns = () => ({
   type: types.GET_BOARD_COLUMNS
 })
 
-export const getBoardColumnsSuccess = (response) => ({
+export const getBoardColumnsSuccess = (columns) => ({
   type: types.GET_BOARD_COLUMNS_SUCCESS,
-  payload: response
+  payload: columns
 })
 
-export const getBoardColumnsFailed = (response) => ({
+export const getBoardColumnsFailed = (error) => ({
   type: types.GET_BOARD_COLUMNS_FAILED,
-  payload: response
+  payload: error
 })
 
 export const deleteColumn = () => ({
   type: types.DELETE_COLUMN
 })
 
-export const deleteColumnSuccess = (response) => ({
+export const deleteColumnSuccess = (message) => ({
   type: types.DELETE_COLUMN_SUCCESS,
-  payload: response
+  payload: message
 })
 
 export const deleteColumnFailed = () => ({
@@ -45,12 +45,12 @@ export const updateColumn = () => ({
   type: types.UPDATE_COLUMN
 })
 
-export const updateColumnSuccess = (response) => ({
+export const updateColumnSuccess = (message) => ({
   type: types.UPDATE_COLUMN_SUCCESS,
-  payload: response
+  payload: message
 })
 
-export const updateColumnFailed = (response) => ({
+export const updateColumnFailed = (error) => ({
   type: types.UPDATE_COLUMN_FAILED,
-  payload: response
+  payload: error
 })

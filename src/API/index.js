@@ -54,14 +54,14 @@ export const columnsAPI = {
   },
   
   getBoardColumnsAPI(boardId) {
-    return axios.post(`${baseURL}api/board-columns/get`, { boardId })
+    return axios.post(`${baseURL}api/board-columns`, { boardId })
   },
 
   deleteColumnAPI(columnId) {
-    return axios.delete(`${baseURL}api/board-columns/delete`, { data: { columnId } })
+    return axios.delete(`${baseURL}api/board-columns`, { data: { columnId } })
   },
 
   updateColumnAPI(columnId, title) {
-    return axios.put(`${baseURL}api/board-columns/update`, { columnId, title })
+    return axios.put(`${baseURL}api/board-columns`, { columnId, title })
   }
 }

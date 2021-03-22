@@ -4,9 +4,9 @@ export const getUserNotifications = () => ({
   type: types.GET_USER_NOTIFICATIONS,
 })
 
-export const getUserNotificationsSuccess = (response) => ({
+export const getUserNotificationsSuccess = (notifications) => ({
   type: types.GET_USER_NOTIFICATIONS_SUCCESS,
-  payload: response
+  payload: notifications
 })
 
 export const getUserNotificationsFailed = () => ({
