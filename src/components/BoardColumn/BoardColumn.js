@@ -34,7 +34,6 @@ const BoardColumn = ({ title, cardTitle, removeCol, boardId, columnId, updateCol
               </div>
             </>)
         }
-
       </div>
       <FilledCard cardTitle={cardTitle} />
       <EmptyCard />

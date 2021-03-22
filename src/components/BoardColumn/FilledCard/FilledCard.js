@@ -5,7 +5,7 @@ import ButtonElement from '../../ButtonElement/ButtonElement';
 import FilledCardForm from './FilledCardForm/FilledCardForm';
 import styles from './FilledCard.module.scss';
 
-const FilledCard = ({ cardTitle }) => {
+const FilledCard = ({ cardTitle, cardDesc }) => {
   const [editMode, setEditMode] = useState(false);
   const [changeTitle, setChangeTitle] = useState('');
   const [changeDescription, setChangeDescription] = useState('');
@@ -36,7 +36,7 @@ const FilledCard = ({ cardTitle }) => {
             <div className={styles.boardColumn__card}>
               <ButtonElement children={<TiPencil />} type="button" colorBlack transparent handleClick={() => { setEditMode(true) }} />
               <h2>{cardTitle}</h2>
-              <p>Description</p>
+              <p>{cardDesc}</p>
               <ButtonElement children={<MdDeleteForever />} type="button" basicFont transparent colorBlack />
             </div>
           )

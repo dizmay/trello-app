@@ -3,14 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { selectBoardUsers, selectIsError, selectError, selectIsLoading } from '../../selectors/boardSelectors';
 import { selectColumnError, selectColumnIsError } from '../../selectors/boardColumnsSelectors';
+import { selectCards } from '../../selectors/cardsSelectors';
 import { inviteUser, getBoardUsers } from '../../actions/boards/actions';
 import { createColumn, getColumns, removeColumn, updateColumnTitle } from '../../actions/boardColumns/actions';
 import { selectUserId } from '../../selectors/authSelectors';
 import { selectColumns } from '../../selectors/boardColumnsSelectors';
+import { getColumnCards } from '../../actions/columnCards/actions';
 import Board from './Board';
 
 const BoardContainer = () => {
-  
+
   const { params } = useParams()
   const [id, title] = params.split('&');
   const usernames = useSelector(selectBoardUsers);
@@ -21,6 +23,7 @@ const BoardContainer = () => {
   const columnIsError = useSelector(selectColumnIsError);
   const isLoading = useSelector(selectIsLoading);
   const boardColumns = useSelector(selectColumns);
+  const cards = useSelector(selectCards);
   const dispatch = useDispatch();
 
   const invite = useCallback(
@@ -46,6 +49,7 @@ const BoardContainer = () => {
   useEffect(() => {
     dispatch(getColumns(id))
     dispatch(getBoardUsers({ boardId: id }));
+    dispatch(getColumnCards(id))
   }, [id, dispatch])
 
   return (
