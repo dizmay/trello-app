@@ -26,7 +26,7 @@ export const userBoardsAPI = {
   },
 
   deleteBoard(id) {
-    return axios.delete(`${baseURL}api/boards/`, { data: { id } });
+    return axios.delete(`${baseURL}api/boards/`, { params: { id } });
   },
 
   inviteUser(username, boardId, userId) {
