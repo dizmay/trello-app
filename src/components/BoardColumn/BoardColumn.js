@@ -48,21 +48,20 @@ const BoardColumn = ({
         }
       </div>
       {
-        tasks.map(el => {
-          if (!el.id) {
-            return;
-          }
-          return <FilledCard
-            key={el.id}
-            id={el.id}
-            boardId={boardId}
-            cardTitle={el.title}
-            cardDesc={el.description}
-            deleteCard={deleteCard}
-            updateCard={updateCard}
-            setNotification={setNotification}
-          />
-        })
+        tasks.map(task => task.id
+          ? (
+            <FilledCard
+              key={task.id}
+              id={task.id}
+              boardId={boardId}
+              cardTitle={task.title}
+              cardDesc={task.description}
+              deleteCard={deleteCard}
+              updateCard={updateCard}
+              setNotification={setNotification}
+            />
+          )
+          : null)
       }
       <EmptyCard createCard={createCard} columnId={columnId} boardId={boardId} setNotification={setNotification} />
     </div>
