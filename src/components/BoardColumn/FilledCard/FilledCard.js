@@ -5,10 +5,10 @@ import ButtonElement from '../../ButtonElement/ButtonElement';
 import FilledCardForm from './FilledCardForm/FilledCardForm';
 import styles from './FilledCard.module.scss';
 
-const FilledCard = ({ cardTitle, cardDesc }) => {
+const FilledCard = ({ id, boardId, cardTitle, cardDesc, updateCard, deleteCard, setNotification }) => {
   const [editMode, setEditMode] = useState(false);
-  const [changeTitle, setChangeTitle] = useState('');
-  const [changeDescription, setChangeDescription] = useState('');
+  const [changeTitle, setChangeTitle] = useState(cardTitle);
+  const [changeDescription, setChangeDescription] = useState(cardDesc);
 
   const onTitleChange = (e) => {
     setChangeTitle(e.currentTarget.value)
@@ -19,7 +19,13 @@ const FilledCard = ({ cardTitle, cardDesc }) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    updateCard(id, changeTitle, changeDescription, boardId);
     setEditMode(false);
+    setNotification(true);
+  }
+
+  const removeCard = () => {
+    deleteCard(id, boardId);
   }
   return (
     <>
@@ -37,7 +43,7 @@ const FilledCard = ({ cardTitle, cardDesc }) => {
               <ButtonElement children={<TiPencil />} type="button" colorBlack transparent handleClick={() => { setEditMode(true) }} />
               <h2>{cardTitle}</h2>
               <p>{cardDesc}</p>
-              <ButtonElement children={<MdDeleteForever />} type="button" basicFont transparent colorBlack />
+              <ButtonElement children={<MdDeleteForever />} type="button" basicFont transparent colorBlack handleClick={removeCard} />
             </div>
           )
       }

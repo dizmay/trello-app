@@ -22,7 +22,10 @@ const Board = ({
   createNewColumn,
   boardColumns,
   removeCol,
-  updateCol
+  updateCol,
+  createCard,
+  deleteCard,
+  updateCard,
 }) => {
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -50,15 +53,22 @@ const Board = ({
         <h2>{title}</h2>
         <div className={styles.board}>
           {
-            boardColumns.map(el => <BoardColumn
-              key={el.id}
-              title={el.title}
-              removeCol={removeCol}
-              columnId={el.id}
-              boardId={id}
-              updateCol={updateCol}
-              cardTitle="Title"
-            />)
+            boardColumns.map(el => (
+              <BoardColumn
+                key={el.id}
+                title={el.title}
+                removeCol={removeCol}
+                columnId={el.id}
+                boardId={id}
+                updateCol={updateCol}
+                boardColumns={boardColumns}
+                tasks={el['tasks.tasks']}
+                createCard={createCard}
+                deleteCard={deleteCard}
+                updateCard={updateCard}
+                setNotification={setNotification}
+              />
+            ))
           }
           <EmptyColumn
             columnTitle={columnTitle}

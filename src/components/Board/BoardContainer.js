@@ -3,12 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { selectBoardUsers, selectIsError, selectError, selectIsLoading } from '../../selectors/boardSelectors';
 import { selectColumnError, selectColumnIsError } from '../../selectors/boardColumnsSelectors';
-import { selectCards } from '../../selectors/cardsSelectors';
 import { inviteUser, getBoardUsers } from '../../actions/boards/actions';
-import { createColumn, getColumns, removeColumn, updateColumnTitle } from '../../actions/boardColumns/actions';
+import { createColumn, getColumns, removeColumn, updateColumnTitle, createNewCard, deleteColumnCard, updateColumnCard } from '../../actions/boardColumns/actions';
 import { selectUserId } from '../../selectors/authSelectors';
 import { selectColumns } from '../../selectors/boardColumnsSelectors';
-import { getColumnCards } from '../../actions/columnCards/actions';
 import Board from './Board';
 
 const BoardContainer = () => {
@@ -23,7 +21,6 @@ const BoardContainer = () => {
   const columnIsError = useSelector(selectColumnIsError);
   const isLoading = useSelector(selectIsLoading);
   const boardColumns = useSelector(selectColumns);
-  const cards = useSelector(selectCards);
   const dispatch = useDispatch();
 
   const invite = useCallback(
@@ -46,10 +43,24 @@ const BoardContainer = () => {
     [dispatch]
   );
 
+  const createCard = useCallback(
+    (title, description, columnId, boardId) => dispatch(createNewCard(title, description, columnId, boardId)),
+    [dispatch]
+  );
+
+  const deleteCard = useCallback(
+    (id, boardId) => dispatch(deleteColumnCard(id, boardId)),
+    [dispatch]
+  );
+
+  const updateCard = useCallback(
+    (id, title, description, boardId) => dispatch(updateColumnCard(id, title, description, boardId)),
+    [dispatch]
+  );
+
   useEffect(() => {
     dispatch(getColumns(id))
     dispatch(getBoardUsers({ boardId: id }));
-    dispatch(getColumnCards(id))
   }, [id, dispatch])
 
   return (
@@ -68,6 +79,9 @@ const BoardContainer = () => {
       boardColumns={boardColumns}
       removeCol={removeCol}
       updateCol={updateCol}
+      createCard={createCard}
+      deleteCard={deleteCard}
+      updateCard={updateCard}
     />
   )
 }

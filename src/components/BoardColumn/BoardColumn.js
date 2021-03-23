@@ -7,7 +7,19 @@ import EmptyCard from './EmptyCard/EmptyCard';
 import FilledCard from './FilledCard/FilledCard';
 import styles from './BoardColumn.module.scss';
 
-const BoardColumn = ({ title, cardTitle, removeCol, boardId, columnId, updateCol }) => {
+const BoardColumn = ({
+  title,
+  removeCol,
+  boardId,
+  columnId,
+  updateCol,
+  tasks,
+  createCard,
+  deleteCard,
+  updateCard,
+  setNotification,
+}) => {
+
   const [updateTitle, setUpdateTitle] = useState(false);
   const [changeTitle, setChangeTitle] = useState('');
 
@@ -35,8 +47,24 @@ const BoardColumn = ({ title, cardTitle, removeCol, boardId, columnId, updateCol
             </>)
         }
       </div>
-      <FilledCard cardTitle={cardTitle} />
-      <EmptyCard />
+      {
+        tasks.map(el => {
+          if (!el.id) {
+            return;
+          }
+          return <FilledCard
+            key={el.id}
+            id={el.id}
+            boardId={boardId}
+            cardTitle={el.title}
+            cardDesc={el.description}
+            deleteCard={deleteCard}
+            updateCard={updateCard}
+            setNotification={setNotification}
+          />
+        })
+      }
+      <EmptyCard createCard={createCard} columnId={columnId} boardId={boardId} setNotification={setNotification} />
     </div>
   )
 }
