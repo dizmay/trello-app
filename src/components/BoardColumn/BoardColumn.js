@@ -49,7 +49,7 @@ const BoardColumn = ({
       </div>
       {
         tasks.map(task => task.id
-          ? (
+          && (
             <FilledCard
               key={task.id}
               id={task.id}
@@ -60,8 +60,7 @@ const BoardColumn = ({
               updateCard={updateCard}
               setNotification={setNotification}
             />
-          )
-          : null)
+          ))
       }
       <EmptyCard createCard={createCard} columnId={columnId} boardId={boardId} setNotification={setNotification} />
     </div>
