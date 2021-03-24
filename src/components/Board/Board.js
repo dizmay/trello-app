@@ -53,16 +53,16 @@ const Board = ({
         <h2>{title}</h2>
         <div className={styles.board}>
           {
-            boardColumns.map(el => (
+            boardColumns.map(column => (
               <BoardColumn
-                key={el.id}
-                title={el.title}
+                key={column.id}
+                title={column.title}
                 removeCol={removeCol}
-                columnId={el.id}
+                columnId={column.id}
                 boardId={id}
                 updateCol={updateCol}
                 boardColumns={boardColumns}
-                tasks={el['tasks.tasks']}
+                tasks={column['tasks.tasks']}
                 createCard={createCard}
                 deleteCard={deleteCard}
                 updateCard={updateCard}
