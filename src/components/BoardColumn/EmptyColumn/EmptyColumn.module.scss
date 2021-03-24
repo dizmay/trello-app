@@ -1,10 +1,11 @@
 @import '../../../utils/colors';
 
 .emptyColumn {
+  width: 15vw;
+  height: 12.5vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
   background: $primary_color_dark_blue;
   border-radius: .5rem;
   cursor: pointer;

@@ -46,6 +46,33 @@ const boardColumnsReducer = (state = initialState, action) => {
     case types.UPDATE_COLUMN_FAILED:
       return { ...state, isError: true, error: action.payload, isLoading: false }
 
+    case types.CREATE_CARD:
+      return { ...state, isLoading: true }
+
+    case types.CREATE_CARD_SUCCESS:
+      return { ...state, isLoading: false, isError: false, error: action.payload }
+
+    case types.CREATE_CARD_FAILED:
+      return { ...state, isLoading: false, isError: true, error: action.payload }
+
+    case types.DELETE_CARD:
+      return { ...state, isLoading: true }
+
+    case types.DELETE_CARD_SUCCESS:
+      return { ...state, isLoading: false, isError: false, error: action.payload }
+
+    case types.DELETE_CARD_FAILED:
+      return { ...state, isLoading: false, isError: true, error: action.payload }
+
+    case types.UPDATE_CARD:
+      return { ...state, isLoading: true }
+
+    case types.UPDATE_CARD_SUCCESS:
+      return { ...state, isLoading: false, isError: false, error: action.payload }
+
+    case types.UPDATE_CARD_FAILED:
+      return { ...state, isLoading: false, isError: true, error: action.payload }
+
     default:
       return state;
   }

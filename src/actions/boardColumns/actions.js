@@ -10,9 +10,18 @@ import {
   getBoardColumnsSuccess,
   updateColumn,
   updateColumnFailed,
-  updateColumnSuccess
+  updateColumnSuccess,
+  createCard,
+  createCardFailed,
+  createCardSuccess,
+  deleteCard,
+  deleteCardFailed,
+  deleteCardSuccess,
+  updateCard,
+  updateCardFailed,
+  updateCardSuccess
 } from './actionCreators';
-import { columnsAPI } from '../../API';
+import { columnsAPI, cardsAPI } from '../../API';
 import getMessage from '../../utils/getErrorMessage';
 
 export const createColumn = (title, boardId) => async (dispatch) => {
@@ -62,5 +71,44 @@ export const updateColumnTitle = (columnId, title, boardId) => async (dispatch) 
   }
   catch (error) {
     dispatch(updateColumnFailed(getMessage(error)))
+  }
+}
+
+export const createNewCard = (title, description, columnId, boardId) => async (dispatch) => {
+  try {
+    dispatch(createCard());
+    const response = await cardsAPI.createCardAPI(title, description, columnId);
+    const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
+    dispatch(getBoardColumnsSuccess(refreshColumns.data));
+    dispatch(createCardSuccess(response.data))
+  }
+  catch (error) {
+    dispatch(createCardFailed(getMessage(error)));
+  }
+}
+
+export const deleteColumnCard = (id, boardId) => async (dispatch) => {
+  try {
+    dispatch(deleteCard());
+    const response = await cardsAPI.deleteCardAPI(id);
+    const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
+    dispatch(getBoardColumnsSuccess(refreshColumns.data));
+    dispatch(deleteCardSuccess(response.data))
+  }
+  catch (error) {
+    dispatch(deleteCardFailed(getMessage(error)));
+  }
+}
+
+export const updateColumnCard = (id, title, description, boardId) => async (dispatch) => {
+  try {
+    dispatch(updateCard());
+    const response = await cardsAPI.updateCardAPI(id, title, description);
+    const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
+    dispatch(getBoardColumnsSuccess(refreshColumns.data));
+    dispatch(updateCardSuccess(response.data))
+  }
+  catch (error) {
+    dispatch(updateCardFailed(getMessage(error)));
   }
 }

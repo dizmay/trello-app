@@ -65,3 +65,17 @@ export const columnsAPI = {
     return axios.put(`${baseURL}api/board-columns`, { columnId, title })
   }
 }
+
+export const cardsAPI = {
+  createCardAPI(title, description, columnId) {
+    return axios.post(`${baseURL}api/columns-tasks`, { title, description, columnId })
+  },
+
+  deleteCardAPI(id) {
+    return axios.delete(`${baseURL}api/columns-tasks`, { params: { id } })
+  },
+
+  updateCardAPI(id, title, description) {
+    return axios.put(`${baseURL}api/columns-tasks`, { id, title, description })
+  }
+}

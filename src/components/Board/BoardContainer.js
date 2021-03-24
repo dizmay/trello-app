@@ -4,13 +4,13 @@ import { useParams } from 'react-router';
 import { selectBoardUsers, selectIsError, selectError, selectIsLoading } from '../../selectors/boardSelectors';
 import { selectColumnError, selectColumnIsError } from '../../selectors/boardColumnsSelectors';
 import { inviteUser, getBoardUsers } from '../../actions/boards/actions';
-import { createColumn, getColumns, removeColumn, updateColumnTitle } from '../../actions/boardColumns/actions';
+import { createColumn, getColumns, removeColumn, updateColumnTitle, createNewCard, deleteColumnCard, updateColumnCard } from '../../actions/boardColumns/actions';
 import { selectUserId } from '../../selectors/authSelectors';
 import { selectColumns } from '../../selectors/boardColumnsSelectors';
 import Board from './Board';
 
 const BoardContainer = () => {
-  
+
   const { params } = useParams()
   const [id, title] = params.split('&');
   const usernames = useSelector(selectBoardUsers);
@@ -43,6 +43,21 @@ const BoardContainer = () => {
     [dispatch]
   );
 
+  const createCard = useCallback(
+    (title, description, columnId, boardId) => dispatch(createNewCard(title, description, columnId, boardId)),
+    [dispatch]
+  );
+
+  const deleteCard = useCallback(
+    (id, boardId) => dispatch(deleteColumnCard(id, boardId)),
+    [dispatch]
+  );
+
+  const updateCard = useCallback(
+    (id, title, description, boardId) => dispatch(updateColumnCard(id, title, description, boardId)),
+    [dispatch]
+  );
+
   useEffect(() => {
     dispatch(getColumns(id))
     dispatch(getBoardUsers({ boardId: id }));
@@ -64,6 +79,9 @@ const BoardContainer = () => {
       boardColumns={boardColumns}
       removeCol={removeCol}
       updateCol={updateCol}
+      createCard={createCard}
+      deleteCard={deleteCard}
+      updateCard={updateCard}
     />
   )
 }
