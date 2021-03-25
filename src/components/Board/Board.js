@@ -26,12 +26,14 @@ const Board = ({
   createCard,
   deleteCard,
   updateCard,
+  columnDrag,
 }) => {
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const [notification, setNotification] = useState(false);
   const [showColumnTitle, setShowColumnTitle] = useState(false);
   const [columnTitle, setColumnTitle] = useState('');
+  const [dragId, setDragId] = useState(null);
 
   const onColumnTitleChange = (e) => {
     setColumnTitle(e.currentTarget.value);
@@ -47,6 +49,26 @@ const Board = ({
     setNotification(true);
   }
 
+  const onDragOverHandler = (e) => {
+    e.preventDefault();
+  }
+
+  const onDragStartHandler = (e) => {
+    setDragId(Number(e.currentTarget.id));
+  }
+
+  const onDropHandler = (e) => {
+    const dragOrder = (boardColumns.find(column => column.id === dragId)).order;
+    const dropColumn = (boardColumns.find(column => column.id === Number(e.currentTarget.id)));
+    const dropIndex = boardColumns.indexOf(dropColumn);
+    const dropOrder = dropColumn.order;
+    const prevDrop = (((boardColumns[dropIndex - 1])) ?? 0);
+    const nextDrop = (((boardColumns[dropIndex + 1])) ?? 0);
+    const prevDropOrder = prevDrop === 0 ? 0 : prevDrop.order;
+    const nextDropOrder = nextDrop === 0 ? dropOrder + 1000 : nextDrop.order;
+    columnDrag(dragOrder, prevDropOrder, dropOrder, nextDropOrder, id);
+  }
+
   return (
     <>
       <div className={styles.board__container}>
@@ -57,6 +79,7 @@ const Board = ({
               <BoardColumn
                 key={column.id}
                 title={column.title}
+                order={column.order}
                 removeCol={removeCol}
                 columnId={column.id}
                 boardId={id}
@@ -67,6 +90,9 @@ const Board = ({
                 deleteCard={deleteCard}
                 updateCard={updateCard}
                 setNotification={setNotification}
+                onDragStartHandler={onDragStartHandler}
+                onDragOverHandler={onDragOverHandler}
+                onDropHandler={onDropHandler}
               />
             ))
           }

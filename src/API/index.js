@@ -63,7 +63,11 @@ export const columnsAPI = {
 
   updateColumnAPI(columnId, title) {
     return axios.put(`${baseURL}api/board-columns`, { columnId, title })
-  }
+  },
+
+  columnDragAPI(dragOrder, prevDropOrder, dropOrder, nextDropOrder) {
+    return axios.put(`${baseURL}api/board-columns/dnd`, { dragOrder, prevDropOrder, dropOrder, nextDropOrder })
+  },
 }
 
 export const cardsAPI = {

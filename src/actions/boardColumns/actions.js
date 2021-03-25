@@ -19,7 +19,8 @@ import {
   deleteCardSuccess,
   updateCard,
   updateCardFailed,
-  updateCardSuccess
+  updateCardSuccess,
+  dragColumn
 } from './actionCreators';
 import { columnsAPI, cardsAPI } from '../../API';
 import getMessage from '../../utils/getErrorMessage';
@@ -110,5 +111,17 @@ export const updateColumnCard = (id, title, description, boardId) => async (disp
   }
   catch (error) {
     dispatch(updateCardFailed(getMessage(error)));
+  }
+}
+
+export const columnDnD = (dragOrder, prevDropOrder, dropOrder, nextDropOrder, boardId) => async (dispatch) => {
+  try {
+    const response = await columnsAPI.columnDragAPI(dragOrder, prevDropOrder, dropOrder, nextDropOrder);
+    const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
+    dispatch(getBoardColumnsSuccess(refreshColumns.data));
+    dispatch(dragColumn());
+  }
+  catch (error) {
+    console.log(error);
   }
 }

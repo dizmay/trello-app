@@ -9,6 +9,7 @@ import styles from './BoardColumn.module.scss';
 
 const BoardColumn = ({
   title,
+  order,
   removeCol,
   boardId,
   columnId,
@@ -18,6 +19,9 @@ const BoardColumn = ({
   deleteCard,
   updateCard,
   setNotification,
+  onDragStartHandler,
+  onDragOverHandler,
+  onDropHandler
 }) => {
 
   const [updateTitle, setUpdateTitle] = useState(false);
@@ -32,8 +36,16 @@ const BoardColumn = ({
     updateCol(columnId, changeTitle, boardId);
     setUpdateTitle(false);
   }
+
   return (
-    <div className={styles.boardColumn}>
+    <div className={styles.boardColumn}
+      draggable
+      id={columnId}
+      order={order}
+      onDragStart={onDragStartHandler}
+      onDragOver={onDragOverHandler}
+      onDrop={onDropHandler}
+    >
       <div className={styles.boardColumn__header}>
         {
           updateTitle
@@ -41,8 +53,8 @@ const BoardColumn = ({
             : (<>
               <h2>{title}</h2>
               <div>
-                <ButtonElement children={<TiPencil />} type="button" colorBlack transparent handleClick={() => { setUpdateTitle(true) }} />
-                <ButtonElement children={<MdDeleteForever />} type="button" basicFont transparent colorBlack handleClick={() => { removeCol(columnId, boardId) }} />
+                <ButtonElement children={<TiPencil />} type="button" smallFont colorBlack transparent handleClick={() => { setUpdateTitle(true) }} />
+                <ButtonElement children={<MdDeleteForever />} type="button" smallFont transparent colorBlack handleClick={() => { removeCol(columnId, boardId) }} />
               </div>
             </>)
         }
