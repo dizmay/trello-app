@@ -114,9 +114,9 @@ export const updateColumnCard = (id, title, description, boardId) => async (disp
   }
 }
 
-export const columnDnD = (dragOrder, prevDropOrder, dropOrder, nextDropOrder, boardId) => async (dispatch) => {
+export const columnDnD = (dragId, dropId, boardId) => async (dispatch) => {
   try {
-    await columnsAPI.columnDragAPI(dragOrder, prevDropOrder, dropOrder, nextDropOrder);
+    await columnsAPI.columnDragAPI(dragId, dropId, boardId);
     const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(dragColumn());

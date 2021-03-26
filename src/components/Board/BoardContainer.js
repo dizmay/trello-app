@@ -59,7 +59,7 @@ const BoardContainer = () => {
   );
 
   const columnDrag = useCallback(
-    (dragOrder, prevDropOrder, dropOrder, nextDropOrder, boardId) => dispatch(columnDnD(dragOrder, prevDropOrder, dropOrder, nextDropOrder, boardId)),
+    (dragId, dropId, boardId) => dispatch(columnDnD(dragId, dropId, boardId)),
     [dispatch]
   )
 
