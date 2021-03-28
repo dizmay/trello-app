@@ -57,8 +57,8 @@ export const columnsAPI = {
     return axios.get(`${baseURL}api/board-columns`, { params: { boardId } })
   },
 
-  deleteColumnAPI(columnId) {
-    return axios.delete(`${baseURL}api/board-columns`, { params: { columnId } })
+  deleteColumnAPI(columnId, boardId) {
+    return axios.delete(`${baseURL}api/board-columns`, { params: { columnId, boardId } })
   },
 
   updateColumnAPI(columnId, title) {

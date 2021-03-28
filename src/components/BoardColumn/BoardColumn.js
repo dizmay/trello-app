@@ -21,7 +21,11 @@ const BoardColumn = ({
   setNotification,
   onDragStartHandler,
   onDragOverHandler,
-  onDropHandler
+  onDropHandler,
+  boardColumns,
+  onDragEndHandler,
+  dragEnterHandler,
+  dragLeaveHandler,
 }) => {
 
   const [updateTitle, setUpdateTitle] = useState(false);
@@ -45,6 +49,9 @@ const BoardColumn = ({
       onDragStart={onDragStartHandler}
       onDragOver={onDragOverHandler}
       onDrop={onDropHandler}
+      onDragEnd={onDragEndHandler}
+      onDragEnter={dragEnterHandler}
+      onDragLeave={dragLeaveHandler}
     >
       <div className={styles.boardColumn__header}>
         {

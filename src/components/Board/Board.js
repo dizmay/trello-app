@@ -55,11 +55,33 @@ const Board = ({
 
   const onDragStartHandler = (e) => {
     setDragId(Number(e.currentTarget.id));
+    e.currentTarget.style.opacity = '0.4';
+  }
+
+  const onDragEndHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.currentTarget.style.opacity = '1';
+  }
+
+  const dragEnterHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.currentTarget.style.border = '.15rem solid blue';
+  }
+
+  const dragLeaveHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.currentTarget.style.border = 'none';
   }
 
   const onDropHandler = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
     const dropId = Number(e.currentTarget.id)
     columnDrag(dragId, dropId, id);
+    e.currentTarget.style.border = 'none';
   }
 
   return (
@@ -86,6 +108,9 @@ const Board = ({
                 onDragStartHandler={onDragStartHandler}
                 onDragOverHandler={onDragOverHandler}
                 onDropHandler={onDropHandler}
+                onDragEndHandler={onDragEndHandler}
+                dragEnterHandler={dragEnterHandler}
+                dragLeaveHandler={dragLeaveHandler}
               />
             ))
           }

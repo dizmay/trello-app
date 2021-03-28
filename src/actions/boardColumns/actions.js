@@ -52,7 +52,7 @@ export const getColumns = (boardId) => async (dispatch) => {
 export const removeColumn = (columnId, boardId) => async (dispatch) => {
   try {
     dispatch(deleteColumn())
-    const response = await columnsAPI.deleteColumnAPI(columnId);
+    const response = await columnsAPI.deleteColumnAPI(columnId, boardId);
     const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(deleteColumnSuccess(response.data));
