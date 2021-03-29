@@ -9,7 +9,6 @@ import styles from './BoardColumn.module.scss';
 
 const BoardColumn = ({
   title,
-  order,
   removeCol,
   boardId,
   columnId,
@@ -22,7 +21,6 @@ const BoardColumn = ({
   onDragStartHandler,
   onDragOverHandler,
   onDropHandler,
-  boardColumns,
   onDragEndHandler,
   dragEnterHandler,
   dragLeaveHandler,
@@ -45,7 +43,6 @@ const BoardColumn = ({
     <div className={styles.boardColumn}
       draggable
       id={columnId}
-      order={order}
       onDragStart={onDragStartHandler}
       onDragOver={onDragOverHandler}
       onDrop={onDropHandler}

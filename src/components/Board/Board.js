@@ -94,12 +94,10 @@ const Board = ({
               <BoardColumn
                 key={column.id}
                 title={column.title}
-                order={column.order}
                 removeCol={removeCol}
                 columnId={column.id}
                 boardId={id}
                 updateCol={updateCol}
-                boardColumns={boardColumns}
                 tasks={column['tasks.tasks']}
                 createCard={createCard}
                 deleteCard={deleteCard}
