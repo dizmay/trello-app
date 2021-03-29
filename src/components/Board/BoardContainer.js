@@ -58,7 +58,7 @@ const BoardContainer = () => {
     [dispatch]
   );
 
-  const columnDrag = useCallback(
+  const columnMove = useCallback(
     (dragId, dropId, boardId) => dispatch(changeColumnOrder(dragId, dropId, boardId)),
     [dispatch]
   )
@@ -87,7 +87,7 @@ const BoardContainer = () => {
       createCard={createCard}
       deleteCard={deleteCard}
       updateCard={updateCard}
-      columnDrag={columnDrag}
+      columnMove={columnMove}
     />
   )
 }

@@ -26,7 +26,7 @@ const Board = ({
   createCard,
   deleteCard,
   updateCard,
-  columnDrag,
+  columnMove,
 }) => {
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -80,7 +80,7 @@ const Board = ({
     e.stopPropagation();
     e.preventDefault();
     const dropId = Number(e.currentTarget.id)
-    columnDrag(dragId, dropId, id);
+    columnMove(dragId, dropId, id);
     e.currentTarget.style.border = 'none';
   }
 
