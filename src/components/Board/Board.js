@@ -79,8 +79,10 @@ const Board = ({
   const onDropHandler = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    const dropId = Number(e.currentTarget.id)
-    columnMove(dragId, dropId, id);
+    const dropId = Number(e.currentTarget.id);
+    if (dragId !== dropId) {
+      columnMove(dragId, dropId, id);
+    }
     e.currentTarget.style.border = 'none';
   }
 
