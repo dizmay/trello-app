@@ -20,7 +20,7 @@ import {
   updateCard,
   updateCardFailed,
   updateCardSuccess,
-  dragColumn
+  moveColumn
 } from './actionCreators';
 import { columnsAPI, cardsAPI } from '../../API';
 import getMessage from '../../utils/getErrorMessage';
@@ -114,12 +114,12 @@ export const updateColumnCard = (id, title, description, boardId) => async (disp
   }
 }
 
-export const columnDnD = (dragId, dropId, boardId) => async (dispatch) => {
+export const changeColumnOrder = (dragId, dropId, boardId) => async (dispatch) => {
   try {
-    await columnsAPI.columnDragAPI(dragId, dropId, boardId);
+    await columnsAPI.columnMoveAPI(dragId, dropId, boardId);
     const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
-    dispatch(dragColumn());
+    dispatch(moveColumn());
   }
   catch (error) {
     console.log(error);

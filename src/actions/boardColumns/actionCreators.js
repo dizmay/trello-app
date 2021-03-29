@@ -97,6 +97,6 @@ export const updateCardFailed = (error) => ({
   payload: error
 })
 
-export const dragColumn = () => ({
-  type: types.COLUMN_DRAG_AND_DROP,
+export const moveColumn = () => ({
+  type: types.COLUMN_MOVE,
 })

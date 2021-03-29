@@ -52,7 +52,7 @@ export const columnsAPI = {
   createNewColumnAPI(title, boardId) {
     return axios.post(`${baseURL}api/board-columns`, { title, boardId })
   },
-  
+
   getBoardColumnsAPI(boardId) {
     return axios.get(`${baseURL}api/board-columns`, { params: { boardId } })
   },
@@ -65,8 +65,8 @@ export const columnsAPI = {
     return axios.put(`${baseURL}api/board-columns`, { columnId, title })
   },
 
-  columnDragAPI(dragId, dropId, boardId) {
-    return axios.put(`${baseURL}api/board-columns/dnd`, { dragId, dropId, boardId })
+  columnMoveAPI(dragId, dropId, boardId) {
+    return axios.put(`${baseURL}api/board-columns/move-column`, { dragId, dropId, boardId })
   },
 }
 
