@@ -28,8 +28,8 @@ import getMessage from '../../utils/getErrorMessage';
 export const createColumn = (title, boardId) => async (dispatch) => {
   try {
     dispatch(createNewColumn());
-    const response = await columnsAPI.createNewColumnAPI(title, boardId);
-    const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
+    const response = await columnsAPI.createNewColumn(title, boardId);
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(createNewColumnSuccess(response.data));
   }
@@ -41,7 +41,7 @@ export const createColumn = (title, boardId) => async (dispatch) => {
 export const getColumns = (boardId) => async (dispatch) => {
   try {
     dispatch(getBoardColumns());
-    const response = await columnsAPI.getBoardColumnsAPI(boardId);
+    const response = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(response.data));
   }
   catch (error) {
@@ -52,8 +52,8 @@ export const getColumns = (boardId) => async (dispatch) => {
 export const removeColumn = (columnId, boardId) => async (dispatch) => {
   try {
     dispatch(deleteColumn())
-    const response = await columnsAPI.deleteColumnAPI(columnId, boardId);
-    const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
+    const response = await columnsAPI.deleteColumn(columnId, boardId);
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(deleteColumnSuccess(response.data));
   }
@@ -65,8 +65,8 @@ export const removeColumn = (columnId, boardId) => async (dispatch) => {
 export const updateColumnTitle = (columnId, title, boardId) => async (dispatch) => {
   try {
     dispatch(updateColumn())
-    const response = await columnsAPI.updateColumnAPI(columnId, title);
-    const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
+    const response = await columnsAPI.updateColumn(columnId, title);
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(updateColumnSuccess(response.data));
   }
@@ -78,8 +78,8 @@ export const updateColumnTitle = (columnId, title, boardId) => async (dispatch) 
 export const createNewCard = (title, description, columnId, boardId) => async (dispatch) => {
   try {
     dispatch(createCard());
-    const response = await cardsAPI.createCardAPI(title, description, columnId);
-    const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
+    const response = await cardsAPI.createCard(title, description, columnId);
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(createCardSuccess(response.data))
   }
@@ -91,8 +91,8 @@ export const createNewCard = (title, description, columnId, boardId) => async (d
 export const deleteColumnCard = (id, boardId) => async (dispatch) => {
   try {
     dispatch(deleteCard());
-    const response = await cardsAPI.deleteCardAPI(id);
-    const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
+    const response = await cardsAPI.deleteCard(id);
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(deleteCardSuccess(response.data))
   }
@@ -104,8 +104,8 @@ export const deleteColumnCard = (id, boardId) => async (dispatch) => {
 export const updateColumnCard = (id, title, description, boardId) => async (dispatch) => {
   try {
     dispatch(updateCard());
-    const response = await cardsAPI.updateCardAPI(id, title, description);
-    const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
+    const response = await cardsAPI.updateCard(id, title, description);
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(updateCardSuccess(response.data))
   }
@@ -116,8 +116,8 @@ export const updateColumnCard = (id, title, description, boardId) => async (disp
 
 export const changeColumnOrder = (dragId, dropId, boardId) => async (dispatch) => {
   try {
-    await columnsAPI.columnMoveAPI(dragId, dropId, boardId);
-    const refreshColumns = await columnsAPI.getBoardColumnsAPI(boardId);
+    await columnsAPI.columnMove(dragId, dropId, boardId);
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(moveColumn());
   }

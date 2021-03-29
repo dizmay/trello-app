@@ -49,37 +49,37 @@ export const usersAPI = {
 }
 
 export const columnsAPI = {
-  createNewColumnAPI(title, boardId) {
+  createNewColumn(title, boardId) {
     return axios.post(`${baseURL}api/board-columns`, { title, boardId })
   },
 
-  getBoardColumnsAPI(boardId) {
+  getBoardColumns(boardId) {
     return axios.get(`${baseURL}api/board-columns`, { params: { boardId } })
   },
 
-  deleteColumnAPI(columnId, boardId) {
+  deleteColumn(columnId, boardId) {
     return axios.delete(`${baseURL}api/board-columns`, { params: { columnId, boardId } })
   },
 
-  updateColumnAPI(columnId, title) {
+  updateColumn(columnId, title) {
     return axios.put(`${baseURL}api/board-columns`, { columnId, title })
   },
 
-  columnMoveAPI(dragId, dropId, boardId) {
+  columnMove(dragId, dropId, boardId) {
     return axios.put(`${baseURL}api/board-columns/move-column`, { dragId, dropId, boardId })
   },
 }
 
 export const cardsAPI = {
-  createCardAPI(title, description, columnId) {
+  createCard(title, description, columnId) {
     return axios.post(`${baseURL}api/columns-tasks`, { title, description, columnId })
   },
 
-  deleteCardAPI(id) {
+  deleteCard(id) {
     return axios.delete(`${baseURL}api/columns-tasks`, { params: { id } })
   },
 
-  updateCardAPI(id, title, description) {
+  updateCard(id, title, description) {
     return axios.put(`${baseURL}api/columns-tasks`, { id, title, description })
   }
 }
