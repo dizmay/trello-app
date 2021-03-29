@@ -26,12 +26,14 @@ const Board = ({
   createCard,
   deleteCard,
   updateCard,
+  columnMove,
 }) => {
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const [notification, setNotification] = useState(false);
   const [showColumnTitle, setShowColumnTitle] = useState(false);
   const [columnTitle, setColumnTitle] = useState('');
+  const [dragId, setDragId] = useState(null);
 
   const onColumnTitleChange = (e) => {
     setColumnTitle(e.currentTarget.value);
@@ -45,6 +47,43 @@ const Board = ({
     createNewColumn(title, boardId);
     setShowColumnTitle(false);
     setNotification(true);
+  }
+
+  const onDragOverHandler = (e) => {
+    e.preventDefault();
+  }
+
+  const onDragStartHandler = (e) => {
+    setDragId(Number(e.currentTarget.id));
+    e.currentTarget.style.opacity = '0.4';
+  }
+
+  const onDragEndHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.currentTarget.style.opacity = '1';
+  }
+
+  const dragEnterHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.currentTarget.style.border = '.15rem solid blue';
+  }
+
+  const dragLeaveHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.currentTarget.style.border = 'none';
+  }
+
+  const onDropHandler = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const dropId = Number(e.currentTarget.id);
+    if (dragId !== dropId) {
+      columnMove(dragId, dropId, id);
+    }
+    e.currentTarget.style.border = 'none';
   }
 
   return (
@@ -61,12 +100,17 @@ const Board = ({
                 columnId={column.id}
                 boardId={id}
                 updateCol={updateCol}
-                boardColumns={boardColumns}
                 tasks={column['tasks.tasks']}
                 createCard={createCard}
                 deleteCard={deleteCard}
                 updateCard={updateCard}
                 setNotification={setNotification}
+                onDragStartHandler={onDragStartHandler}
+                onDragOverHandler={onDragOverHandler}
+                onDropHandler={onDropHandler}
+                onDragEndHandler={onDragEndHandler}
+                dragEnterHandler={dragEnterHandler}
+                dragLeaveHandler={dragLeaveHandler}
               />
             ))
           }

@@ -14,6 +14,7 @@ const ButtonElement = ({
   bigFont,
   redirect,
   redirectPath,
+  smallFont,
 }) => {
   const btnStyle = classNames(
     styles.btn,
@@ -23,6 +24,7 @@ const ButtonElement = ({
       [styles.colorWhite]: colorWhite,
       [styles.basicFont]: basicFont,
       [styles.bigFont]: bigFont,
+      [styles.smallFont]: smallFont,
     },
   );
   return (

@@ -1,11 +1,12 @@
 @import '../../../utils/colors';
 
 .emptyColumn {
-  width: 15vw;
-  height: 12.5vh;
+  max-width: 20vw;
+  max-height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1.5rem;
   background: $primary_color_dark_blue;
   border-radius: .5rem;
   cursor: pointer;

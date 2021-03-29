@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { selectBoardUsers, selectIsError, selectError, selectIsLoading } from '../../selectors/boardSelectors';
 import { selectColumnError, selectColumnIsError } from '../../selectors/boardColumnsSelectors';
 import { inviteUser, getBoardUsers } from '../../actions/boards/actions';
-import { createColumn, getColumns, removeColumn, updateColumnTitle, createNewCard, deleteColumnCard, updateColumnCard } from '../../actions/boardColumns/actions';
+import { createColumn, getColumns, removeColumn, updateColumnTitle, createNewCard, deleteColumnCard, updateColumnCard, changeColumnOrder } from '../../actions/boardColumns/actions';
 import { selectUserId } from '../../selectors/authSelectors';
 import { selectColumns } from '../../selectors/boardColumnsSelectors';
 import Board from './Board';
@@ -58,6 +58,11 @@ const BoardContainer = () => {
     [dispatch]
   );
 
+  const columnMove = useCallback(
+    (dragId, dropId, boardId) => dispatch(changeColumnOrder(dragId, dropId, boardId)),
+    [dispatch]
+  )
+
   useEffect(() => {
     dispatch(getColumns(id))
     dispatch(getBoardUsers({ boardId: id }));
@@ -82,6 +87,7 @@ const BoardContainer = () => {
       createCard={createCard}
       deleteCard={deleteCard}
       updateCard={updateCard}
+      columnMove={columnMove}
     />
   )
 }

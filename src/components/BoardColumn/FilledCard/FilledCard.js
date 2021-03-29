@@ -40,10 +40,10 @@ const FilledCard = ({ id, boardId, cardTitle, cardDesc, updateCard, deleteCard, 
           />
           : (
             <div className={styles.boardColumn__card}>
-              <ButtonElement children={<TiPencil />} type="button" colorBlack transparent handleClick={() => { setEditMode(true) }} />
+              <ButtonElement children={<TiPencil />} type="button" smallFont colorBlack transparent handleClick={() => { setEditMode(true) }} />
               <h2>{cardTitle}</h2>
               <p>{cardDesc}</p>
-              <ButtonElement children={<MdDeleteForever />} type="button" basicFont transparent colorBlack handleClick={removeCard} />
+              <ButtonElement children={<MdDeleteForever />} type="button" smallFont transparent colorBlack handleClick={removeCard} />
             </div>
           )
       }

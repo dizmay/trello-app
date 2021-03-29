@@ -96,3 +96,7 @@ export const updateCardFailed = (error) => ({
   type: types.UPDATE_CARD_FAILED,
   payload: error
 })
+
+export const moveColumn = () => ({
+  type: types.COLUMN_MOVE,
+})
