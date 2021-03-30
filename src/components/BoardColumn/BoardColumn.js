@@ -22,8 +22,13 @@ const BoardColumn = ({
   onDragOverHandler,
   onDropHandler,
   onDragEndHandler,
-  dragEnterHandler,
-  dragLeaveHandler,
+  onDragEnterHandler,
+  onDragLeaveHandler,
+  cardMove,
+  cardDragId,
+  setCardDragId,
+  dragColumnId,
+  setDragColumnId,
 }) => {
 
   const [updateTitle, setUpdateTitle] = useState(false);
@@ -39,6 +44,27 @@ const BoardColumn = ({
     setUpdateTitle(false);
   }
 
+  const dragOverHandler = (e) => {
+    e.preventDefault();
+  }
+
+  const dragStartHandler = (e) => {
+    e.stopPropagation();
+    setCardDragId(JSON.parse(e.currentTarget.getAttribute('drag')));
+    setDragColumnId(JSON.parse(e.currentTarget.getAttribute('col')));
+  }
+
+  const dropHandler = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const dropId = JSON.parse(e.currentTarget.id);
+    if (cardDragId !== dropId) {
+      const dropColumnId = JSON.parse(e.currentTarget.getAttribute('col'));
+      console.log(cardDragId, dropId, dragColumnId, dropColumnId)
+      cardMove(cardDragId, dropId, dragColumnId, dropColumnId, boardId);
+    }
+  }
+
   return (
     <div className={styles.boardColumn}
       draggable
@@ -47,8 +73,8 @@ const BoardColumn = ({
       onDragOver={onDragOverHandler}
       onDrop={onDropHandler}
       onDragEnd={onDragEndHandler}
-      onDragEnter={dragEnterHandler}
-      onDragLeave={dragLeaveHandler}
+      onDragEnter={onDragEnterHandler}
+      onDragLeave={onDragLeaveHandler}
     >
       <div className={styles.boardColumn__header}>
         {
@@ -69,12 +95,18 @@ const BoardColumn = ({
             <FilledCard
               key={task.id}
               id={task.id}
+              dropPrevId={task.prevId}
+              dropNextId={task.nextId}
               boardId={boardId}
               cardTitle={task.title}
               cardDesc={task.description}
               deleteCard={deleteCard}
               updateCard={updateCard}
               setNotification={setNotification}
+              columnId={columnId}
+              dragOverHandler={dragOverHandler}
+              dragStartHandler={dragStartHandler}
+              dropHandler={dropHandler}
             />
           ))
       }

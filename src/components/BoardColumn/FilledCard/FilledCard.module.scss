@@ -1,36 +1,43 @@
 @import '../../../utils/colors';
 
+.card__container {
+  width: 95%;
+}
+
 .boardColumn__card {
   position: relative;
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: $primary_color_aqua;
   border-radius: .25rem;
-  padding: .25rem;
   font-family: 'Lato', sans-serif;
 
-  h2 {
-    margin-bottom: .5rem;
+  .draggable {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+
+    p {
+      padding: .25rem;
+      font-size: .85rem;
+      font-style: italic;
+      word-break: break-all;
+    }
   }
 
-  p {
-    font-size: .8rem;
-    font-style: italic;
-    align-self: flex-start;
-    word-break: break-all;
-  }
-
-  *:first-child {
+  button:first-child {
     font-size: 1rem;
     position: absolute;
     top: 0;
     right: 1.25rem;
   }
 
-  *:last-child {
+  button:last-child {
     font-size: 1rem;
     position: absolute;
     top: 0;

@@ -78,7 +78,7 @@ export const updateColumnTitle = (columnId, title, boardId) => async (dispatch) 
 export const createNewCard = (title, description, columnId, boardId) => async (dispatch) => {
   try {
     dispatch(createCard());
-    const response = await cardsAPI.createCard(title, description, columnId);
+    const response = await cardsAPI.createCard(title, description, columnId, boardId);
     const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(createCardSuccess(response.data))
@@ -88,10 +88,10 @@ export const createNewCard = (title, description, columnId, boardId) => async (d
   }
 }
 
-export const deleteColumnCard = (id, boardId) => async (dispatch) => {
+export const deleteColumnCard = (id, columnId, boardId) => async (dispatch) => {
   try {
     dispatch(deleteCard());
-    const response = await cardsAPI.deleteCard(id);
+    const response = await cardsAPI.deleteCard(id, columnId);
     const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(deleteCardSuccess(response.data))
@@ -120,6 +120,17 @@ export const changeColumnOrder = (dragId, dropId, boardId) => async (dispatch) =
     const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
     dispatch(moveColumn());
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
+
+export const changeCardPosition = (dragId, dropId, dragColumnId, dropColumnId, boardId) => async (dispatch) => {
+  try {
+    await cardsAPI.cardMove(dragId, dropId, dragColumnId, dropColumnId);
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
+    dispatch(getBoardColumnsSuccess(refreshColumns.data));
   }
   catch (error) {
     console.log(error);

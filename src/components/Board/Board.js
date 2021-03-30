@@ -27,6 +27,7 @@ const Board = ({
   deleteCard,
   updateCard,
   columnMove,
+  cardMove,
 }) => {
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -34,6 +35,8 @@ const Board = ({
   const [showColumnTitle, setShowColumnTitle] = useState(false);
   const [columnTitle, setColumnTitle] = useState('');
   const [dragId, setDragId] = useState(null);
+  const [cardDragId, setCardDragId] = useState(null);
+  const [dragColumnId, setDragColumnId] = useState(null);
 
   const onColumnTitleChange = (e) => {
     setColumnTitle(e.currentTarget.value);
@@ -64,13 +67,13 @@ const Board = ({
     e.currentTarget.style.opacity = '1';
   }
 
-  const dragEnterHandler = (e) => {
+  const onDragEnterHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
     e.currentTarget.style.border = '.15rem solid blue';
   }
 
-  const dragLeaveHandler = (e) => {
+  const onDragLeaveHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
     e.currentTarget.style.border = 'none';
@@ -84,6 +87,7 @@ const Board = ({
       columnMove(dragId, dropId, id);
     }
     e.currentTarget.style.border = 'none';
+    setDragId(null);
   }
 
   return (
@@ -109,8 +113,13 @@ const Board = ({
                 onDragOverHandler={onDragOverHandler}
                 onDropHandler={onDropHandler}
                 onDragEndHandler={onDragEndHandler}
-                dragEnterHandler={dragEnterHandler}
-                dragLeaveHandler={dragLeaveHandler}
+                onDragEnterHandler={onDragEnterHandler}
+                onDragLeaveHandler={onDragLeaveHandler}
+                cardMove={cardMove}
+                cardDragId={cardDragId}
+                setCardDragId={setCardDragId}
+                dragColumnId={dragColumnId}
+                setDragColumnId={setDragColumnId}
               />
             ))
           }
