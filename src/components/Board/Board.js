@@ -83,11 +83,13 @@ const Board = ({
     e.stopPropagation();
     e.preventDefault();
     const dropId = Number(e.currentTarget.id);
-    if (dragId !== dropId) {
+    if (dragId && dragId !== dropId) {
       columnMove(dragId, dropId, id);
     }
     e.currentTarget.style.border = 'none';
     setDragId(null);
+    setCardDragId(null);
+    setDragColumnId(null);
   }
 
   return (
@@ -120,6 +122,7 @@ const Board = ({
                 setCardDragId={setCardDragId}
                 dragColumnId={dragColumnId}
                 setDragColumnId={setDragColumnId}
+                dragId={dragId}
               />
             ))
           }

@@ -29,6 +29,7 @@ const BoardColumn = ({
   setCardDragId,
   dragColumnId,
   setDragColumnId,
+  dragId,
 }) => {
 
   const [updateTitle, setUpdateTitle] = useState(false);
@@ -52,6 +53,17 @@ const BoardColumn = ({
     e.stopPropagation();
     setCardDragId(JSON.parse(e.currentTarget.getAttribute('drag')));
     setDragColumnId(JSON.parse(e.currentTarget.getAttribute('col')));
+    e.currentTarget.style.opacity = '0.4';
+  }
+
+  const dragEndHandler = (e) => {
+    e.preventDefault();
+    e.currentTarget.style.opacity = '1';
+  }
+
+  const dragLeaveHandler = (e) => {
+    e.preventDefault();
+    e.currentTarget.style.border = 'none';
   }
 
   const dropHandler = (e) => {
@@ -59,10 +71,14 @@ const BoardColumn = ({
     e.preventDefault();
     const dropId = JSON.parse(e.currentTarget.id);
     if (cardDragId !== dropId) {
-      const dropColumnId = JSON.parse(e.currentTarget.getAttribute('col'));
-      console.log(cardDragId, dropId, dragColumnId, dropColumnId)
-      cardMove(cardDragId, dropId, dragColumnId, dropColumnId, boardId);
+      const columnIsEmpty = JSON.parse(e.currentTarget.getAttribute('col')) === null;
+      const dropColumnId = columnIsEmpty ? columnId : JSON.parse(e.currentTarget.getAttribute('col'));
+      const side = columnIsEmpty ? 'empty' : e.currentTarget.getAttribute('side');
+      cardMove(cardDragId, dropId, dragColumnId, dropColumnId, side, boardId);
+      e.currentTarget.style.border = 'none';
     }
+    setCardDragId(null);
+    setDragColumnId(null);
   }
 
   return (
@@ -71,7 +87,7 @@ const BoardColumn = ({
       id={columnId}
       onDragStart={onDragStartHandler}
       onDragOver={onDragOverHandler}
-      onDrop={onDropHandler}
+      onDrop={dragId ? onDropHandler : dropHandler}
       onDragEnd={onDragEndHandler}
       onDragEnter={onDragEnterHandler}
       onDragLeave={onDragLeaveHandler}
@@ -95,8 +111,6 @@ const BoardColumn = ({
             <FilledCard
               key={task.id}
               id={task.id}
-              dropPrevId={task.prevId}
-              dropNextId={task.nextId}
               boardId={boardId}
               cardTitle={task.title}
               cardDesc={task.description}
@@ -107,6 +121,8 @@ const BoardColumn = ({
               dragOverHandler={dragOverHandler}
               dragStartHandler={dragStartHandler}
               dropHandler={dropHandler}
+              dragEndHandler={dragEndHandler}
+              dragLeaveHandler={dragLeaveHandler}
             />
           ))
       }

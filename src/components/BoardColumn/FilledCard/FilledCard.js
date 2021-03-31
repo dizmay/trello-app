@@ -17,8 +17,8 @@ const FilledCard = ({
   dragOverHandler,
   dragStartHandler,
   dropHandler,
-  dropNextId,
-  dropPrevId,
+  dragEndHandler,
+  dragLeaveHandler,
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [changeTitle, setChangeTitle] = useState(cardTitle);
@@ -62,16 +62,15 @@ const FilledCard = ({
               drag={id}
               col={columnId}
               onDragStart={dragStartHandler}
-              
-              onDragEnd={(e) => { e.preventDefault() }}
+              onDragEnd={dragEndHandler}
               onDragEnter={(e) => { e.preventDefault() }}
-              onDragLeave={(e) => { e.preventDefault() }}
+              onDragLeave={dragLeaveHandler}
             >
               <ButtonElement children={<TiPencil />} type="button" smallFont colorBlack transparent handleClick={() => { setEditMode(true) }} />
-              <div className={styles.draggable} id={`${dropPrevId}`} onDrop={dropHandler} col={columnId}>
+              <div className={styles.draggable} id={id} side="top" onDrop={dropHandler} col={columnId}>
                 <h2>{cardTitle}</h2>
               </div>
-              <div className={styles.draggable} id={id} onDrop={dropHandler} col={columnId}>
+              <div className={styles.draggable} id={id} side="bottom" onDrop={dropHandler} col={columnId}>
                 <p>{cardDesc}</p>
               </div>
               <ButtonElement children={<MdDeleteForever />} type="button" smallFont transparent colorBlack handleClick={removeCard} />

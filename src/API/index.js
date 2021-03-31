@@ -83,7 +83,7 @@ export const cardsAPI = {
     return axios.put(`${baseURL}api/columns-tasks`, { id, title, description })
   },
 
-  cardMove(dragId, dropId, dragColumnId, dropColumnId) {
-    return axios.put(`${baseURL}api/columns-tasks/move-card`, { dragId, dropId, dragColumnId, dropColumnId })
+  cardMove(dragId, dropId, dragColumnId, dropColumnId, side) {
+    return axios.put(`${baseURL}api/columns-tasks/move-card`, { dragId, dropId, dragColumnId, dropColumnId, side })
   }
 }
