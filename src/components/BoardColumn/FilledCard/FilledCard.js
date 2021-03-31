@@ -77,6 +77,7 @@ const FilledCard = ({
               >
                 <h2>{cardTitle}</h2>
               </div>
+              <div className={styles.middle} />
               <div
                 className={styles.draggable}
                 id={id}

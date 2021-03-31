@@ -67,19 +67,17 @@ const BoardColumn = ({
     const dragEnterId = JSON.parse(e.currentTarget.getAttribute('id'));
     const side = e.currentTarget.getAttribute('side');
     if (side === 'top' && cardDragId !== dragEnterId) {
-      e.currentTarget.parentNode.style.transform = 'translateY(1rem)';
+      e.currentTarget.parentNode.style.transform = 'translateY(.5rem)';
     }
     if (side === 'bottom' && cardDragId !== dragEnterId) {
-      e.currentTarget.parentNode.style.transform = 'translateY(-1rem)';
+      e.currentTarget.parentNode.style.transform = 'translateY(-.5rem)';
     }
   }
 
   const dragLeaveHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const side = e.currentTarget.getAttribute('side');
-    if (side === 'top') e.currentTarget.parentNode.style.transform = 'none';
-    if (side === 'bottom') e.currentTarget.parentNode.style.transform = 'none';
+    e.currentTarget.parentNode.style.transform = 'none';
   }
 
   const dropHandler = (e) => {
