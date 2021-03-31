@@ -7,11 +7,12 @@
   align-items: center;
   background-color: $primary_color_blue;
   padding: .5rem;
+  border: .15rem solid transparent;
   border-radius: .5rem;
 }
 
 .boardColumn > * {
-  margin-bottom: .5rem;
+  margin-bottom: 1.5rem;
 }
 
 .boardColumn > *:last-child {

@@ -76,18 +76,20 @@ const Board = ({
   const onDragLeaveHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    e.currentTarget.style.border = 'none';
+    e.currentTarget.style.border = '.15rem solid transparent';
   }
 
   const onDropHandler = (e) => {
     e.stopPropagation();
     e.preventDefault();
     const dropId = Number(e.currentTarget.id);
-    if (dragId !== dropId) {
+    if (dragId && dragId !== dropId) {
       columnMove(dragId, dropId, id);
     }
-    e.currentTarget.style.border = 'none';
+    e.currentTarget.style.border = '.15rem solid transparent';
     setDragId(null);
+    setCardDragId(null);
+    setDragColumnId(null);
   }
 
   return (
@@ -120,6 +122,7 @@ const Board = ({
                 setCardDragId={setCardDragId}
                 dragColumnId={dragColumnId}
                 setDragColumnId={setDragColumnId}
+                dragId={dragId}
               />
             ))
           }

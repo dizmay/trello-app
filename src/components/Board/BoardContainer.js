@@ -64,7 +64,7 @@ const BoardContainer = () => {
   );
 
   const cardMove = useCallback(
-    (dragId, dropId, dragColumnId, dropColumnId, dropNextId, boardId) => dispatch(changeCardPosition(dragId, dropId, dragColumnId, dropColumnId, dropNextId, boardId)),
+    (dragId, dropId, dragColumnId, dropColumnId, side, boardId) => dispatch(changeCardPosition(dragId, dropId, dragColumnId, dropColumnId, side, boardId)),
     [dispatch]
   );
 

@@ -126,9 +126,9 @@ export const changeColumnOrder = (dragId, dropId, boardId) => async (dispatch) =
   }
 }
 
-export const changeCardPosition = (dragId, dropId, dragColumnId, dropColumnId, boardId) => async (dispatch) => {
+export const changeCardPosition = (dragId, dropId, dragColumnId, dropColumnId, side, boardId) => async (dispatch) => {
   try {
-    await cardsAPI.cardMove(dragId, dropId, dragColumnId, dropColumnId);
+    await cardsAPI.cardMove(dragId, dropId, dragColumnId, dropColumnId, side);
     const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
   }
