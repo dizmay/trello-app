@@ -71,15 +71,19 @@ export const columnsAPI = {
 }
 
 export const cardsAPI = {
-  createCard(title, description, columnId) {
-    return axios.post(`${baseURL}api/columns-tasks`, { title, description, columnId })
+  createCard(title, description, columnId, boardId) {
+    return axios.post(`${baseURL}api/columns-tasks`, { title, description, columnId, boardId })
   },
 
-  deleteCard(id) {
-    return axios.delete(`${baseURL}api/columns-tasks`, { params: { id } })
+  deleteCard(id, columnId) {
+    return axios.delete(`${baseURL}api/columns-tasks`, { params: { id, columnId } })
   },
 
   updateCard(id, title, description) {
     return axios.put(`${baseURL}api/columns-tasks`, { id, title, description })
+  },
+
+  cardMove(dragId, dropId, dragColumnId, dropColumnId, side) {
+    return axios.put(`${baseURL}api/columns-tasks/move-card`, { dragId, dropId, dragColumnId, dropColumnId, side })
   }
 }
