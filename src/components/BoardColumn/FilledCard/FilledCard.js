@@ -3,6 +3,7 @@ import { MdDeleteForever } from 'react-icons/md';
 import { TiPencil } from 'react-icons/ti'
 import ButtonElement from '../../ButtonElement/ButtonElement';
 import FilledCardForm from './FilledCardForm/FilledCardForm';
+import FilledCardMembers from './FilledCardMembers/FilledCardMembers';
 import styles from './FilledCard.module.scss';
 
 const FilledCard = ({
@@ -20,6 +21,10 @@ const FilledCard = ({
   dragEndHandler,
   dragLeaveHandler,
   dragEnterHandler,
+  usernames,
+  assigned,
+  assignUserToTask,
+  cancelUserAssignment,
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [changeTitle, setChangeTitle] = useState(cardTitle);
@@ -65,9 +70,12 @@ const FilledCard = ({
               onDragStart={dragStartHandler}
               onDragEnd={dragEndHandler}
             >
-              <ButtonElement children={<TiPencil />} type="button" smallFont colorBlack transparent handleClick={() => { setEditMode(true) }} />
+              <div className={styles.card__buttons}>
+                <ButtonElement children={<TiPencil />} type="button" smallFont colorBlack transparent handleClick={() => { setEditMode(true) }} />
+                <ButtonElement children={<MdDeleteForever />} type="button" smallFont transparent colorBlack handleClick={removeCard} />
+              </div>
               <div
-                className={styles.draggable}
+                className={styles.draggableTop}
                 id={id}
                 side="top"
                 onDrop={dropHandler}
@@ -76,10 +84,11 @@ const FilledCard = ({
                 onDragLeave={dragLeaveHandler}
               >
                 <h2>{cardTitle}</h2>
+                <p>{cardDesc}</p>
               </div>
               <div className={styles.middle} />
               <div
-                className={styles.draggable}
+                className={styles.draggableBottom}
                 id={id}
                 side="bottom"
                 onDrop={dropHandler}
@@ -87,9 +96,15 @@ const FilledCard = ({
                 onDragEnter={dragEnterHandler}
                 onDragLeave={dragLeaveHandler}
               >
-                <p>{cardDesc}</p>
+                <FilledCardMembers
+                  usernames={usernames}
+                  assigned={assigned}
+                  assignUserToTask={assignUserToTask}
+                  cancelUserAssignment={cancelUserAssignment}
+                  id={id}
+                  boardId={boardId}
+                />
               </div>
-              <ButtonElement children={<MdDeleteForever />} type="button" smallFont transparent colorBlack handleClick={removeCard} />
             </div>
           )
       }

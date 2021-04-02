@@ -28,6 +28,8 @@ const Board = ({
   updateCard,
   columnMove,
   cardMove,
+  assignUserToTask,
+  cancelUserAssignment,
 }) => {
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -123,6 +125,9 @@ const Board = ({
                 dragColumnId={dragColumnId}
                 setDragColumnId={setDragColumnId}
                 dragId={dragId}
+                usernames={usernames}
+                assignUserToTask={assignUserToTask}
+                cancelUserAssignment={cancelUserAssignment}
               />
             ))
           }
@@ -144,7 +149,8 @@ const Board = ({
               : (<>
                 {
                   isComponentVisible && <BoardModal
-                    id={id} invite={invite}
+                    id={id}
+                    invite={invite}
                     userId={userId}
                     setIsComponentVisible={setIsComponentVisible}
                     setNotification={setNotification}

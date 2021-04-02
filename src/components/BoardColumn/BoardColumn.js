@@ -30,6 +30,9 @@ const BoardColumn = ({
   dragColumnId,
   setDragColumnId,
   dragId,
+  usernames,
+  assignUserToTask,
+  cancelUserAssignment,
 }) => {
 
   const [updateTitle, setUpdateTitle] = useState(false);
@@ -66,17 +69,19 @@ const BoardColumn = ({
     e.stopPropagation();
     const dragEnterId = JSON.parse(e.currentTarget.getAttribute('id'));
     const side = e.currentTarget.getAttribute('side');
+    console.log('BOTTOM DRAG ENTER')
     if (side === 'top' && cardDragId !== dragEnterId) {
-      e.currentTarget.parentNode.style.transform = 'translateY(.5rem)';
+      e.currentTarget.parentNode.style.transform = 'translateY(.75rem)';
     }
     if (side === 'bottom' && cardDragId !== dragEnterId) {
-      e.currentTarget.parentNode.style.transform = 'translateY(-.5rem)';
+      e.currentTarget.parentNode.style.transform = 'translateY(-0.75rem)';
     }
   }
 
   const dragLeaveHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    console.log('BOTTOM DRAG LEAVE')
     e.currentTarget.parentNode.style.transform = 'none';
   }
 
@@ -129,6 +134,7 @@ const BoardColumn = ({
               boardId={boardId}
               cardTitle={task.title}
               cardDesc={task.description}
+              assigned={task.hasOwnProperty('assigned') ? task.assigned : {}}
               deleteCard={deleteCard}
               updateCard={updateCard}
               setNotification={setNotification}
@@ -139,6 +145,9 @@ const BoardColumn = ({
               dragEndHandler={dragEndHandler}
               dragLeaveHandler={dragLeaveHandler}
               dragEnterHandler={dragEnterHandler}
+              usernames={usernames}
+              assignUserToTask={assignUserToTask}
+              cancelUserAssignment={cancelUserAssignment}
             />
           ))
       }
