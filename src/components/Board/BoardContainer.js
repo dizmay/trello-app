@@ -2,9 +2,21 @@ import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { selectBoardUsers, selectIsError, selectError, selectIsLoading } from '../../selectors/boardSelectors';
-import { selectColumnError, selectColumnIsError } from '../../selectors/boardColumnsSelectors';
+import { selectColumnError, selectColumnIsError, selectColumnIsLoading } from '../../selectors/boardColumnsSelectors';
 import { inviteUser, getBoardUsers } from '../../actions/boards/actions';
-import { createColumn, getColumns, removeColumn, updateColumnTitle, createNewCard, deleteColumnCard, updateColumnCard, changeColumnOrder, changeCardPosition, assignUser, cancelAssignment } from '../../actions/boardColumns/actions';
+import {
+  createColumn,
+  getColumns,
+  removeColumn,
+  updateColumnTitle,
+  createNewCard,
+  deleteColumnCard,
+  updateColumnCard,
+  changeColumnOrder,
+  changeCardPosition,
+  assignUser,
+  cancelAssignment
+} from '../../actions/boardColumns/actions';
 import { selectUserId } from '../../selectors/authSelectors';
 import { selectColumns } from '../../selectors/boardColumnsSelectors';
 import Board from './Board';
@@ -21,6 +33,7 @@ const BoardContainer = () => {
   const columnIsError = useSelector(selectColumnIsError);
   const isLoading = useSelector(selectIsLoading);
   const boardColumns = useSelector(selectColumns);
+  const columnsIsLoading = useSelector(selectColumnIsLoading);
   const dispatch = useDispatch();
 
   const invite = useCallback(
@@ -106,6 +119,7 @@ const BoardContainer = () => {
       cardMove={cardMove}
       assignUserToTask={assignUserToTask}
       cancelUserAssignment={cancelUserAssignment}
+      columnsIsLoading={columnsIsLoading}
     />
   )
 }
