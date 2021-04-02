@@ -20,8 +20,7 @@ const MembersMenu = ({
 
   const cancelAssign = (e) => {
     const userId = e.currentTarget.getAttribute('id');
-    console.log(userId)
-    cancelUserAssignment(id, userId, boardId); 
+    cancelUserAssignment(id, userId, boardId);
   }
 
   return (

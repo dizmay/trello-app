@@ -4,26 +4,27 @@ import { checkCurrentUser } from './actions/auth/actions';
 import { getNotifications } from './actions/users/actions';
 import { setAuthToken } from './utils/setAuthToken';
 import { selectIsLogged, selectIsLoading } from './selectors/authSelectors';
+import { onTabClose } from './utils/onTabClose';
 import Loader from './components/Loader/Loader';
 import App from './App';
 
 const AppContainer = () => {
   const isLogged = useSelector(selectIsLogged);
   const isLoading = useSelector(selectIsLoading);
+  const authenticated = localStorage.authenticated;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (localStorage.token) {
-      const token = localStorage.token;
-      setAuthToken(token);
-      dispatch(checkCurrentUser(token))
-      dispatch(getNotifications())
-    }
+    const token = localStorage.token;
+    setAuthToken(token);
+    dispatch(checkCurrentUser(token))
+    dispatch(getNotifications())
+    window.onbeforeunload = onTabClose;
   }, [dispatch, isLogged]);
 
   return (<>
     {
-      isLoading
+      isLoading || !authenticated
         ? <Loader posMiddle />
         : <App isLogged={isLogged} />
     }

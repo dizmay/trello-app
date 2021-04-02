@@ -69,7 +69,6 @@ const BoardColumn = ({
     e.stopPropagation();
     const dragEnterId = JSON.parse(e.currentTarget.getAttribute('id'));
     const side = e.currentTarget.getAttribute('side');
-    console.log('BOTTOM DRAG ENTER')
     if (side === 'top' && cardDragId !== dragEnterId) {
       e.currentTarget.parentNode.style.transform = 'translateY(.75rem)';
     }
@@ -81,7 +80,6 @@ const BoardColumn = ({
   const dragLeaveHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('BOTTOM DRAG LEAVE')
     e.currentTarget.parentNode.style.transform = 'none';
   }
 
