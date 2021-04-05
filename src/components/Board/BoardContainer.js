@@ -82,7 +82,7 @@ const BoardContainer = () => {
   );
 
   const assignUserToTask = useCallback(
-    (taskId, userId, boardId) => dispatch(assignUser(taskId, userId, boardId)),
+    (taskId, userId, boardId, columnId) => dispatch(assignUser(taskId, userId, boardId, columnId)),
     [dispatch]
   );
 

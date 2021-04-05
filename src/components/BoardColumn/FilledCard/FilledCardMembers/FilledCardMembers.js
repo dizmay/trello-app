@@ -11,6 +11,7 @@ const FilledCardMembers = ({
   assignUserToTask,
   cancelUserAssignment,
   id,
+  columnId,
   boardId,
 }) => {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -31,6 +32,7 @@ const FilledCardMembers = ({
         {
           isComponentVisible && <MembersMenu
             id={id}
+            columnId={columnId}
             boardId={boardId}
             usernames={usernames}
             assigned={assigned}

@@ -103,6 +103,7 @@ const FilledCard = ({
                   cancelUserAssignment={cancelUserAssignment}
                   id={id}
                   boardId={boardId}
+                  columnId={columnId}
                 />
               </div>
             </div>

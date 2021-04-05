@@ -87,8 +87,8 @@ export const cardsAPI = {
     return axios.put(`${baseURL}api/columns-tasks/move-card`, { dragId, dropId, dragColumnId, dropColumnId, side })
   },
 
-  assignUserToCard(taskId, userId, boardId) {
-    return axios.post(`${baseURL}api/assign-user`, { taskId, userId, boardId })
+  assignUserToCard(taskId, userId, boardId, columnId) {
+    return axios.post(`${baseURL}api/assign-user`, { taskId, userId, boardId, columnId })
   },
 
   cancelUserAssignment(taskId, userId, boardId) {

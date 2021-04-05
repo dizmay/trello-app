@@ -137,9 +137,9 @@ export const changeCardPosition = (dragId, dropId, dragColumnId, dropColumnId, s
   }
 }
 
-export const assignUser = (taskId, userId, boardId) => async (dispatch) => {
+export const assignUser = (taskId, userId, boardId, columnId) => async (dispatch) => {
   try {
-    await cardsAPI.assignUserToCard(taskId, userId, boardId);
+    await cardsAPI.assignUserToCard(taskId, userId, boardId, columnId);
     const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));
   }

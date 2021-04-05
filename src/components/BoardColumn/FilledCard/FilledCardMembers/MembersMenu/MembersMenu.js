@@ -9,13 +9,14 @@ const MembersMenu = ({
   assignUserToTask,
   cancelUserAssignment,
   id,
+  columnId,
   boardId,
 }) => {
   const assignedUsernames = assigned.map(el => el.username);
 
   const assign = (e) => {
     const userId = e.currentTarget.getAttribute('id');
-    assignUserToTask(id, userId, boardId);
+    assignUserToTask(id, userId, boardId, columnId);
   }
 
   const cancelAssign = (e) => {
