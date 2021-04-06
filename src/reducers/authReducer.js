@@ -1,7 +1,7 @@
 import types from '../actions/auth/types';
 
 const initialState = {
-  isLogged: false,
+  isLogged: null,
   message: '',
   id: null,
   username: '',

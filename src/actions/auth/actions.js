@@ -52,10 +52,8 @@ export const checkCurrentUser = (token) => (dispatch) => {
     dispatch(setCurrentUser());
     const decoded = jwt.decode(token);
     dispatch(setCurrentUserSuccess(decoded));
-    localStorage.setItem('authenticated', 'true');
   }
   catch (error) {
-    localStorage.setItem('authenticated', 'false');
     dispatch(setCurrentUserFailed())
   }
 }
