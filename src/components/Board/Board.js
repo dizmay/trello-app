@@ -28,6 +28,9 @@ const Board = ({
   updateCard,
   columnMove,
   cardMove,
+  assignUserToTask,
+  cancelUserAssignment,
+  columnsIsLoading,
 }) => {
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -94,69 +97,79 @@ const Board = ({
 
   return (
     <>
-      <div className={styles.board__container}>
-        <h2>{title}</h2>
-        <div className={styles.board}>
-          {
-            boardColumns.map(column => (
-              <BoardColumn
-                key={column.id}
-                title={column.title}
-                removeCol={removeCol}
-                columnId={column.id}
-                boardId={id}
-                updateCol={updateCol}
-                tasks={column.tasks}
-                createCard={createCard}
-                deleteCard={deleteCard}
-                updateCard={updateCard}
-                setNotification={setNotification}
-                onDragStartHandler={onDragStartHandler}
-                onDragOverHandler={onDragOverHandler}
-                onDropHandler={onDropHandler}
-                onDragEndHandler={onDragEndHandler}
-                onDragEnterHandler={onDragEnterHandler}
-                onDragLeaveHandler={onDragLeaveHandler}
-                cardMove={cardMove}
-                cardDragId={cardDragId}
-                setCardDragId={setCardDragId}
-                dragColumnId={dragColumnId}
-                setDragColumnId={setDragColumnId}
-                dragId={dragId}
-              />
-            ))
-          }
-          <EmptyColumn
-            columnTitle={columnTitle}
-            showColumnTitle={showColumnTitle}
-            onColumnTitleChange={onColumnTitleChange}
-            handleClick={() => { setShowColumnTitle(!showColumnTitle) }}
-            createColumn={createColumn}
-            boardId={id}
-            setColumnTitle={setColumnTitle}
-          />
-        </div>
-        <BoardMenu showModal={showModal} usernames={usernames} />
-        <div ref={ref}>
-          {
-            isLoading
-              ? <Loader posMiddle />
-              : (<>
+      {
+        columnsIsLoading
+          ? <Loader posMiddle />
+          : (
+            <div className={styles.board__container}>
+              <h2>{title}</h2>
+              <div className={styles.board}>
                 {
-                  isComponentVisible && <BoardModal
-                    id={id} invite={invite}
-                    userId={userId}
-                    setIsComponentVisible={setIsComponentVisible}
-                    setNotification={setNotification}
-                  />
+                  boardColumns.map(column => (
+                    <BoardColumn
+                      key={column.id}
+                      title={column.title}
+                      removeCol={removeCol}
+                      columnId={column.id}
+                      boardId={id}
+                      updateCol={updateCol}
+                      tasks={column.tasks}
+                      createCard={createCard}
+                      deleteCard={deleteCard}
+                      updateCard={updateCard}
+                      setNotification={setNotification}
+                      onDragStartHandler={onDragStartHandler}
+                      onDragOverHandler={onDragOverHandler}
+                      onDropHandler={onDropHandler}
+                      onDragEndHandler={onDragEndHandler}
+                      onDragEnterHandler={onDragEnterHandler}
+                      onDragLeaveHandler={onDragLeaveHandler}
+                      cardMove={cardMove}
+                      cardDragId={cardDragId}
+                      setCardDragId={setCardDragId}
+                      dragColumnId={dragColumnId}
+                      setDragColumnId={setDragColumnId}
+                      dragId={dragId}
+                      usernames={usernames}
+                      assignUserToTask={assignUserToTask}
+                      cancelUserAssignment={cancelUserAssignment}
+                    />
+                  ))
                 }
-              </>)
-          }
-        </div>
-        {
-          ((boardIsError || columnIsError) && notification) && <NotificationElement text={(boardError || columnError)} handleClick={() => { setNotification(false) }} />
-        }
-      </div>
+                <EmptyColumn
+                  columnTitle={columnTitle}
+                  showColumnTitle={showColumnTitle}
+                  onColumnTitleChange={onColumnTitleChange}
+                  handleClick={() => { setShowColumnTitle(!showColumnTitle) }}
+                  createColumn={createColumn}
+                  boardId={id}
+                  setColumnTitle={setColumnTitle}
+                />
+              </div>
+              <BoardMenu showModal={showModal} usernames={usernames} />
+              <div ref={ref}>
+                {
+                  isLoading
+                    ? <Loader posMiddle />
+                    : (<>
+                      {
+                        isComponentVisible && <BoardModal
+                          id={id}
+                          invite={invite}
+                          userId={userId}
+                          setIsComponentVisible={setIsComponentVisible}
+                          setNotification={setNotification}
+                        />
+                      }
+                    </>)
+                }
+              </div>
+              {
+                ((boardIsError || columnIsError) && notification) && <NotificationElement text={(boardError || columnError)} handleClick={() => { setNotification(false) }} />
+              }
+            </div>
+          )
+      }
     </>
   )
 }

@@ -136,3 +136,25 @@ export const changeCardPosition = (dragId, dropId, dragColumnId, dropColumnId, s
     console.log(error);
   }
 }
+
+export const assignUser = (taskId, userId, boardId, columnId) => async (dispatch) => {
+  try {
+    await cardsAPI.assignUserToCard(taskId, userId, boardId, columnId);
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
+    dispatch(getBoardColumnsSuccess(refreshColumns.data));
+  }
+  catch (error) {
+    console.log(error)
+  }
+}
+
+export const cancelAssignment = (taskId, userId, boardId) => async (dispatch) => {
+  try {
+    await cardsAPI.cancelUserAssignment(taskId, userId, boardId);
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
+    dispatch(getBoardColumnsSuccess(refreshColumns.data));
+  }
+  catch (error) {
+    console.log(error)
+  }
+}

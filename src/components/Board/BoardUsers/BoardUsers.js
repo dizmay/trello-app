@@ -8,7 +8,7 @@ const BoardUsers = ({ usernames }) => {
       <h3>Board users:</h3>
       <div className={styles.users}>
         {
-          usernames.map((elem, id) => <div key={id} className={styles.users__avatar}>{getFirstLetter(elem)}</div>)
+          usernames.map(elem => <div key={elem.id} className={styles.users__avatar}>{getFirstLetter(elem.username)}</div>)
         }
       </div>
     </div>
