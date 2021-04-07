@@ -19,6 +19,7 @@ import {
 } from '../../actions/boardColumns/actions';
 import { selectUserId } from '../../selectors/authSelectors';
 import { selectColumns } from '../../selectors/boardColumnsSelectors';
+import { createComment } from '../../actions/comments/actions';
 import Board from './Board';
 
 const BoardContainer = () => {
@@ -91,6 +92,11 @@ const BoardContainer = () => {
     [dispatch]
   );
 
+  const newComment = useCallback(
+    (text, userId, taskId, boardId, columnId) => dispatch(createComment({ text, userId, taskId, boardId, columnId })),
+    [dispatch]
+  );
+
   useEffect(() => {
     dispatch(getColumns(id))
     dispatch(getBoardUsers({ boardId: id }));
@@ -120,6 +126,7 @@ const BoardContainer = () => {
       assignUserToTask={assignUserToTask}
       cancelUserAssignment={cancelUserAssignment}
       columnsIsLoading={columnsIsLoading}
+      newComment={newComment}
     />
   )
 }

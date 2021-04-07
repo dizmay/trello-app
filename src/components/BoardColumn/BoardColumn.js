@@ -33,6 +33,8 @@ const BoardColumn = ({
   usernames,
   assignUserToTask,
   cancelUserAssignment,
+  newComment,
+  userId,
 }) => {
 
   const [updateTitle, setUpdateTitle] = useState(false);
@@ -133,10 +135,12 @@ const BoardColumn = ({
               cardTitle={task.title}
               cardDesc={task.description}
               assigned={task.hasOwnProperty('assigned') ? task.assigned : {}}
+              comments={task.hasOwnProperty('comments') ? task.comments : {}}
               deleteCard={deleteCard}
               updateCard={updateCard}
               setNotification={setNotification}
               columnId={columnId}
+              columnTitle={title}
               dragOverHandler={dragOverHandler}
               dragStartHandler={dragStartHandler}
               dropHandler={dropHandler}
@@ -146,6 +150,8 @@ const BoardColumn = ({
               usernames={usernames}
               assignUserToTask={assignUserToTask}
               cancelUserAssignment={cancelUserAssignment}
+              newComment={newComment}
+              userId={userId}
             />
           ))
       }

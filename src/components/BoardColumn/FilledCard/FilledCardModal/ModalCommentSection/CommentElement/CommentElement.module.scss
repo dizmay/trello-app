@@ -1,0 +1,45 @@
+@import '../../../../../../utils/colors';
+
+.comment {
+  display: inline-flex;
+  align-items: center;
+  margin: .5rem 0;
+}
+
+.comment > *:first-child {
+  margin-right: .25rem;
+}
+
+.comment__user {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $primary_color_green;
+}
+
+.comment__text__container {
+  display: flex;
+  align-items: center;
+
+  p {
+    font-weight: bold;
+    margin-right: .25rem;
+  }
+}
+
+.comment__text {
+  border: .1rem solid $black;
+  border-radius: .5rem;
+  padding: .25rem;
+  font-style: italic;
+}
+
+.comment__end {
+  height: .15rem;
+  width: 100%;
+  background: $black;
+}

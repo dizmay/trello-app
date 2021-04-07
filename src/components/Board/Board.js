@@ -31,6 +31,7 @@ const Board = ({
   assignUserToTask,
   cancelUserAssignment,
   columnsIsLoading,
+  newComment,
 }) => {
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -133,6 +134,8 @@ const Board = ({
                       usernames={usernames}
                       assignUserToTask={assignUserToTask}
                       cancelUserAssignment={cancelUserAssignment}
+                      newComment={newComment}
+                      userId={userId}
                     />
                   ))
                 }
