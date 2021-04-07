@@ -32,6 +32,7 @@ const FilledCard = ({
   newComment,
   userId,
   refresh,
+  updateCardNoLoader,
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [changeTitle, setChangeTitle] = useState(cardTitle);
@@ -143,7 +144,7 @@ const FilledCard = ({
           boardId={boardId}
           columnId={columnId}
           removeCard={removeCard}
-          updateCard={updateCard}
+          updateCard={updateCardNoLoader}
           comments={comments}
           newComment={newComment}
           userId={userId}

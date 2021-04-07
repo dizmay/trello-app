@@ -6,7 +6,7 @@ import styles from './ModalCommentSection.module.scss';
 
 const ModalCommentSection = ({ comments, value, onValueChange, handleClick }) => {
   return (
-    <>
+    <div className={styles.comments__container}>
       <div className={styles.comments__title}>
         <FaCommentDots />
         <h2>Comments:</h2>
@@ -31,7 +31,7 @@ const ModalCommentSection = ({ comments, value, onValueChange, handleClick }) =>
           comments.map(comment => <CommentElement key={comment.id} username={comment.username} text={comment.text} />)
         }
       </div>
-    </>
+    </div>
   )
 }
 

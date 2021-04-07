@@ -15,7 +15,8 @@ import {
   changeColumnOrder,
   changeCardPosition,
   assignUser,
-  cancelAssignment
+  cancelAssignment,
+  updateColumnCardNoLoader
 } from '../../actions/boardColumns/actions';
 import { selectUserId } from '../../selectors/authSelectors';
 import { selectColumns } from '../../selectors/boardColumnsSelectors';
@@ -69,6 +70,11 @@ const BoardContainer = () => {
 
   const updateCard = useCallback(
     (id, title, description, boardId) => dispatch(updateColumnCard(id, title, description, boardId)),
+    [dispatch]
+  );
+
+  const updateCardNoLoader = useCallback(
+    (id, title, description, boardId) => dispatch(updateColumnCardNoLoader(id, title, description, boardId)),
     [dispatch]
   );
 
@@ -126,6 +132,7 @@ const BoardContainer = () => {
       createCard={createCard}
       deleteCard={deleteCard}
       updateCard={updateCard}
+      updateCardNoLoader={updateCardNoLoader}
       columnMove={columnMove}
       cardMove={cardMove}
       assignUserToTask={assignUserToTask}

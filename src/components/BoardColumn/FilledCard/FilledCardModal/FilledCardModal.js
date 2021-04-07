@@ -68,8 +68,10 @@ const FilledCardModal = ({
   }
 
   const createNewComment = () => {
-    newComment(comment, userId, id, boardId, columnId);
-    setComment('');
+    if (comment.length > 1) {
+      newComment(comment, userId, id, boardId, columnId);
+      setComment('');
+    }
   }
 
   const refreshComments = () => {
@@ -96,7 +98,7 @@ const FilledCardModal = ({
                   : <h2>{cardTitle}</h2>
               }
             </div>
-            <span>{`in list ${columnTitle}`}</span>
+            <span>{`in list "${columnTitle}"`}</span>
           </div>
           <div className={styles.modal__assigned}>
             <FilledCardMembers

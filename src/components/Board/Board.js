@@ -33,6 +33,7 @@ const Board = ({
   columnsIsLoading,
   newComment,
   refresh,
+  updateCardNoLoader
 }) => {
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -138,6 +139,7 @@ const Board = ({
                       newComment={newComment}
                       userId={userId}
                       refresh={refresh}
+                      updateCardNoLoader={updateCardNoLoader}
                     />
                   ))
                 }

@@ -114,6 +114,18 @@ export const updateColumnCard = (id, title, description, boardId) => async (disp
   }
 }
 
+export const updateColumnCardNoLoader = (id, title, description, boardId) => async (dispatch) => {
+  try {
+    const response = await cardsAPI.updateCard(id, title, description);
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
+    dispatch(getBoardColumnsSuccess(refreshColumns.data));
+    dispatch(updateCardSuccess(response.data))
+  }
+  catch (error) {
+    dispatch(updateCardFailed(getMessage(error)));
+  }
+}
+
 export const changeColumnOrder = (dragId, dropId, boardId) => async (dispatch) => {
   try {
     await columnsAPI.columnMove(dragId, dropId, boardId);
