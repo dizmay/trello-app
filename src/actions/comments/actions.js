@@ -15,3 +15,13 @@ export const createComment = ({ text, userId, taskId, boardId, columnId }) => as
     dispatch(createNewCommentFailed(error.message))
   }
 }
+
+export const refreshComments = (boardId) => async (dispatch) => {
+  try {
+    const refreshColumns = await columnsAPI.getBoardColumns(boardId);
+    dispatch(getBoardColumnsSuccess(refreshColumns.data));
+  }
+  catch (error) {
+    console.log(error.message)
+  }
+}

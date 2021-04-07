@@ -31,6 +31,7 @@ const FilledCard = ({
   comments,
   newComment,
   userId,
+  refresh,
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [changeTitle, setChangeTitle] = useState(cardTitle);
@@ -146,6 +147,7 @@ const FilledCard = ({
           comments={comments}
           newComment={newComment}
           userId={userId}
+          refresh={refresh}
         />
       }
     </div>

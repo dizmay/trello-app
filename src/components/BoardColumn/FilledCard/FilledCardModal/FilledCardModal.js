@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaClipboardList } from 'react-icons/fa';
 import { TiThMenu, TiPencil } from 'react-icons/ti';
-import { MdDeleteForever } from 'react-icons/md';
+import { MdDeleteForever, MdRefresh } from 'react-icons/md';
 import ModalButtons from './ModalButtons/ModalButtons';
 import FilledCardMembers from '../FilledCardMembers/FilledCardMembers';
 import ModalForm from './ModalForm/ModalForm';
@@ -25,6 +25,7 @@ const FilledCardModal = ({
   comments,
   newComment,
   userId,
+  refresh,
 }) => {
 
   const [title, setTitle] = useState(cardTitle);
@@ -69,6 +70,10 @@ const FilledCardModal = ({
   const createNewComment = () => {
     newComment(comment, userId, id, boardId, columnId);
     setComment('');
+  }
+
+  const refreshComments = () => {
+    refresh(boardId);
   }
 
   const onCardUpdate = (e) => {
@@ -123,6 +128,8 @@ const FilledCardModal = ({
             <ModalButtons icon={<TiPencil />} text={'Change title'} handleClick={editTitle} />
             <ModalButtons icon={<TiPencil />} text={'Change description'} handleClick={editDescription} />
             <ModalButtons icon={<MdDeleteForever />} text={'Delete card'} handleClick={removeCard} />
+            <br />
+            <ModalButtons icon={<MdRefresh />} text={'Refresh Info'} handleClick={refreshComments} />
           </div>
         </div>
       </div>

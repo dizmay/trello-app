@@ -35,6 +35,7 @@ const BoardColumn = ({
   cancelUserAssignment,
   newComment,
   userId,
+  refresh,
 }) => {
 
   const [updateTitle, setUpdateTitle] = useState(false);
@@ -152,6 +153,7 @@ const BoardColumn = ({
               cancelUserAssignment={cancelUserAssignment}
               newComment={newComment}
               userId={userId}
+              refresh={refresh}
             />
           ))
       }

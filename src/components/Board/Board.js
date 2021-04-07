@@ -32,6 +32,7 @@ const Board = ({
   cancelUserAssignment,
   columnsIsLoading,
   newComment,
+  refresh,
 }) => {
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -136,6 +137,7 @@ const Board = ({
                       cancelUserAssignment={cancelUserAssignment}
                       newComment={newComment}
                       userId={userId}
+                      refresh={refresh}
                     />
                   ))
                 }
