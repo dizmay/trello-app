@@ -30,6 +30,11 @@
     font-weight: bold;
     font-size: 1.2rem;
     cursor: pointer;
+    transition: .2s filter ease-in-out;
+
+    &:hover {
+      filter: brightness(110%);
+    }
   }
 }
 

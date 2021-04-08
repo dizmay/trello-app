@@ -13,6 +13,11 @@
   margin-bottom: .5rem;
   display: flex;
   align-items: flex-start;
+  transition: .2s filter ease-in-out;
+
+  &:hover {
+    filter: brightness(110%);
+  }
 }
 
 .btn__container {
