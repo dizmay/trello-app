@@ -1,4 +1,4 @@
-@import '../../../../../utils/colors';
+@import '../../../../../utils/variables';
 
 .form__container {
   display: flex;
@@ -17,9 +17,7 @@
   }
 
   button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
     border: none;
     outline: none;
     padding: 0 .25rem;

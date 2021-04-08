@@ -5,3 +5,9 @@ $primary_color_dark_blue: #60ADDB;
 $primary_color_aqua: #77E4F2;
 $primary_color_dark_green: #60DBC8;
 $primary_color_green: #6EF9BC;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

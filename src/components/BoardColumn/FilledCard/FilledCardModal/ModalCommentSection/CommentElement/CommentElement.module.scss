@@ -1,4 +1,4 @@
-@import '../../../../../../utils/colors';
+@import '../../../../../../utils/variables';
 
 .comment {
   display: inline-flex;
@@ -15,9 +15,7 @@
   height: 2rem;
   font-size: 1.25rem;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   background: $primary_color_green;
 }
 

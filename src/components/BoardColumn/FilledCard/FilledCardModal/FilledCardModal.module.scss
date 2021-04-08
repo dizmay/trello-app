@@ -1,4 +1,4 @@
-@import '../../../../utils/colors';
+@import '../../../../utils/variables';
 
 .modal__container {
   width: 100vw;
@@ -71,9 +71,7 @@
 } 
 
 .menu__title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   margin-bottom: 1rem;
   font-size: 1.25rem;
 

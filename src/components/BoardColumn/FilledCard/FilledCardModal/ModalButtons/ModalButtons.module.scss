@@ -1,4 +1,4 @@
-@import '../../../../../utils/colors';
+@import '../../../../../utils/variables';
 
 .btn {
   border: none;
@@ -16,9 +16,7 @@
 }
 
 .btn__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
 
   *:first-child {
     margin-right: .1rem;

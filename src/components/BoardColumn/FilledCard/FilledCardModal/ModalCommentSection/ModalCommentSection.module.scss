@@ -1,8 +1,4 @@
-@import '../../../../../utils/colors';
-
-.comments__container {
-
-}
+@import '../../../../../utils/variables';
 
 .comments__title {
   display: flex;
@@ -23,9 +19,7 @@
   align-items: center;
 
   button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
     width: 2.5rem;
     height: 2.5rem;
     border: none;

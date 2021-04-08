@@ -1,9 +1,7 @@
-@import '../../utils/colors';
+@import '../../utils/variables';
 
 .btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   background: $primary_color_blue;
   border: none;
   border-radius: .15rem;
