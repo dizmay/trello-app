@@ -1,4 +1,4 @@
-@import '../../../utils/colors';
+@import '../../../utils/variables';
 
 .boardUsers {
   display: flex;
@@ -28,7 +28,5 @@
   height: 2rem;
   background: $primary_color_green;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
 }

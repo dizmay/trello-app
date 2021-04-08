@@ -15,10 +15,11 @@ import {
   changeColumnOrder,
   changeCardPosition,
   assignUser,
-  cancelAssignment
+  cancelAssignment,
 } from '../../actions/boardColumns/actions';
 import { selectUserId } from '../../selectors/authSelectors';
 import { selectColumns } from '../../selectors/boardColumnsSelectors';
+import { createComment, refreshComments } from '../../actions/comments/actions';
 import Board from './Board';
 
 const BoardContainer = () => {
@@ -67,7 +68,7 @@ const BoardContainer = () => {
   );
 
   const updateCard = useCallback(
-    (id, title, description, boardId) => dispatch(updateColumnCard(id, title, description, boardId)),
+    (id, title, description, boardId, loader) => dispatch(updateColumnCard(id, title, description, boardId, loader)),
     [dispatch]
   );
 
@@ -88,6 +89,16 @@ const BoardContainer = () => {
 
   const cancelUserAssignment = useCallback(
     (taskId, userId, boardId) => dispatch(cancelAssignment(taskId, userId, boardId)),
+    [dispatch]
+  );
+
+  const newComment = useCallback(
+    (text, userId, taskId, boardId, columnId) => dispatch(createComment({ text, userId, taskId, boardId, columnId })),
+    [dispatch]
+  );
+
+  const refresh = useCallback(
+    (boardId) => dispatch(refreshComments(boardId)),
     [dispatch]
   );
 
@@ -120,6 +131,8 @@ const BoardContainer = () => {
       assignUserToTask={assignUserToTask}
       cancelUserAssignment={cancelUserAssignment}
       columnsIsLoading={columnsIsLoading}
+      newComment={newComment}
+      refresh={refresh}
     />
   )
 }

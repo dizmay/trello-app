@@ -1,0 +1,87 @@
+@import '../../../../utils/variables';
+
+.modal__container {
+  width: 100vw;
+  height: 100vh;
+  background: rgba($color: $black, $alpha: .8);
+  position: absolute;
+  top: -5vh;
+  left: 0;
+  z-index: 1;
+}
+
+.modal {
+  width: 50vw;
+  height: 90vh;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to bottom, $primary_color_blue, $primary_color_aqua, $primary_color_green);
+  padding: 1rem 2rem;
+  border-radius: 2%;
+}
+
+.modal__info {
+  width: 65%;
+}
+
+.info__container {
+  display: inline-flex;
+  flex-direction: column;
+
+  span {
+    font-size: 1.05rem;
+    font-style: italic;
+    text-decoration: underline;
+    align-self: flex-end;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.modal__title {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.modal__title > *:first-child {
+  margin-right: .5rem;
+}
+
+.modal__description {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    font-style: italic;
+  }
+}
+
+.modal__menu {
+  width: 35%;
+  padding: .25rem;
+} 
+
+.menu__title {
+  @include flex-center;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+
+  *:first-child {
+    margin-right: .5rem;
+  }
+}
+
+.menu__buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

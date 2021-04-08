@@ -1,4 +1,4 @@
-@import '../../../utils/colors';
+@import '../../../utils/variables';
 
 .ntf__grid {
   display: grid;
@@ -9,9 +9,7 @@
   background: $primary_color_green;
   border-top: .15rem solid $black;
   border-bottom: .15rem solid $black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   padding: .5rem;
 
   *:first-child {

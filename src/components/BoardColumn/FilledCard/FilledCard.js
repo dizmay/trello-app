@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import useComponentVisible from '../../../utils/useComponentVisible';
 import { MdDeleteForever } from 'react-icons/md';
 import { TiPencil } from 'react-icons/ti'
 import ButtonElement from '../../ButtonElement/ButtonElement';
 import FilledCardForm from './FilledCardForm/FilledCardForm';
 import FilledCardMembers from './FilledCardMembers/FilledCardMembers';
+import FilledCardModal from './FilledCardModal/FilledCardModal';
 import styles from './FilledCard.module.scss';
 
 const FilledCard = ({
@@ -15,6 +17,7 @@ const FilledCard = ({
   deleteCard,
   setNotification,
   columnId,
+  columnTitle,
   dragOverHandler,
   dragStartHandler,
   dropHandler,
@@ -25,10 +28,15 @@ const FilledCard = ({
   assigned,
   assignUserToTask,
   cancelUserAssignment,
+  comments,
+  newComment,
+  userId,
+  refresh,
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [changeTitle, setChangeTitle] = useState(cardTitle);
   const [changeDescription, setChangeDescription] = useState(cardDesc);
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
 
   const onTitleChange = (e) => {
     setChangeTitle(e.currentTarget.value)
@@ -44,14 +52,26 @@ const FilledCard = ({
     setNotification(true);
   }
 
-  const removeCard = () => {
+  const showUpdateForm = (e) => {
+    e.stopPropagation();
+    setEditMode(true)
+  }
+
+  const removeCard = (e) => {
+    e.stopPropagation();
     deleteCard(id, columnId, boardId);
+  }
+
+  const showModal = (e) => {
+    e.stopPropagation()
+    setIsComponentVisible(true)
   }
 
   return (
     <div
       className={styles.card__container}
       onDragOver={dragOverHandler}
+      onClick={showModal}
     >
       {
         editMode
@@ -71,7 +91,7 @@ const FilledCard = ({
               onDragEnd={dragEndHandler}
             >
               <div className={styles.card__buttons}>
-                <ButtonElement children={<TiPencil />} type="button" smallFont colorBlack transparent handleClick={() => { setEditMode(true) }} />
+                <ButtonElement children={<TiPencil />} type="button" smallFont colorBlack transparent handleClick={showUpdateForm} />
                 <ButtonElement children={<MdDeleteForever />} type="button" smallFont transparent colorBlack handleClick={removeCard} />
               </div>
               <div
@@ -108,6 +128,27 @@ const FilledCard = ({
               </div>
             </div>
           )
+      }
+      {
+        isComponentVisible && <FilledCardModal
+          modalRef={ref}
+          cardTitle={cardTitle}
+          cardDesc={cardDesc}
+          columnTitle={columnTitle}
+          usernames={usernames}
+          assigned={assigned}
+          assignUserToTask={assignUserToTask}
+          cancelUserAssignment={cancelUserAssignment}
+          id={id}
+          boardId={boardId}
+          columnId={columnId}
+          removeCard={removeCard}
+          updateCard={updateCard}
+          comments={comments}
+          newComment={newComment}
+          userId={userId}
+          refresh={refresh}
+        />
       }
     </div>
   )

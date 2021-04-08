@@ -1,12 +1,10 @@
-@import '../../../utils/colors';
+@import '../../../utils/variables';
 
 .profile {
     background-color: $primary_color_green;
     width: 2.25rem;
     height: 2.25rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
     border: 0 solid $primary_color_dark_green;
     border-radius: 50%;
     outline: none;

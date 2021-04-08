@@ -1,4 +1,4 @@
-@import '../../../../../utils/colors';
+@import '../../../../../utils/variables';
 
 .menu {
   position: absolute;
@@ -20,9 +20,7 @@
   display: flex;
 
   button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
     border: none;
     border-radius: 50%;
     outline: none;
@@ -41,9 +39,7 @@
 .members__avatar {
   width: 1.75rem;
   height: 1.75rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   font-size: 1.25rem;
   border-radius: 50%;
   background-color: $primary_color_blue;

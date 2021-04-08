@@ -1,11 +1,9 @@
-@import '../../utils/colors';
+@import '../../utils/variables';
 
 .signup {
     width: 100vw;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
     background: linear-gradient(to bottom, $primary_color_dark_blue, $primary_color_aqua, $primary_color_dark_green);
     color: $white;
 }
