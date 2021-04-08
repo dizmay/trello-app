@@ -36,7 +36,6 @@ const BoardColumn = ({
   newComment,
   userId,
   refresh,
-  updateCardNoLoader,
 }) => {
 
   const [updateTitle, setUpdateTitle] = useState(false);
@@ -140,7 +139,6 @@ const BoardColumn = ({
               comments={task.hasOwnProperty('comments') ? task.comments : {}}
               deleteCard={deleteCard}
               updateCard={updateCard}
-              updateCardNoLoader={updateCardNoLoader}
               setNotification={setNotification}
               columnId={columnId}
               columnTitle={title}

@@ -80,9 +80,9 @@ const FilledCardModal = ({
 
   const onCardUpdate = (e) => {
     e.preventDefault();
-    updateCard(id, title, description, boardId);
-    setTitleEdit(false)
-    setDescriptionEdit(false)
+    updateCard(id, title, description, boardId, false);
+    setTitleEdit(false);
+    setDescriptionEdit(false);
   }
 
   return (
