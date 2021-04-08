@@ -6,6 +6,7 @@ import ModalButtons from './ModalButtons/ModalButtons';
 import FilledCardMembers from '../FilledCardMembers/FilledCardMembers';
 import ModalForm from './ModalForm/ModalForm';
 import ModalCommentSection from './ModalCommentSection/ModalCommentSection';
+import { stopClick, stopDrag } from '../../../../utils/stopEvents';
 import styles from './FilledCardModal.module.scss';
 
 const FilledCardModal = ({
@@ -35,15 +36,6 @@ const FilledCardModal = ({
   const [descriptionEdit, setDescriptionEdit] = useState(false);
 
   const [comment, setComment] = useState('');
-
-  const stopClick = (e) => {
-    e.stopPropagation()
-  }
-
-  const stopDrag = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-  }
 
   const onTitleChange = (e) => {
     setTitle(e.currentTarget.value);

@@ -1,17 +1,9 @@
 import React from 'react';
 import { MdDone } from 'react-icons/md';
+import { stopClick, stopDrag } from '../../../../utils/stopEvents';
 import styles from './FilledCardForm.module.scss';
 
 const FilledCardForm = ({ handleClick, changeTitle, changeDescription, onTitleChange, onDescriptionChange }) => {
-
-  const stopDrag = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-
-  const stopClick = (e) => {
-    e.stopPropagation();
-  }
 
   return (
     <form id="columnTitle" onSubmit={handleClick} className={styles.card__form} draggable onDragStart={stopDrag} onClick={stopClick}>

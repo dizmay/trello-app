@@ -1,17 +1,9 @@
 import React from 'react';
 import { MdDone } from 'react-icons/md';
+import { stopClick, stopDrag } from '../../../../../utils/stopEvents';
 import styles from './ModalForm.module.scss';
 
 const ModalForm = ({ changeValue, onValueChange, onFormSubmit }) => {
-
-  const stopClick = (e) => {
-    e.stopPropagation()
-  }
-
-  const stopDrag = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-  }
 
   return (
     <form id="renameForm" onSubmit={onFormSubmit} onClick={stopClick} onDragStart={stopDrag} draggable>
