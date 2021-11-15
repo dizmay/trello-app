@@ -101,9 +101,9 @@ export const deleteColumnCard = (id, columnId, boardId) => async (dispatch) => {
   }
 }
 
-export const updateColumnCard = (id, title, description, boardId) => async (dispatch) => {
+export const updateColumnCard = (id, title, description, boardId, loader = true) => async (dispatch) => {
   try {
-    dispatch(updateCard());
+    if (loader) dispatch(updateCard());
     const response = await cardsAPI.updateCard(id, title, description);
     const refreshColumns = await columnsAPI.getBoardColumns(boardId);
     dispatch(getBoardColumnsSuccess(refreshColumns.data));

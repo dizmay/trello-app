@@ -95,3 +95,9 @@ export const cardsAPI = {
     return axios.delete(`${baseURL}api/assign-user`, { params: { taskId, userId, boardId } })
   }
 }
+
+export const commentsAPI = {
+  createComment(text, userId, taskId, boardId, columnId) {
+    return axios.post(`${baseURL}api/comments`, { text, userId, taskId, boardId, columnId })
+  },
+}

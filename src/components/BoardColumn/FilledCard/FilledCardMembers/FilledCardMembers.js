@@ -24,7 +24,7 @@ const FilledCardMembers = ({
             assigned.map((elem, id) => <div key={id} className={styles.members__avatar}>{getFirstLetter(elem.username)}</div>)
           }
         </div>
-        <div onClick={() => { setIsComponentVisible(!isComponentVisible) }}>
+        <div onClick={(e) => { e.stopPropagation(); setIsComponentVisible(!isComponentVisible) }}>
           <CgAdd />
         </div>
       </div>

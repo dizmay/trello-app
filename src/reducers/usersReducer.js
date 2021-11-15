@@ -5,7 +5,7 @@ const initialState = {
   isLoading: false,
 }
 
-const authReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case types.GET_USER_NOTIFICATIONS:
@@ -31,4 +31,4 @@ const authReducer = (state = initialState, action) => {
   }
 }
 
-export default authReducer;
+export default usersReducer;

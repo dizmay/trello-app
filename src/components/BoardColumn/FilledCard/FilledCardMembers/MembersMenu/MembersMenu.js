@@ -15,11 +15,13 @@ const MembersMenu = ({
   const assignedUsernames = assigned.map(el => el.username);
 
   const assign = (e) => {
+    e.stopPropagation();
     const userId = e.currentTarget.getAttribute('id');
     assignUserToTask(id, userId, boardId, columnId);
   }
 
   const cancelAssign = (e) => {
+    e.stopPropagation();
     const userId = e.currentTarget.getAttribute('id');
     cancelUserAssignment(id, userId, boardId);
   }

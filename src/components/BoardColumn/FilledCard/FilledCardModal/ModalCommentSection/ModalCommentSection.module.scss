@@ -1,0 +1,45 @@
+@import '../../../../../utils/variables';
+
+.comments__title {
+  display: flex;
+  align-items: center;
+}
+
+.comments__title > *:first-child {
+  margin-right: .5rem;
+}
+
+.comments__text {
+  resize: none;
+  padding: .25rem;
+}
+
+.comments__func {
+  display: flex;
+  align-items: center;
+
+  button {
+    @include flex-center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 50%;
+    margin-left: .5rem;
+    background: $primary_color_blue;
+    color: $white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: .2s filter ease-in-out;
+
+    &:hover {
+      filter: brightness(110%);
+    }
+  }
+}
+
+.comments__section {
+  max-height: 45vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}

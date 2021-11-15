@@ -1,11 +1,9 @@
-@import '../../../utils/colors';
+@import '../../../utils/variables';
 
 .emptyColumn {
   max-width: 20vw;
   max-height: 15vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   padding: 1.5rem;
   background: $primary_color_dark_blue;
   border-radius: .5rem;
@@ -54,8 +52,6 @@
 .addColumn {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   text-align: center;
 }

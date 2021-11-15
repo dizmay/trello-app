@@ -1,0 +1,29 @@
+@import '../../../../../utils/variables';
+
+.btn {
+  border: none;
+  border-radius: .5rem;
+  outline: none;
+  padding: .35rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  background: $primary_color_green;
+  cursor: pointer;
+  margin-bottom: .5rem;
+  display: flex;
+  align-items: flex-start;
+  transition: .2s filter ease-in-out;
+
+  &:hover {
+    filter: brightness(110%);
+  }
+}
+
+.btn__container {
+  @include flex-center;
+
+  *:first-child {
+    margin-right: .1rem;
+  }
+}
